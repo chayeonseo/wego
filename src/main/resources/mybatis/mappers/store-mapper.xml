@@ -1,0 +1,44 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wego.mappers.StoreMapper" >
+
+    <resultMap id="test_resultMap" type="com.wego.dto.store.StoreDTO" autoMapping="true" >
+        <id property="storeId" column="s_id" />
+        <association property="storeIntro" javaType="com.wego.dto.store.StoreIntroDTO" autoMapping="true">
+            <id property="storeIntroId" column="s_int_id" />
+        </association>
+        <collection property="storeImgs" ofType="com.wego.dto.store.StoreImgDTO" javaType="list" autoMapping="true" >
+            <id property="storeImgId" column="si_id" />
+        </collection>
+    </resultMap>
+
+    <select id="test" resultMap="test_resultMap" >
+        SELECT
+        *, s.store_id s_id, sint.storeIntroId s_int_id, si.storeImgId si_id
+        from store s
+        inner join store_intro sint
+        on s.store_id = sint.storeId
+        left outer join store_img si
+        on s.store_id = si.storeId
+        where s.store_id=2;
+    </select>
+
+
+    <select id="get_week_total_price" resultType="map" >
+        SELECT DATE_FORMAT(created_date,'%a') as day, sum(orderTotalPrice) as totalPrice
+        FROM web_dev.order
+        where created_date
+        between #{mon} and #{sun}
+        group by DATE_FORMAT(created_date,'%Y-%m-%d');
+    </select>
+
+    <select id="get_week_total_count" resultType="map" >
+        SELECT DATE_FORMAT(created_date,'%a') as day, count(orderId) as count
+        FROM web_dev.order
+        where created_date
+        between #{mon} and #{sun}
+        group by DATE_FORMAT(created_date,'%Y-%m-%d');
+    </select>
+
+</mapper>

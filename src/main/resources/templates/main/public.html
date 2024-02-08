@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{public/sideHeader}">
+<head>
+    <meta charset="UTF-8">
+    <title>화면 템플릿</title>
+    <link rel="stylesheet" th:href="@{/css/main/public.css}" href="../../static/css/main/public.css">
+</head>
+
+<body layout:fragment="main">
+    <div class="main-container">
+        <div class="main-content">
+          <div class="con">
+            <span>내용</span>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

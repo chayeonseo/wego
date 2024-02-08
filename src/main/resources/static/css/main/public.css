@@ -1,0 +1,15 @@
+.main-content{
+    width: 650px;
+    height: 1000px;
+    border: 1px solid black;
+    text-align: center;
+}
+.con{
+    height: 50px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.main-container {
+    margin: 30px auto;
+}

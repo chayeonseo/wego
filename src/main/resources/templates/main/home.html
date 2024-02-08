@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{public/sideHeader}">
+<head>
+    <meta charset="UTF-8">
+    <title>화면 템플릿</title>
+    <link rel="stylesheet" th:href="@{/css/main/home.css}" href="../../static/css/main/main.css">
+    <script th:src="@{/js/main/home.js}" src="../../static/js/main/home.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+
+<body layout:fragment="main">
+    <div class="main-container">
+        <div class="chart-container">
+            <div>
+                <canvas class="chart" id="priceChart"></canvas>
+            </div>
+            <div>
+                <canvas class="chart" id="orderChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

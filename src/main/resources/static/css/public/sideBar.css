@@ -1,0 +1,98 @@
+* {
+    margin: 0
+}
+
+.sideNav {
+    position: fixed;
+    display: block;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: darkgray;
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    height: 100vh;
+    top: 70px;
+    border-right: 1px solid black;
+}
+
+ul.sideBar {
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    padding: 10px;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+li a i {
+    margin-right: 10px;
+}
+
+/* 묶음 스타일 */
+.menu-group {
+    background-color:  floralwhite;
+    padding: 10px;
+}
+
+.menu-group li {
+    padding: 5px;
+}
+
+.sideBar-list {
+    display: none;
+}
+
+/*상위요소 클릭 시 하위요소 드롭다운  */
+
+.sideBar-list {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none;
+
+}
+
+
+.menu-group.active .sideBar-list {
+    display: block;
+}
+
+/******************************************************************/
+/* 반응형 스타일 */
+@media screen and (max-width: 768px) {
+    .sideNav {
+        display: none; /* 초기에 숨김 처리 */
+        width: 100%;
+    }
+    .sideNav.hidden {
+        display: block; /* 초기에 숨김 처리 */
+        width: 100%;
+    }
+    li {
+        padding: 5px;
+    }
+
+    li a {
+        font-size: 14px;
+    }
+
+    .menu-group {
+        padding: 5px;
+    }
+
+    .menu-group li {
+        padding: 2px;
+    }
+
+    .menu-toggle-button {
+        display: block; /* 버튼 표시 */
+        position: fixed;
+    }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="initial-scale=2.3, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no" /> <!--반응형-->
+    <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script> <!--임시 로고-->
+    <link rel="stylesheet" th:href="@{/css/user/login.css}">
+</head>
+<body>
+    <div class="login-content">
+        <div class="logo">
+            <div>
+                <i class="fa-solid fa-circle-user fa-3x"></i> <!--임시 로고-->
+            </div>
+        </div>
+        <form class="login-form" method="post">
+            <div class="login">
+                <input type="text" placeholder="아이디를 입력해주세요">
+                <input type="text" placeholder="비밀번호를 입력해주세요">
+                <div class="find">
+                    <a href="#"><i class="fa-solid fa-angle-left"></i><span>ID/PASS 찾기</span></a>
+                    <a href="#"><span>회원가입</span><i class="fa-solid fa-angle-right"></i></a>
+                </div>
+                <!--    아이디와 비번이 일치하지 않을때 뜨는 div : uncorrected  -->
+                <div class="uncorrected">
+                    <span><i class="fa-solid fa-circle-exclamation" style="color: #fa7f7f;"></i>아이디와 비밀번호가 틀렸습니다.</span>
+                </div>
+                <input type="button" value="로그인">
+            </div>
+        </form>
+        <div class="bottom">
+            <span>로그인 시 <a href="#">서비스 이용약관</a>과 <a href="#">개인정보 처리방침</a>에 동의하게 됩니다.</span>
+        </div>
+    </div>
+</body>
+</html>
