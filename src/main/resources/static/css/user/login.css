@@ -50,7 +50,7 @@ body{
         gap: 20px;
     }
 
-    .login > input[type=text] {
+    .login-input {
         width: 350px;
         height: 40px;
         color: #222222;
@@ -58,7 +58,7 @@ body{
         border-bottom: solid #939292 1px;
     }
 
-    .login > input[type=button]{
+    .sub-btn{
         height: 50px;
         background-color: #ff5624;
         border: none;

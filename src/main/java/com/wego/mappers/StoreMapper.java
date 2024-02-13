@@ -12,7 +12,7 @@ import java.util.Map;
 @Mapper
 public interface StoreMapper {
 
-    StoreDTO test();
+    StoreDTO get_all_store(String id);
 
     // 1주 단위 요일별 매출
     List<Map<String, String>> get_week_total_price(@Param("mon") String mon, @Param("sun") String sun);

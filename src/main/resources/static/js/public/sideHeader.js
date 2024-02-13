@@ -2,7 +2,7 @@
 function getUserName() {
     // 사용자 이름을 가져오는 로직을 구현
     // 예를 들어, 로그인된 사용자 정보를 서버에서 가져와야함
-    return "UserName";
+    return "Uaaaaaa";
 }
 
 // 로그인 상태에 따라 헤더에 사용자 이름 또는 로그인 텍스트를 업데이트하는 함수

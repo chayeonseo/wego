@@ -14,10 +14,10 @@
                 <i class="fa-solid fa-circle-user fa-3x"></i> <!--임시 로고-->
             </div>
         </div>
-        <form class="login-form" method="post">
+        <form class="login-form" action="/user/login" method="post">
             <div class="login">
-                <input type="text" placeholder="아이디를 입력해주세요">
-                <input type="text" placeholder="비밀번호를 입력해주세요">
+                <input class="login-input" type="text" th:name="username" name="username" placeholder="아이디를 입력해주세요">
+                <input class="login-input" type="password" th:name="password" name="password" placeholder="비밀번호를 입력해주세요">
                 <div class="find">
                     <a href="#"><i class="fa-solid fa-angle-left"></i><span>ID/PASS 찾기</span></a>
                     <a href="#"><span>회원가입</span><i class="fa-solid fa-angle-right"></i></a>
@@ -26,7 +26,7 @@
                 <div class="uncorrected">
                     <span><i class="fa-solid fa-circle-exclamation" style="color: #fa7f7f;"></i>아이디와 비밀번호가 틀렸습니다.</span>
                 </div>
-                <input type="button" value="로그인">
+                <input class="sub-btn" type="submit" value="로그인">
             </div>
         </form>
         <div class="bottom">
