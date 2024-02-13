@@ -29,6 +29,7 @@ public class StoreDTO {
 
     // store에 FK 연결된 table
     private StoreIntroDTO storeIntro;
+    private StoreOpenInfoDTO storeOpenInfo;
     private List<StoreImgDTO> storeImgs;
 
 

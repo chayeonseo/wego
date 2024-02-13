@@ -15,4 +15,6 @@ public class ReviewImgDTO {
     private int reviewNumber; // 뭐에 쓰려고 있는건지?
     private String reviewimgOriginal;
     private String reviewimgThm;
+    private String createdDate;
+    private String modifiedDate;
 }

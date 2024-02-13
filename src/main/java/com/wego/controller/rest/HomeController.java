@@ -44,6 +44,7 @@ public class HomeController {
     public String get_week_order_count() throws JsonProcessingException {
         // 지난주 주문건
         Map<String, String> lastWeekCount = storeService.get_last_week_total_order();
+        // 이번주 주문건
         Map<String, String> thisWeekCount = storeService.get_this_week_total_order();
 
         List<Map<String, String>> result = new ArrayList<>();
@@ -53,4 +54,16 @@ public class HomeController {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(result);
     }
+
+
+
+    @GetMapping("/status")
+    public String get_order_status() throws JsonProcessingException{
+        Map<String, String> orderStatus = storeService.get_order_status();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(orderStatus);
+    }
+
+
 }

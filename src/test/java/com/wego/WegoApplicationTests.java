@@ -19,7 +19,8 @@ class WegoApplicationTests {
     @Test
     void contextLoads() {
 //        System.out.println(storeMapper.get_week_total_price("2024-01-01", "2024-02-20"));
-        System.out.println(storeMapper.get_week_total_count("2024-01-29", "2024-02-05"));
+//        System.out.println(storeMapper.get_week_total_price("2024-01-29", "2024-02-05"));
+        System.out.println(storeMapper.get_order_status());
     }
 
 }

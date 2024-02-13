@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{public/sideHeader}">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 관리</title>
+    <link rel="stylesheet" th:href="@{/css/main/review.css}" href="../../static/css/main/public.css">
+    <script th:src="@{/js/main/review.js}" src="../../static/js/main/review.js" defer></script>
+</head>
+
+<body layout:fragment="main">
+    <div class="main-container">
+        <div class="review-container">
+            <div class="review-total">
+
+            </div>
+
+            <div class="review-search">
+                <label><input class="date-input" type="date"> - <input class="date-input" type="date"></label>
+                <input type="button" value="조회">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

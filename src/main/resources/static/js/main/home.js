@@ -1,4 +1,6 @@
 const [priceChart, orderChart] = document.querySelectorAll('.chart');
+const [order0, order1, order2, order3] = document.querySelectorAll('.order-result');
+
 
 let myChart;
 
@@ -17,7 +19,8 @@ fetch('home/price')
                 ],
                 datasets: [
                     {
-                        data: [thisPrice['Mon'] === undefined ? 0 : thisPrice['Mon'],
+                        data: [
+                            thisPrice['Mon'] === undefined ? 0 : thisPrice['Mon'],
                             thisPrice['Tue'] === undefined ? 0 : thisPrice['Tue'],
                             thisPrice['Wed'] === undefined ? 0 : thisPrice['Wed'],
                             thisPrice['Thu'] === undefined ? 0 : thisPrice['Thu'],
@@ -29,7 +32,8 @@ fetch('home/price')
                         borderColor: "#3e95cd",
                         fill: false
                     }, {
-                        data: [lastPrice['Mon'] === undefined ? 0 : lastPrice['Mon'],
+                        data: [
+                            lastPrice['Mon'] === undefined ? 0 : lastPrice['Mon'],
                             lastPrice['Tue'] === undefined ? 0 : lastPrice['Tue'],
                             lastPrice['Wed'] === undefined ? 0 : lastPrice['Wed'],
                             lastPrice['Thu'] === undefined ? 0 : lastPrice['Thu'],
@@ -65,7 +69,8 @@ fetch('home/order')
                 ],
                 datasets: [
                     {
-                        data: [thisCount['Mon'] === undefined ? 0 : thisCount['Mon'],
+                        data: [
+                            thisCount['Mon'] === undefined ? 0 : thisCount['Mon'],
                             thisCount['Tue'] === undefined ? 0 : thisCount['Tue'],
                             thisCount['Wed'] === undefined ? 0 : thisCount['Wed'],
                             thisCount['Thu'] === undefined ? 0 : thisCount['Thu'],
@@ -77,7 +82,8 @@ fetch('home/order')
                         borderColor: "#3e95cd",
                         fill: false
                     }, {
-                        data: [lastCount['Mon'] === undefined ? 0 : lastCount['Mon'],
+                        data: [
+                            lastCount['Mon'] === undefined ? 0 : lastCount['Mon'],
                             lastCount['Tue'] === undefined ? 0 : lastCount['Tue'],
                             lastCount['Wed'] === undefined ? 0 : lastCount['Wed'],
                             lastCount['Thu'] === undefined ? 0 : lastCount['Thu'],
@@ -98,4 +104,17 @@ fetch('home/order')
                 }
             }
         })
+    })
+
+
+// order status
+
+fetch('home/status')
+    .then(resp => resp.json())
+    .then(value => {
+        console.log(value)
+        order0.innerText = value['0'] !== undefined ? value['0'] : 0;
+        order1.innerText = value['1'] !== undefined ? value['1'] : 0;
+        order2.innerText = value['2'] !== undefined ? value['2'] : 0;
+        order3.innerText = value['3'] !== undefined ? value['3'] : 0;
     })

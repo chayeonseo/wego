@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    width: 1000px;
+    border: 1px solid black;
+    justify-content: center;
+    margin: 30px auto;
+    padding-left: 300px;
+}

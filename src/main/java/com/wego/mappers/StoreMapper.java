@@ -14,10 +14,12 @@ public interface StoreMapper {
 
     StoreDTO test();
 
-    // 지난주 요일별 가격 List
+    // 1주 단위 요일별 매출
     List<Map<String, String>> get_week_total_price(@Param("mon") String mon, @Param("sun") String sun);
 
-
+    // 1주 단위 요일별 주문수
     List<Map<String, String>> get_week_total_count(@Param("mon") String mon, @Param("sun") String sun);
 
+    // 1달 단위 주문 상태
+    List<Map<String, Integer>> get_order_status();
 }

@@ -67,9 +67,19 @@ public class StoreService {
 
 
 
+    // order history
+    public Map<String, String> get_order_status() {
+        List<Map<String, Integer>> results = storeMapper.get_order_status();
+
+        return result_orderCountMap(results);
+    }
+
+
+
+
 
     ////////////////////////////////// 부가적인 편의성
-    // 받아온 값 Map<String, Integer> 타입으로 변환하기 (view사용 시 편의성)
+    // 받아온 값 Map<String, String> 타입으로 변환하기 (view사용 시 편의성)
     private Map<String, String> result_priceMap(List<Map<String, String>> results) {
         Map<String, String> resultMap = new HashMap<>();
         for (Map<String, String> result : results) {
@@ -82,6 +92,14 @@ public class StoreService {
         Map<String, String> resultMap = new HashMap<>();
         for (Map<String, String> result : results) {
             resultMap.put(result.get("day"), String.valueOf(result.get("count")));
+        }
+        return resultMap;
+    }
+
+    private Map<String, String> result_orderCountMap(List<Map<String, Integer>> results) {
+        Map<String, String> resultMap = new HashMap<>();
+        for (Map<String, Integer> result : results) {
+            resultMap.put(String.valueOf(result.get("orderStatus")), String.valueOf(result.get("orderCount")));
         }
         return resultMap;
     }

@@ -3,6 +3,7 @@ package com.wego.dto.review;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +18,7 @@ public class ReviewDTO {
     private String memberId;
     private String reviewTags;
     private LocalDateTime createdDate;
+    
+    // 리뷰 이미지
+    private List<ReviewImgDTO> reviewImgs;
 }

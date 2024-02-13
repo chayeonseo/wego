@@ -25,6 +25,7 @@
     </select>
 
 
+    <!--1주일 단위 매상-->
     <select id="get_week_total_price" resultType="map" >
         SELECT DATE_FORMAT(created_date,'%a') as day, sum(orderTotalPrice) as totalPrice
         FROM web_dev.order
@@ -33,6 +34,7 @@
         group by DATE_FORMAT(created_date,'%Y-%m-%d');
     </select>
 
+    <!--1주일 단위 주문수-->
     <select id="get_week_total_count" resultType="map" >
         SELECT DATE_FORMAT(created_date,'%a') as day, count(orderId) as count
         FROM web_dev.order
@@ -40,5 +42,16 @@
         between #{mon} and #{sun}
         group by DATE_FORMAT(created_date,'%Y-%m-%d');
     </select>
+
+
+    <!--최근 한달 order status-->
+    <select id="get_order_status" resultType="map" >
+        SELECT orderStatus, count(orderStatus) as orderCount
+        FROM web_dev.order
+        where created_date BETWEEN DATE_ADD(NOW(),INTERVAL -1 MONTH ) AND NOW()
+        group by orderStatus;
+    </select>
+
+
 
 </mapper>
