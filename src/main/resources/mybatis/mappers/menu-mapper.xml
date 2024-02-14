@@ -25,7 +25,30 @@
         inner join menu_img mi
         on m.menuId=mi.menuId
         where mc.storeId = #{storeId}
-        order by mc.menuCategoryNumber, m.menuNumber;
+        order by mc.menuCategoryNumber, m.menuNumber
+    </select>
+
+    <resultMap id="menu_resultMap" type="com.wego.dto.menu.MenuDTO" autoMapping="true" >
+        <id property="menuId" column="m_id"/>
+        <collection property="menuImgs" javaType="list" ofType="com.wego.dto.menu.MenuImgDTO" autoMapping="true">
+            <id property="menuImgId" column="mi_id" />
+        </collection>
+    </resultMap>
+
+    <select id="get_all_menu" resultMap="menu_resultMap" >
+        SELECT *, m.menuId as m_id, mi.menuImgId as mi_id
+        FROM menu m
+        inner join menu_img mi
+        on m.menuId = mi.menuId
+        where mi.storeId = #{storeId}
+    </select>
+
+    <select id="get_menu" resultMap="menu_resultMap">
+        SELECT *, m.menuId as m_id, mi.menuImgId as mi_id
+        FROM menu m
+        inner join menu_img mi
+        on m.menuId = mi.menuId
+        where m.menuId = #{menuId}
     </select>
 
 

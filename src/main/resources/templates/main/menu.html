@@ -7,28 +7,61 @@
     <meta charset="UTF-8">
     <title>메뉴</title>
     <link rel="stylesheet" th:href="@{/css/main/menu.css}" href="../../static/css/main/menu.css">
-    <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script> <!--버튼 이모티콘-->
+    <script th:src="@{/js/main/menu.js}" src="../../static/js/main/menu.js" defer></script>
+    <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script><!--버튼 이모티콘-->
 </head>
 
 <body layout:fragment="main">
     <div class="main-container">
 
-        <button>메뉴판 편집</button>
+        <div class="menu-editing-container">
+            <div class="menu-editing-content">
+                <div class="menu-editing-header">
+                    <button class="menu-cancel-btn">X</button>
+                    <span class="menu-header-title">편집</span>
+                </div>
+                <hr>
+                <div class="menu-editing-body">
+                    <div style="display: flex;">
+                        <img class="menu-editing-img" th:src="@{image/public/delivery.jpg}" alt="alal">
+                        <div class="menu-title">돈까스</div>
+                        <div>1000원</div>
+                    </div>
+                    <hr>
+                    <div>
+                        <h3>구성 및 설명</h3>
+                        <label><input type="text" style="width: 490px; height: 25px"></label>
+                    </div>
+                    <hr style="margin: 5px 0">
+                    <div>
+                        <h3>옵션</h3>
+                    </div>
+
+                    <div style="position: absolute; bottom: 10px">
+                        <button style="width: 500px">적용</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <button>메뉴 추가</button>
         <br>
-        <div class="con" th:each="category : ${categorys}">
+        <div class="con">
             <div class="con-title">
-                <span th:text="${category.menuCategoryName}">메인메뉴</span>
+                <span>메뉴</span>
 <!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
             </div>
             <hr>
             <ul class="menu-ul">
-                <li class="menu-li" th:each="menu : ${category.menus}">
+                <li class="menu-li" th:each="menu : ${menus}">
                     <div class="con-info">
+                        <input class="menuId" type="hidden" th:value="${menu.menuId}">
                         <div class="menu-name" th:text="${menu.menuName}">닭꼬치</div>
                         <div class="menu-content" th:text="${menu.menuContent}">비싸지만 맛있음</div>
-                        <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + ' 원'">1000원</div>
+                        <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + '원'">1000원</div>
                     </div>
-                    <img class="menu-img" th:src="@{http://} + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
+                    <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
 <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
                 </li>
             </ul>

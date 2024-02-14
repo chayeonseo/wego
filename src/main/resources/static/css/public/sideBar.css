@@ -15,23 +15,23 @@
     border-right: 1px solid black;
 }
 
-ul.sideBar {
+.sideBar {
     padding: 0;
     list-style-type: none;
 }
 
-li {
+.sideBar li {
     padding: 10px;
 }
 
-li a {
+.sideBar li a {
     text-decoration: none;
     color: #333;
     display: flex;
     align-items: center;
 }
 
-li a i {
+.sideBar li a i {
     margin-right: 10px;
 }
 

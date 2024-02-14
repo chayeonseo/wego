@@ -26,7 +26,7 @@ public class ViewController {
 
     @GetMapping("/menu")
     public String menu_view(@AuthenticationPrincipal StoreDTO storeDTO, Model model) {
-        model.addAttribute("categorys", menuService.get_test(storeDTO));
+        model.addAttribute("menus", menuService.get_all_menu(storeDTO));
         return "main/menu";
     }
 
@@ -53,5 +53,6 @@ public class ViewController {
         session.invalidate();
         return "user/login";
     }
+
 
 }

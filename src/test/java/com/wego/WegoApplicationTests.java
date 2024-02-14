@@ -33,6 +33,8 @@ class WegoApplicationTests {
 
 //        System.out.println(storeMapper.test());
 //        System.out.println(menuMapper.test());
+        System.out.println(menuMapper.get_menu(35));
+
     }
 
 }
