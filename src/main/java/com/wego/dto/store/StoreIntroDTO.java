@@ -15,4 +15,6 @@ public class StoreIntroDTO {
     private int storeId;
     private String storeIntroInfo;
     private String storeIntroTel;
+    private String createdDate;
+    private String modifiedDate;
 }

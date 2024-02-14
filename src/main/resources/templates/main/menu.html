@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{public/sideHeader}">
+<head>
+    <meta charset="UTF-8">
+    <title>메뉴</title>
+    <link rel="stylesheet" th:href="@{/css/main/menu.css}" href="../../static/css/main/menu.css">
+    <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script> <!--버튼 이모티콘-->
+</head>
+
+<body layout:fragment="main">
+    <div class="main-container">
+
+        <button>메뉴판 편집</button>
+        <br>
+        <div class="con" th:each="category : ${categorys}">
+            <div class="con-title">
+                <span th:text="${category.menuCategoryName}">메인메뉴</span>
+<!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
+            </div>
+            <hr>
+            <ul class="menu-ul">
+                <li class="menu-li" th:each="menu : ${category.menus}">
+                    <div class="con-info">
+                        <div class="menu-name" th:text="${menu.menuName}">닭꼬치</div>
+                        <div class="menu-content" th:text="${menu.menuContent}">비싸지만 맛있음</div>
+                        <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + ' 원'">1000원</div>
+                    </div>
+                    <img class="menu-img" th:src="@{http://} + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
+<!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
+                </li>
+            </ul>
+
+        </div>
+
+
+<!--                <div class="con-info">-->
+<!--                    <div class="title">예약주문<i class="fa-regular fa-circle-question"></i></div>-->
+<!--                    <div class="result">설정함</div>-->
+<!--                </div>-->
+<!--                <hr>-->
+<!--                <div class="con-info">-->
+<!--                    <div class="title">포장할인</div>-->
+<!--                    <div class="result">2,000원 할인</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="con">-->
+<!--                <div class="con-title">-->
+<!--                    <span>기본 배달팁<i class="fa-regular fa-circle-question"></i></span>-->
+<!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
+<!--                </div>-->
+<!--                <div class="con-title">-->
+<!--                    <div>주문금액에따라배달팁을설정합니다.</div>-->
+<!--                </div>-->
+<!--                <hr>-->
+<!--                <div class="con-info">-->
+<!--                    <div class="title">최소 주문 금액</div>-->
+<!--                    <div class="vote">-->
+<!--                        <ul class="vote-title">-->
+<!--                            <li>주문금액</li>-->
+<!--                            <li>배달팁</li>-->
+<!--                        </ul>-->
+<!--                        <ul>-->
+<!--                            <li>4900원이상</li>-->
+<!--                            <li>2900원</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <hr>-->
+<!--                <div class="con-info">-->
+<!--                    <div class="title">배달팁 추가</div>-->
+<!--                    <div class="vote">-->
+<!--                        <ul class="vote-title">-->
+<!--                            <li>주문금액</li>-->
+<!--                            <li>배달팁</li>-->
+<!--                        </ul>-->
+<!--                        <ul>-->
+<!--                            <li>10000원이상</li>-->
+<!--                            <li>2900원</li>-->
+<!--                        </ul>-->
+<!--                        <ul>-->
+<!--                            <li>30000원이상</li>-->
+<!--                            <li>0원</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+    </div>
+</body>
+</html>

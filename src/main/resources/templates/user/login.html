@@ -15,6 +15,7 @@
             </div>
         </div>
         <form class="login-form" action="/user/login" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="login">
                 <input class="login-input" type="text" th:name="username" name="username" placeholder="아이디를 입력해주세요">
                 <input class="login-input" type="password" th:name="password" name="password" placeholder="비밀번호를 입력해주세요">

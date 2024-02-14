@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>HOME</title>
-    <link rel="stylesheet" th:href="@{/css/main/home.css}" href="../../static/css/main/main.css">
+    <link rel="stylesheet" th:href="@{/css/main/home.css}" href="../../static/css/main/home.css">
     <script th:src="@{/js/main/home.js}" src="../../static/js/main/home.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
@@ -15,8 +15,6 @@
 <body layout:fragment="main">
     <div class="main-container">
         <!--기본 가게 정보-->
-        <div th:text="${#authentication.principal.mbId}"></div>
-
 
         <!--차트 view-->
         <div class="chart-container">
@@ -30,6 +28,8 @@
 
         <!--order status view-->
         <div class="order-container">
+            <span>최근 1달 주문 현황</span>
+
             <div class="order-content">
                 <div class="order-title">접수전</div>
                 <div class="order-value">

@@ -1,10 +1,12 @@
 package com.wego.mappers;
 
 
+import com.wego.dto.review.ReviewDTO;
 import com.wego.dto.store.StoreDTO;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -22,4 +24,7 @@ public interface StoreMapper {
 
     // 1달 단위 주문 상태
     List<Map<String, Integer>> get_order_status();
+
+    @Select("select * from review where reviewId = '18'")
+    ReviewDTO test();
 }

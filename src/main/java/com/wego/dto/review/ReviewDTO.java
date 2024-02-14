@@ -17,7 +17,7 @@ public class ReviewDTO {
     private int menuId;
     private String memberId;
     private String reviewTags;
-    private LocalDateTime createdDate;
+    private String createdDate;
     
     // 리뷰 이미지
     private List<ReviewImgDTO> reviewImgs;

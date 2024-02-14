@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wego.mappers.MenuMapper" >
+
+    <resultMap id="test_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true" >
+        <id property="menuCategoryId" column="mc_id" />
+
+        <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO" autoMapping="true">
+            <id property="menuId" column="m_id" />
+            <collection property="menuImgs" javaType="list" ofType="com.wego.dto.menu.MenuImgDTO" autoMapping="true">
+                <id property="menuImgId" column="mi_id" />
+            </collection>
+        </collection>
+
+    </resultMap>
+
+    <select id="test" resultMap="test_resultMap">
+        SELECT
+        *, m.menuId as m_id, mc.menuCategoryId as mc_id, mi.menuImgId as mi_id
+        FROM
+        web_dev.menu_category mc
+        left outer join menu m
+        on mc.menuCategoryId=m.menuCategoryId
+        inner join menu_img mi
+        on m.menuId=mi.menuId
+        where mc.storeId = #{storeId}
+        order by mc.menuCategoryNumber, m.menuNumber;
+    </select>
+
+
+</mapper>
