@@ -15,7 +15,7 @@
 <body layout:fragment="main">
     <div class="main-container">
         <!--기본 가게 정보-->
-        <div></div>
+        <div th:text="${#authentication.principal.mbId}"></div>
 
 
         <!--차트 view-->

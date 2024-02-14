@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wego.dto.store.StoreDTO;
 import com.wego.service.store.home.StoreService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,12 @@ public class ViewController {
 
     @GetMapping("/user/login")
     public String login_view() {
+        return "user/login";
+    }
+
+    @GetMapping("/user/logout")
+    public String user_logout(HttpSession session) {
+        session.invalidate();
         return "user/login";
     }
 
