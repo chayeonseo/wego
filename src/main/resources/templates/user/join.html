@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Join</title>
+    <meta name="viewport" content="initial-scale=2.3, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no" /> <!--반응형-->
+    <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script> <!--임시 로고-->
+    <link rel="stylesheet" th:href="@{/css/user/join.css}" href="../../static/css/user/join.css">
+</head>
+<body>
+    <div class="join-content">
+        <div class="tit">
+            <div>회원가입</div>
+        </div>
+        <form class="join-form" method="post">
+            <div class="join">
+                <div>아이디</div>
+                <input type="text" placeholder="로그인 할 아이디를 입력하세요">
+                <div>비밀번호</div>
+                <input type="text" placeholder="비밀번호">
+                <div>비밀번호 확인</div>
+                <input type="text" placeholder="비밀번호 확인">
+                <div>전화번호</div>
+                <input type="text" placeholder="전화번호">
+                <div>이름</div>
+                <input type="text" placeholder="이름">
+                <div>매장 이름</div>
+                <input type="text" placeholder="매장이름">
+                <div>태그 선택</div> <!--radio 형식 10개-->
+                <div id="tag-radio">
+                    <input type="radio" name="태그1" value="태그1">1
+                    <input type="radio" name="2" value="2">2
+                    <input type="radio" name="3" value="3">3
+                    <input type="radio" name="3" value="3">4
+                    <input type="radio" name="3" value="3">5
+                    <input type="radio" name="3" value="3">6
+                    <input type="radio" name="3" value="3">7
+                    <input type="radio" name="3" value="3">8
+                    <input type="radio" name="3" value="3">9
+                    <input type="radio" name="3" value="3">10
+                </div>
+                <div>매장카테고리</div>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <div>메뉴카테고리/미정</div>
+                <!--  input데이터가 없을때 뜨는 div : uncorrected  -->
+                <div class="uncorrected">
+                    <span><i class="fa-solid fa-circle-exclamation" style="color: #fa7f7f;"></i>데이터 없음</span>
+                </div>
+                <input type="button" value="본인인증">
+                <div>
+                    <span>본인인증이 확인되었습니다.</span>
+                </div>
+                <input type="button" value="회원가입">
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
