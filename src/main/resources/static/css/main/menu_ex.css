@@ -34,17 +34,8 @@
     cursor: pointer;
 }
 .con-info{
-    width: 200px;
+    margin: 10px;
 }
-.con-drop{
-    margin: 5px;
-    float: left;
-    align-content: center;
-}
-.info{
-    float: right;
-}
-
 .menu-name{
     font-weight: bold;
     margin-bottom: 10px;
@@ -108,45 +99,19 @@
 }
 
 .menu-cancel-btn {
-    width: 40px;
-    height: 30px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+    /*left: 10px;*/
 }
 
 .menu-header-title {
     font-size: 20px;
-}
-.menu-editing-btn{
-    float: right;
-}
-.menu-editing-body{
-
-}
-.menu-editing{
-    display: flex;
 }
 
 .menu-editing-img {
     width: 100px;
     height: 100px;
     border: 1px solid black;
-    margin: 10px;
 }
-.menu-editing-div{
-    margin: 10px;
-}
+
 .menu-title {
     font-size: 20px;
-}
-.menu-con{
-    font-size: 20px;
-}
-.menu-sold-btn{
-    margin: 10px;
-}
-.menu-editing-con{
-
 }
