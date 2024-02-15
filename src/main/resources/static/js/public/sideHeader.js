@@ -31,8 +31,8 @@ function toggleNav() {
 }
 
 // 아이콘이 있는 li 항목들을 클릭 시 색상이 진하게 변경
-var iconItems = document.querySelectorAll('.sideBar li');
-iconItems.forEach(function(item) {
+const iconItems = document.querySelectorAll('.sideBar-list li');
+[...iconItems].forEach(function(item) {
     item.addEventListener('click', function() {
         // 클릭된 항목의 색상을 진하게 변경
         item.style.fontWeight = 'bold';
@@ -51,24 +51,24 @@ iconItems.forEach(function(item) {
 
 // 가게관리를 클릭했을 때 드롭다운 기능 구현
 // 모든 menu-group 요소를 선택합니다.
-const menuGroups = document.querySelectorAll('.menu-group');
+// const menuGroups = document.querySelectorAll('.menu-group');
 
 // 각 menu-group 요소에 대해 클릭 이벤트를 추가합니다.
-menuGroups.forEach(menuGroup => {
-    // menu-group 요소를 클릭했을 때의 동작을 정의합니다.
-    menuGroup.addEventListener('click', () => {
-        // 클릭한 menu-group의 하위 요소인 sideBar-list를 선택합니다.
-        const sideBarList = menuGroup.querySelector('.sideBar-list');
-
-        // sideBar-list가 보이지 않는 상태인 경우에는 보이도록 변경하고,
-        // 보이는 상태인 경우에는 숨기도록 변경합니다.
-        if (sideBarList.style.display === 'none') {
-            sideBarList.style.display = 'block';
-        } else {
-            sideBarList.style.display = 'none';
-        }
-    });
-});
+// menuGroups.forEach(menuGroup => {
+//     // menu-group 요소를 클릭했을 때의 동작을 정의합니다.
+//     menuGroup.addEventListener('click', () => {
+//         // 클릭한 menu-group의 하위 요소인 sideBar-list를 선택합니다.
+//         const sideBarList = menuGroup.querySelector('.sideBar-list');
+//
+//         // sideBar-list가 보이지 않는 상태인 경우에는 보이도록 변경하고,
+//         // 보이는 상태인 경우에는 숨기도록 변경합니다.
+//         if (sideBarList.style.display === 'none') {
+//             sideBarList.style.display = 'block';
+//         } else {
+//             sideBarList.style.display = 'none';
+//         }
+//     });
+// });
 
 
 

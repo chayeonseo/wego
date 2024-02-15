@@ -25,6 +25,7 @@ public interface StoreMapper {
     // 1달 단위 주문 상태
     List<Map<String, Integer>> get_order_status();
 
-    @Select("select * from review where reviewId = '18'")
+    @Select("select * from review where reviewId = 18")
     ReviewDTO test();
+
 }
