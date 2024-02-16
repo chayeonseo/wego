@@ -29,12 +29,15 @@
                             <input type="text" class="menu-con" value="1000원" disabled>
                             <input type="text" class="menu-people" value="2인분" disabled>
 <!--                            <button type="button">메뉴카테고리</button>-->
-                            <select>
-                                <option>메뉴카테고리 선택</option>
-                                <option>메인</option>
-                                <option>사이드</option>
-                                <option>음료</option>
-                            </select>
+                            <div class="menu-category">
+                                <select>
+                                    <option>메뉴카테고리 선택</option>
+                                    <option value="1">메인</option>
+                                    <option value="2">사이드</option>
+                                    <option value="3">음료</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div class="menu-editing-modify">
                             <button type="button" class="menu-editing-btn">수정</button> <!--수정을 누르면 input disabled 해제, 이미지 수정 가능-->
@@ -135,14 +138,15 @@
                             <div class="menu-content" th:text="${menu.menuContent}">비싸지만 맛있음</div>
                             <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + '원'">1000원</div>
                         </div>
-
                     </div>
                     <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
 <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
                 </li>
+<!--                <li>메뉴가 숨겨졌어요</li>-->
             </ul>
 
         </div>
+
 
     </div>
 </body>
