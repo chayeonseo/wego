@@ -1,5 +1,6 @@
 package com.wego.controller.rest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wego.dto.menu.MenuDTO;
 import com.wego.service.store.menu.MenuService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,9 @@ public class MenuController {
 
     @GetMapping("/menu/{menuId}")
     public MenuDTO get_menu(@PathVariable("menuId") int menuId) {
-        return menuService.get_menu(menuId);
+        System.out.println(menuId);
+        System.out.println(menuService.one_menu_all_info(menuId));
+        return menuService.one_menu_all_info(menuId);
     }
 
 }

@@ -116,15 +116,15 @@
             <input type="text" class="search-input" placeholder="검색창">
         </div>
         <br>
-        <div class="con">
+        <div class="con" th:each="category:${categorys}">
             <div class="con-title">
-                <span>메뉴</span>
+                <span th:text="${category.menuCategoryName}">메뉴</span>
 <!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
             </div>
             <hr>
             <ul class="menu-ul">
 <!--        드랍앤 드래그 js 예정        -->
-                <li class="menu-li" th:each="menu : ${menus}">
+                <li class="menu-li" th:each="menu : ${category.menus}">
                     <div class="con-info">
                         <div class="con-drop">
                             <i class="fa-solid fa-bars fa-2x"></i>

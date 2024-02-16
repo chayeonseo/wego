@@ -12,14 +12,13 @@ import java.util.List;
 @Mapper
 public interface MenuMapper {
 
-    List<MenuCategoryDTO> test(StoreDTO storeDTO);
+    List<MenuCategoryDTO> get_all_menu(StoreDTO storeDTO);
 
-    List<MenuDTO> get_all_menu(StoreDTO storeDTO);
 
     MenuDTO get_menu(int menuId);
 
 
-    MenuDTO one_menu_all_info();
+    MenuDTO one_menu_all_info(int menuId);
 
     List<MenuCategoryDTO> get_store_option_info();
 

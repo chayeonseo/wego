@@ -26,7 +26,8 @@ public class ViewController {
 
     @GetMapping("/menu")
     public String menu_view(@AuthenticationPrincipal StoreDTO storeDTO, Model model) {
-        model.addAttribute("menus", menuService.get_all_menu(storeDTO));
+        model.addAttribute("categorys", menuService.get_all_menu(storeDTO));
+//        System.out.println(menuService.get_all_menu(storeDTO));
         return "main/menu";
     }
 
