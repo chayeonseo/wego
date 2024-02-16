@@ -1,5 +1,6 @@
 package com.wego;
 
+import com.wego.dto.menu.MenuDTO;
 import com.wego.mappers.MenuMapper;
 import com.wego.mappers.StoreMapper;
 import com.wego.service.store.home.StoreService;
@@ -33,8 +34,16 @@ class WegoApplicationTests {
 
 //        System.out.println(storeMapper.test());
 //        System.out.println(menuMapper.test());
-        System.out.println(menuMapper.get_menu(35));
+//        System.out.println(menuMapper.get_menu(35));
+//        MenuDTO result = menuMapper.one_menu_all_info();
+//        System.out.println(result.getMenuName());
+//        System.out.println("사진 개수: "+result.getMenuImgs().size());
+//        System.out.println("옵션 카테고리 개수: "+result.getMenuOptionCategorys().size());
+//        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(0).getMenuOptions().get(0));
+//        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(1).getMenuOptions().get(0));
+//        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(2).getMenuOptions().get(0));
 
+        System.out.println(menuMapper.get_store_option_info());
     }
 
 }
