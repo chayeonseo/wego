@@ -42,21 +42,30 @@
 .result{
     margin-top: 5px;
 }
-.vote{
-    margin-right: 10px;
+.con-used{
+    margin: 10px;
+    border: 1px solid #c4c4c4;
+    background-color: #c4c4c4;
+    border-radius: 5px;
 }
-.vote-title{
-    font-weight: bold;
-    border-bottom: 2px solid black;
-}
-.vote > ul{
-    list-style: none;
-    padding: 5px;
-    border: 1px solid #939292;
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-}
-.vote > li{
-    margin: 5px;
-}
+
+/*.vote{*/
+/*    margin-right: 10px;*/
+/*}*/
+/*.vote-title{*/
+/*    font-weight: bold;*/
+/*    border-bottom: 2px solid black;*/
+/*}*/
+/*.vote > ul{*/
+/*    list-style: none;*/
+/*    padding: 5px;*/
+/*    border: 1px solid #939292;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin: 0;*/
+/*}*/
+/*.vote > li{*/
+/*    margin: 5px;*/
+/*}*/
+
+
