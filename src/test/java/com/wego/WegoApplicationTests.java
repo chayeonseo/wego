@@ -43,7 +43,7 @@ class WegoApplicationTests {
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(1).getMenuOptions().get(0));
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(2).getMenuOptions().get(0));
 
-        System.out.println(menuMapper.get_store_option_info());
+        System.out.println(menuMapper.one_menu_all_info(72));
     }
 
 }

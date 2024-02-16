@@ -18,15 +18,13 @@ public class MenuService {
 
     private final MenuMapper menuMapper;
 
-    public List<MenuCategoryDTO> get_test(StoreDTO storeDTO) {
-        return menuMapper.test(storeDTO);
+
+
+    public MenuDTO one_menu_all_info(int menuId) {
+        return menuMapper.one_menu_all_info(menuId);
     }
 
-    public MenuDTO get_menu(int menuId) {
-        return menuMapper.get_menu(menuId);
-    }
-
-    public List<MenuDTO> get_all_menu(StoreDTO storeDTO) {
+    public List<MenuCategoryDTO> get_all_menu(StoreDTO storeDTO) {
         return menuMapper.get_all_menu(storeDTO);
     }
 }

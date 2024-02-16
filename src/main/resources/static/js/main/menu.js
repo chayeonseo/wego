@@ -12,11 +12,9 @@ const editingCancelBtn = document.querySelector('.menu-cancel-btn');
             .then(resp => resp.json())
             .then(value => {
                 console.log(value)
-            })
-
+            });
     }
-
-})
+});
 
 editingCancelBtn.onclick = () => {
     editingModal.style.display = 'none';
