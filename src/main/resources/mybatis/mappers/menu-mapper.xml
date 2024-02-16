@@ -99,5 +99,13 @@
         where moca.menuOptionCategoryStoreId = 2;
     </select>
 
+    <select id="get_all_menu_category" resultType="com.wego.dto.menu.MenuCategoryDTO">
+        select * from menu_category where storeId=#{storeId};
+    </select>
+
+    <select id="get_all_menu_option_category" resultType="com.wego.dto.menu.MenuOptionCategoryDTO">
+        SELECT * FROM menu_option_category where menuOptionCategoryStoreId = #{storeId};
+    </select>
+
 
 </mapper>
