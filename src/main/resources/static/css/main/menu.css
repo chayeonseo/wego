@@ -13,7 +13,14 @@
     border: 1px solid #545454;
     border-radius: 5px;
 }
-
+.btn-div{
+    margin: 10px;
+}
+.search-input{
+    width: 300px;
+    height: 25px;
+    font-size: 15px;
+}
 .con > div {
     padding: 10px;
 }
@@ -34,7 +41,7 @@
     cursor: pointer;
 }
 .con-info{
-    width: 200px;
+    width: 300px;
 }
 .con-drop{
     margin: 5px;
@@ -79,7 +86,8 @@
 
 /*모달창*/
 .menu-editing-container {
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -123,7 +131,11 @@
     float: right;
 }
 .menu-editing-body{
-
+    height: 550px;
+}
+.menu-editing-modify{
+    height: 30px;
+    margin: 5px;
 }
 .menu-editing{
     display: flex;
@@ -137,16 +149,70 @@
 }
 .menu-editing-div{
     margin: 10px;
+    width: 300px;
 }
 .menu-title {
-    font-size: 20px;
+    font-size: 18px;
 }
 .menu-con{
-    font-size: 20px;
+    font-size: 18px;
+}
+.menu-people{
+    font-size: 15px;
+}
+.menu-category{
+    font-size: 15px;
 }
 .menu-sold-btn{
     margin: 10px;
 }
 .menu-editing-con{
+    height: 80px;
+}
+.menu-editing-opt-con{
+    height: 100px;
+}
+.menu-editing-con > span{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+.menu-editing-con > button{
+    float: right;
+}
+.menu-editing-opt-con > span{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+.menu-editing-opt-con > button{
+    float: right;
+}
+.editing-con{
+    width: 490px;
+    height: 25px;
+    margin-top: 15px;
+}
 
+.menu-opt{
+    margin: 10px;
+}
+.menu-opt > select{
+    width: 490px;
+    height: 30px;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+.hr{
+    margin: 5px 0
+}
+.div-modify-btn{
+    position: absolute;
+    bottom: 10px;
+}
+.modify-btn{
+    width: 500px;
+    height: 30px;
+    border-radius: 3px;
+    font-size: 16px;
 }
