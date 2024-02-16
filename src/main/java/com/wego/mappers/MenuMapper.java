@@ -18,4 +18,9 @@ public interface MenuMapper {
 
     MenuDTO get_menu(int menuId);
 
+
+    MenuDTO one_menu_all_info();
+
+    List<MenuCategoryDTO> get_store_option_info();
+
 }

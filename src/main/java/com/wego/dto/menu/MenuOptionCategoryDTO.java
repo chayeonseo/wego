@@ -15,7 +15,7 @@ public class MenuOptionCategoryDTO {
     private int menuId;
     private String menuOptionCategoryName;
     private int menuOptionCategoryNumber;
-    private int getMenuOptionCategoryStoreId;
+    private int menuOptionCategoryStoreId;
     private String createdDate;
     private String modifiedDate;
 

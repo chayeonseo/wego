@@ -45,9 +45,6 @@
     padding: 5px;
 }
 
-.sideBar-list {
-    display: none;
-}
 
 /*상위요소 클릭 시 하위요소 드롭다운  */
 
@@ -55,7 +52,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: none;
+    display: block;
 
 }
 
@@ -68,8 +65,10 @@
 /* 반응형 스타일 */
 @media screen and (max-width: 768px) {
     .sideNav {
+        text-align: center;
         display: none; /* 초기에 숨김 처리 */
         width: 100%;
+        padding: 10px 0;
     }
     .sideNav.hidden {
         display: block; /* 초기에 숨김 처리 */
@@ -94,5 +93,10 @@
     .menu-toggle-button {
         display: block; /* 버튼 표시 */
         position: fixed;
+    }
+
+    .sideBar li a {
+        text-align: center;
+        justify-content: center;
     }
 }
