@@ -12,6 +12,7 @@ const editingCancelBtn = document.querySelector('.menu-cancel-btn');
             .then(resp => resp.json())
             .then(value => {
                 console.log(value)
+                document.querySelector('.menu-editing-img').setAttribute('src', "http://" + value['menuImgs'][0]['menuImgThm'])
             });
     }
 });
@@ -19,3 +20,5 @@ const editingCancelBtn = document.querySelector('.menu-cancel-btn');
 editingCancelBtn.onclick = () => {
     editingModal.style.display = 'none';
 }
+
+

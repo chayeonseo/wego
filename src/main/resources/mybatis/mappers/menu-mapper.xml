@@ -53,8 +53,10 @@
         <collection property="menuOptionCategorys" ofType="com.wego.dto.menu.MenuOptionCategoryDTO" javaType="list" autoMapping="true">
             <id property="menuOptionCategoryId" column="moca_id"/>
             <result property="menuId" column="" />
+            <result property="createdDate" column="" />
             <collection property="menuOptions" ofType="com.wego.dto.menu.MenuOptionDTO" javaType="list" autoMapping="true">
-                <id property="optionId" column="mi_id"/>
+                <id property="optionId" column="mo_id"/>
+                <result property="createdDate" column="" />
             </collection>
         </collection>
     </resultMap>
