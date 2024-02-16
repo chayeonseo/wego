@@ -7,7 +7,6 @@ const editingCancelBtn = document.querySelector('.menu-cancel-btn');
     product.onclick = () => {
         const menuId = product.querySelector('.menuId');
         editingModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
 
         fetch(`/menu/${menuId.value}`)
             .then(resp => resp.json())
@@ -21,6 +20,4 @@ const editingCancelBtn = document.querySelector('.menu-cancel-btn');
 
 editingCancelBtn.onclick = () => {
     editingModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
 }
-
