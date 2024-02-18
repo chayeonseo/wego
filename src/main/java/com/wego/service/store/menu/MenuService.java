@@ -8,10 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.catalina.Store;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Log4j2
@@ -21,15 +20,35 @@ public class MenuService {
     private final MenuMapper menuMapper;
 
 
-
     public List<MenuCategoryDTO> one_menu_all_info(StoreDTO storeDTO, int menuId) {
         List<MenuCategoryDTO> categorys = menuMapper.get_all_menu_category(storeDTO);
-        categorys.get(0).setMenus(Collections.singletonList(menuMapper.one_menu_all_info(menuId)));
+
+        List<MenuDTO> resultMenu = new ArrayList<>();
+        resultMenu.add(MenuDTO.builder().menuOptionCategorys(menuMapper.one_menu_option_category(menuId)).build());
+        resultMenu.add(menuMapper.one_menu_all_info(menuId));
+
+        categorys.get(0).setMenus(resultMenu);
         categorys.get(0).getMenus().get(0).setMenuOptionCategorys(menuMapper.get_all_menu_option_category(storeDTO));
+        categorys.get(0).getMenus().get(1).setMenuOptionCategorys(menuMapper.one_menu_option_category(menuId));
         return categorys;
     }
 
     public List<MenuCategoryDTO> get_all_menu(StoreDTO storeDTO) {
         return menuMapper.get_all_menu(storeDTO);
     }
+
+    @Transactional
+    public void menu_modify(MenuDTO menuDTO) {
+        menuMapper.menu_modify(menuDTO);
+        if (!menuDTO.getMenuOptionCategorys().isEmpty()) {
+            menuMapper.menu_option_insert(menuDTO);
+
+        }
+    }
+
+    public void menu_option_connect_delete(int optionCategoryId, int menuId) {
+        menuMapper.delete_menu_option_category(optionCategoryId, menuId);
+    }
+
+
 }

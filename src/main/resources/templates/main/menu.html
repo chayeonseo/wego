@@ -5,6 +5,7 @@
       layout:decorate="~{public/sideHeader}">
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>메뉴</title>
     <link rel="stylesheet" th:href="@{/css/main/menu.css}" href="../../static/css/main/menu.css">
     <script th:src="@{/js/main/menu.js}" src="../../static/js/main/menu.js" defer></script>
@@ -33,6 +34,7 @@
                     <div class="menu-editing-modify">
                         <button type="button" class="menu-editing-btn">수정</button> <!--수정을 누르면 input disabled 해제, 이미지 수정 가능-->
                     </div>
+                    <input id="menuId" type="hidden" value="">
                 </div>
                 <div class="menu-sold-btn">
                     <button type="button">품절</button>
@@ -47,11 +49,13 @@
                 <hr class="hr">
                 <div class="menu-editing-opt-con">
                     <span>옵션</span>
-                    <button type="button">추가</button>
+                    <button type="button" class="menu-option-join-btn">추가</button>
                     <div class="menu-opt">
                         <select class="option-dropdown">
                         </select>
                     </div>
+                </div>
+                <div class="join-option-container">
                 </div>
                 <hr class="hr">
 

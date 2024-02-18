@@ -68,7 +68,7 @@
         m.menuId as m_id,
         moco.mp_id as moco_id,
         moca.menuOptionCategoryId as moca_id,
-        mo.optionId as mo_id,
+<!--        mo.optionId as mo_id,-->
         mi.menuImgId as mi_id
         FROM menu m
         inner join menu_img mi
@@ -77,8 +77,8 @@
         on m.menuId=moco.menuId
         left outer join menu_option_category moca
         on moco.optionCategoryId = moca.menuOptionCategoryId
-        left outer join menu_option mo
-        on moca.menuOptionCategoryId = mo.categoryId
+<!--        left outer join menu_option mo-->
+<!--        on moca.menuOptionCategoryId = mo.categoryId-->
 
         where m.menuId=#{menuId};
     </select>
@@ -96,7 +96,7 @@
         FROM menu_option_category moca
         left outer join menu_option mo
         on moca.menuOptionCategoryId = mo.categoryId
-        where moca.menuOptionCategoryStoreId = 2;
+        where moca.storeId = 2;
     </select>
 
     <select id="get_all_menu_category" resultType="com.wego.dto.menu.MenuCategoryDTO">
@@ -104,8 +104,49 @@
     </select>
 
     <select id="get_all_menu_option_category" resultType="com.wego.dto.menu.MenuOptionCategoryDTO">
-        SELECT * FROM menu_option_category where menuOptionCategoryStoreId = #{storeId};
+        SELECT * FROM menu_option_category where storeId = #{storeId};
     </select>
+
+    <resultMap id="menu_option_category_resultMap" type="com.wego.dto.menu.MenuOptionCategoryDTO" autoMapping="true">
+        <id property="menuOptionCategoryId" column="moca_id" />
+    </resultMap>
+
+    <select id="one_menu_option_category" resultMap="menu_option_category_resultMap">
+        SELECT *, moca.menuOptionCategoryId as moca_id FROM menu m
+        left outer join menu_option_connect moco
+        on m.menuId = moco.menuId
+        left outer join menu_option_category moca
+        on moco.optionCategoryId = moca.menuOptionCategoryId
+        where m.menuId=#{menuId};
+    </select>
+
+
+
+
+    <update id="menu_modify" parameterType="com.wego.dto.menu.MenuDTO">
+        update menu
+        set
+        menuName = #{menuName},
+        menuContent = #{menuContent},
+        menuPrice = #{menuPrice},
+        menuCategoryId = #{menuCategoryId}
+
+        where menuId = #{menuId};
+    </update>
+
+    <delete id="delete_menu_option_category" parameterType="int" >
+        delete from menu_option_connect
+        where menuId=#{menuId} and optionCategoryId=#{optionCategoryId};
+    </delete>
+
+    <insert id="menu_option_insert" parameterType="com.wego.dto.menu.MenuDTO">
+        insert ignore
+        into menu_option_connect(menuId, optionCategoryId, modified_date)
+        values
+        <foreach collection="menuOptionCategorys" item="option" separator=",">
+            (#{menuId}, #{option.menuOptionCategoryId}, now())
+        </foreach>
+    </insert>
 
 
 </mapper>
