@@ -15,10 +15,10 @@
 <body layout:fragment="main">
 <div class="main-container">
     <!--메뉴 수정 모달 창 : js로 안 내용 변경 현재 메뉴 개별 수정 창-->
-    <div class="menu-editing-container">
+    <div class="menu-editing-container" id="menu-modify-modal">
         <div class="menu-editing-content">
             <div class="menu-editing-header">
-                <button class="menu-cancel-btn">X</button>
+                <button class="menu-cancel-btn" id="menu-modify-cancel">X</button>
                 <span class="menu-header-title">메뉴 수정</span>
             </div>
             <hr>
@@ -65,49 +65,51 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!--   메뉴 추가 모달창     -->
-    <!--        <div class="menu-editing-container">-->
-    <!--            <div class="menu-editing-content">-->
-    <!--                <div class="menu-editing-header">-->
-    <!--                    <button class="menu-cancel-btn">X</button>-->
-    <!--                    <span class="menu-header-title">메뉴 추가</span>-->
-    <!--                </div>-->
-    <!--                <hr>-->
-    <!--                <div class="menu-editing-body">-->
-    <!--                    <div class="menu-editing">-->
-    <!--                        <img class="menu-editing-img" th:src="@{image/public/delivery.jpg}" alt="alal">-->
-    <!--                        <div class="menu-editing-div">-->
-    <!--                            <input type="text" class="menu-title" value="이름" disabled>-->
-    <!--                            <input type="text" class="menu-con" value="가격" disabled>-->
-    <!--                            <input type="text" class="menu-people" value="몇인분" disabled>-->
-    <!--                            <button type="button">메뉴카테고리</button>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                    <hr class="hr">-->
-    <!--                    <div class="menu-editing-con">-->
-    <!--                        <span>구성 및 설명</span>-->
-    <!--                        <label><input type="text" class="editing-con"></label>-->
-    <!--                    </div>-->
-    <!--                    <hr class="hr">-->
-    <!--                    <div class="menu-editing-con">-->
-    <!--                        <span>옵션</span>-->
-    <!--                        <div class="menu-opt">-->
-    <!--                            <select>-->
-    <!--                                <option value="1">옵션1</option>-->
-    <!--                                <option value="2" selected>옵션2</option>-->
-    <!--                                <option value="3">옵션3</option>-->
-    <!--                            </select>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                    <hr class="hr">-->
-    <!--                    <div class="div-modify-btn">-->
-    <!--                        <button type="button" class="modify-btn">추가</button>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--메뉴 목록-->
+
+<!--    메뉴 추가 모달창 -->
+        <div class="menu-editing-container" id="menu-add-modal">
+            <div class="menu-editing-content">
+                <div class="menu-editing-header">
+                    <button class="menu-cancel-btn" id="menu-add-cancel">X</button>
+                    <span class="menu-header-title">메뉴 추가</span>
+                </div>
+                <hr>
+                <div class="menu-editing-body">
+                    <div class="menu-editing">
+                        <img class="menu-editing-img" th:src="@{image/public/delivery.jpg}" alt="alal">
+                        <div class="menu-editing-div">
+                            <input type="text" class="menu-title" value="이름" disabled>
+                            <input type="text" class="menu-con" value="가격" disabled>
+                            <input type="text" class="menu-people" value="몇인분" disabled>
+                            <button type="button">메뉴카테고리</button>
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    <div class="menu-editing-con">
+                        <span>구성 및 설명</span>
+                        <label><input type="text" class="editing-con"></label>
+                    </div>
+                    <hr class="hr">
+                    <div class="menu-editing-con">
+                        <span>옵션</span>
+                        <div class="menu-opt" id="menuAddOpt">
+                            <select>
+                                <option value="1">옵션1</option>
+                                <option value="2" selected>옵션2</option>
+                                <option value="3">옵션3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    <div class="div-modify-btn">
+                        <button type="button" class="modify-btn">추가</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+<!--    메뉴     -->
     <div class="btn-div">
         <button type="button">메뉴 추가</button>
         <input type="text" class="search-input" placeholder="검색창">
