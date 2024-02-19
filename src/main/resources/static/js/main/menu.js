@@ -98,7 +98,7 @@ modifyBtn.onclick = () => {
     const content = menuContent.value;
     const price = menuPrice.value;
     const category = selectCategory.value;
-    const menuStatus = selectMenuStatus.options[selectOption.selectedIndex].value
+    const menuStatus = selectMenuStatus.options[selectMenuStatus.selectedIndex].value
     const menuCategorys = joinOptionContainer.querySelectorAll('input');
     let optionCategory = [];
     for (let category of menuCategorys) {
