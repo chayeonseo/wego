@@ -1,5 +1,6 @@
 package com.wego.service.store.home;
 
+import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.StoreMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -21,23 +22,23 @@ public class StoreService {
 
     ///////////////////////////////////////////// 서비스 처리
     // 지난주 주간 매출 (일자별)
-    public Map<String, String> get_last_week_total_price() {
+    public Map<String, String> get_last_week_total_price(StoreDTO storeDTO) {
         String[] thisWeekDays = last_week_days().split("//");
         String mon = thisWeekDays[0];
         String sun = thisWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_price(mon, sun);
+        List<Map<String, String>> results = storeMapper.get_week_total_price(mon, sun, storeDTO.getStoreId());
 
         return result_priceMap(results);
     }
 
     // 이번주 주간 매출 (일자별)
-    public Map<String, String> get_this_week_total_price() {
+    public Map<String, String> get_this_week_total_price(StoreDTO storeDTO) {
         String[] thisWeekDays = this_week_days().split("//");
         String mon = thisWeekDays[0];
         String sun = thisWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_price(mon, sun);
+        List<Map<String, String>> results = storeMapper.get_week_total_price(mon, sun, storeDTO.getStoreId());
 
         return result_priceMap(results);
     }
@@ -45,22 +46,22 @@ public class StoreService {
 
 
     // 지난주 주문 건수 (요일별)
-    public Map<String, String> get_last_week_total_order() {
+    public Map<String, String> get_last_week_total_order(StoreDTO storeDTO) {
         String[] lastWeekDays = last_week_days().split("//");
         String mon = lastWeekDays[0];
         String sun = lastWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_count(mon, sun);
+        List<Map<String, String>> results = storeMapper.get_week_total_count(mon, sun, storeDTO.getStoreId());
 
         return result_orderMap(results);
     }
     // 이번주 주문 건수 (요일별)
-    public Map<String, String> get_this_week_total_order() {
+    public Map<String, String> get_this_week_total_order(StoreDTO storeDTO) {
         String[] thisWeekDays = this_week_days().split("//");
         String mon = thisWeekDays[0];
         String sun = thisWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_count(mon, sun);
+        List<Map<String, String>> results = storeMapper.get_week_total_count(mon, sun, storeDTO.getStoreId());
 
         return result_orderMap(results);
     }
@@ -68,8 +69,8 @@ public class StoreService {
 
 
     // order history
-    public Map<String, String> get_order_status() {
-        List<Map<String, Integer>> results = storeMapper.get_order_status();
+    public Map<String, String> get_order_status(StoreDTO storeDTO) {
+        List<Map<String, Integer>> results = storeMapper.get_order_status(storeDTO);
 
         return result_orderCountMap(results);
     }
