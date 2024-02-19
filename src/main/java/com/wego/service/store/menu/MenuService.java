@@ -50,5 +50,9 @@ public class MenuService {
         menuMapper.delete_menu_option_category(optionCategoryId, menuId);
     }
 
+    public void menu_status_modify(int menuId, int status) {
+        menuMapper.menu_status_modify(menuId, status);
+    }
+
 
 }

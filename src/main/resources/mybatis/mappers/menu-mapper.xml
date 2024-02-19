@@ -129,7 +129,8 @@
         menuName = #{menuName},
         menuContent = #{menuContent},
         menuPrice = #{menuPrice},
-        menuCategoryId = #{menuCategoryId}
+        menuCategoryId = #{menuCategoryId},
+        menuStatus = #{menuStatus}
 
         where menuId = #{menuId};
     </update>
@@ -147,6 +148,10 @@
             (#{menuId}, #{option.menuOptionCategoryId}, now())
         </foreach>
     </insert>
+
+    <update id="menu_status_modify" parameterType="int" >
+        update menu set menuStatus = #{status} where menuId = #{menuId};
+    </update>
 
 
 </mapper>

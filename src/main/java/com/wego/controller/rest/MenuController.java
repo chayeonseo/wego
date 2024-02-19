@@ -26,14 +26,21 @@ public class MenuController {
 
 
     // 하나의 메뉴 수정
-    @PostMapping("/update")
+    @PatchMapping("/update")
     public void menu_patch(@RequestBody MenuDTO menuDTO) {
         menuService.menu_modify(menuDTO);
     }
 
+    // 메뉴에 옵션 connect 삭제
     @DeleteMapping("/{optionCategoryId}/{menuId}")
     public void delete_menu_option_category(@PathVariable("optionCategoryId") int optionCategoryId, @PathVariable("menuId") int menuId) {
         menuService.menu_option_connect_delete(optionCategoryId, menuId);
+    }
+
+    // 메뉴 숨김, 활성화, 품절
+    @GetMapping("/status/{menuId}/{status}")
+    public void menu_status_modify(@PathVariable int menuId, @PathVariable int status) {
+        menuService.menu_status_modify(menuId, status);
     }
 
 }
