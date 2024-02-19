@@ -1,8 +1,15 @@
+
+
+
 const csrfToken = document.querySelector('meta[name=_csrf]').content;
 
+const addCancel = document.getElementById('menu-add-cancel');
+const menuAddModal = document.getElementById('menu-add-modal');
+const menuAddBtn = document.querySelector('.btn-div button');
+
 const productList = document.querySelectorAll('.menu-li');
-const [editingModal, JoinModal] = document.querySelectorAll('.menu-editing-container')
-const editingCancelBtn = document.querySelector('.menu-cancel-btn');
+const editingModal= document.querySelectorAll('#menu-modify-modal')
+const modifyCancel = document.querySelector('#menu-modify-cancel');
 const [editingTitleBtn, editingContentBtn] = document.querySelectorAll('.menu-editing-btn');
 const selectCategory = document.querySelector('.category-dropdown');
 const selectOption = document.querySelector('.option-dropdown');
@@ -19,12 +26,15 @@ const selectMenuStatus = document.querySelector('.menu-sold-select');
 
 
 
-
 [...productList].forEach(product => {
     product.onclick = () => {
         const menuId = product.querySelector('.menuId');
         editingModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+
+        editingBtn.onclick = () => {
+            document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = false);
+        }
 
         fetch(`/menu/${menuId.value}`)
             .then(resp => resp.json())
@@ -156,6 +166,8 @@ editingContentBtn.onclick = () => {
     document.querySelector('.editing-con').disabled = false;
 }
 
+
+
 editingTitleBtn.onclick = () => {
     document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = false);
     selectCategory.disabled = false;
@@ -173,4 +185,42 @@ editingCancelBtn.onclick = () => {
         selectOption.innerHTML = '';
     }
 }
+
+//메뉴 추가 버튼 클릭
+menuAddBtn.onclick = () => {
+    menuAddModal.style.display = 'block';
+    const menuEditing =  document.querySelector('menu-editing-div');
+    const menuTitle = document.querySelector('menu-title').value;
+    const menuCon = document.querySelector('menu-con').value;
+    const menuDescrition = document.querySelector('editing-con');
+    const menuAddOpt = document.getElementById('menuAddOpt');
+
+    const data = {
+        menuName: menuTitle, menuPrice: menuCon, menuContent: menuDescrition, menuOptionCategorys: menuAddOpt
+    }
+
+    fetch(`/menu/${menuEditing.value}` , {
+        method: 'POST',
+        headers: {
+            "X-CSRF-TOKEN": csrfToken,
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+}
+
+addCancel.onclick = () => {
+    if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
+        document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
+        menuAddModal.style.display = 'none';
+    }
+}
+
+modifyCancel.onclick = () => {
+    if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
+        document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
+        editingModal.style.display = 'none';
+    }
+}
+
 
