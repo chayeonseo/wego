@@ -2,11 +2,27 @@
     margin: 30px auto;
     width: 700px;
 }
-/*.main-content{*/
-/*    width: 700px;*/
-/*    height: 1000px;*/
-/*    !*border: 1px solid black;*!*/
-/*}*/
+.main-container-header{
+    margin: 10px;
+}
+.search-div{
+    height: 40px;
+}
+.search-div > input{
+    height: 30px;
+    width: 300px;
+}
+.con-div-btn{
+    margin: 5px;
+    height: 50px;
+}
+.con-div-btn > button{
+    width: 80px;
+    height: 40px;
+}
+.con-add{
+    float: right;
+}
 .con {
     margin: 10px;
     border: 1px solid #545454;
@@ -21,10 +37,16 @@
     justify-content: space-between;
     margin: 10px;
 }
-.con-title > span{
+.con-title > div{
     font-weight: bold;
     font-size: 20px;
     color: #333;
+}
+.con-subtitle{
+    font-size: 14px;
+    font-weight: normal;
+    float: right;
+    margin: 5px;
 }
 .con-title > button[type=button]{
     background: none;
@@ -39,33 +61,118 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
-.result{
+.price{
     margin-top: 5px;
 }
 .con-used{
     margin: 10px;
-    border: 1px solid #c4c4c4;
-    background-color: #c4c4c4;
+    border: 1px solid #eaeaea;
+    background-color: #eaeaea;
     border-radius: 5px;
 }
+.used-count{
+    color: #333333;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.used-name{
+    color: #565656;
+    margin: 5px;
+    font-size: 14px;
+}
 
-/*.vote{*/
-/*    margin-right: 10px;*/
-/*}*/
-/*.vote-title{*/
-/*    font-weight: bold;*/
-/*    border-bottom: 2px solid black;*/
-/*}*/
-/*.vote > ul{*/
-/*    list-style: none;*/
-/*    padding: 5px;*/
-/*    border: 1px solid #939292;*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    margin: 0;*/
-/*}*/
-/*.vote > li{*/
-/*    margin: 5px;*/
-/*}*/
+/*************************************/
+/*옵션 수정 모달창*/
+.option-editing-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.option-editing-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 700px;
+    padding: 20px;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+    transform: translateX(-50%) translateY(-50%);
+}
+.option-editing-header{
+    margin: 10px;
+}
+.option-cancel-btn{
+    font-size: 20px;
+    background-color: white;
+    border: none;
+}
+.option-editing-body{
+    height: 550px;
+}
+.option-editing{
+    display: flex;
+    justify-content: space-between;
+}
+.option-editing-div{
+    width: 300px;
+    height: 65px;
+    margin: 10px;
+}
+.option-title{
+    font-size: 20px;
+    width: 300px;
+    font-weight: bold;
+}
+.option-price{
+    font-size: 18px;
+    width: 300px;
+}
+.option-editing-modify{
+    margin: 10px;
+}
+.option-sold-btn{
+    margin: 10px;
+}
+.option-sold-btn > button{
+    margin: 2px;
+
+}
+.delete-btn-div{
+    margin: 10px;
+}
+.delete-btn{
+    width: 480px;
+    height: 40px;
+    color: #ff5624;
+    background-color: white;
+    border: 1px solid #ff5624;
+}
+
+/**************************************/
+/*옵션 카테고리 모달창 css*/
+.option-editing-header{
+    height: 60px;
+}
+.option-header-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.option-header-opt{
+    font-size: 16px;
+    margin: 10px;
+
+}
+.option-header-btn{
+    float: right;
+}
 
 
