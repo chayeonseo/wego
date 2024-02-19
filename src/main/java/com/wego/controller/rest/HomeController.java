@@ -2,8 +2,10 @@ package com.wego.controller.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wego.dto.store.StoreDTO;
 import com.wego.service.store.home.StoreService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,11 +27,11 @@ public class HomeController {
 
     // 주간 매출 차트
     @GetMapping("/price")
-    public String get_week_order_price() throws JsonProcessingException {
+    public String get_week_order_price(@AuthenticationPrincipal StoreDTO storeDTO) throws JsonProcessingException {
         //지난주 매출
-        Map<String, String> lastWeekPrice = storeService.get_last_week_total_price();
+        Map<String, String> lastWeekPrice = storeService.get_last_week_total_price(storeDTO);
         //이번주 매출
-        Map<String, String> thisWeekPrice = storeService.get_this_week_total_price();
+        Map<String, String> thisWeekPrice = storeService.get_this_week_total_price(storeDTO);
 
         List<Map<String, String>> result = new ArrayList<>();
         result.add(lastWeekPrice);
@@ -41,11 +43,11 @@ public class HomeController {
 
     // 주간 주문건 차트
     @GetMapping("/order")
-    public String get_week_order_count() throws JsonProcessingException {
+    public String get_week_order_count(@AuthenticationPrincipal StoreDTO storeDTO) throws JsonProcessingException {
         // 지난주 주문건
-        Map<String, String> lastWeekCount = storeService.get_last_week_total_order();
+        Map<String, String> lastWeekCount = storeService.get_last_week_total_order(storeDTO);
         // 이번주 주문건
-        Map<String, String> thisWeekCount = storeService.get_this_week_total_order();
+        Map<String, String> thisWeekCount = storeService.get_this_week_total_order(storeDTO);
 
         List<Map<String, String>> result = new ArrayList<>();
         result.add(lastWeekCount);
@@ -58,8 +60,8 @@ public class HomeController {
 
 
     @GetMapping("/status")
-    public String get_order_status() throws JsonProcessingException{
-        Map<String, String> orderStatus = storeService.get_order_status();
+    public String get_order_status(@AuthenticationPrincipal StoreDTO storeDTO) throws JsonProcessingException{
+        Map<String, String> orderStatus = storeService.get_order_status(storeDTO);
 
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(orderStatus);

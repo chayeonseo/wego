@@ -20,4 +20,5 @@ public class MenuOptionCategoryDTO {
     private String modifiedDate;
 
     List<MenuOptionDTO> menuOptions;
+
 }
