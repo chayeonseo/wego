@@ -64,33 +64,33 @@
         </div>
     </div>
     <!--옵션 개별 변경 모달창-->
-    <!--    <div class="option-editing-container">-->
-    <!--        <div class="option-editing-content">-->
-    <!--            <div class="option-editing-header">-->
-    <!--                <button class="option-cancel-btn">X</button>-->
-    <!--            </div>-->
-    <!--            <div class="option-editing-body">-->
-    <!--                <div class="option-editing">-->
-    <!--                    <div class="option-editing-div">-->
-    <!--                        <div class="option-title">닭다리살 소금구이 [1.5 인분]</div>-->
-    <!--                        <div class="option-price">0 원</div>-->
-    <!--                    </div>-->
-    <!--                    <div class="option-editing-modify">-->
-    <!--                        <button type="button" class="option-editing-btn">수정</button>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="option-sold-btn">-->
-    <!--                    <button type="button">품절</button>-->
-    <!--                    <button type="button">숨김</button>-->
-    <!--                    <button type="button">가격 변경</button>-->
-    <!--                </div>-->
-    <!--                <hr>-->
-    <!--                <div class="delete-btn-div">-->
-    <!--                    <button type="button" class="delete-btn">옵션 삭제하기</button>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
+<!--        <div class="option-editing-container">-->
+<!--            <div class="option-editing-content">-->
+<!--                <div class="option-editing-header">-->
+<!--                    <button class="option-cancel-btn">X</button>-->
+<!--                </div>-->
+<!--                <div class="option-editing-body">-->
+<!--                    <div class="option-editing">-->
+<!--                        <div class="option-editing-div">-->
+<!--                            <div class="option-title">닭다리살 소금구이 [1.5 인분]</div>-->
+<!--                            <div class="option-price">0 원</div>-->
+<!--                        </div>-->
+<!--                        <div class="option-editing-modify">-->
+<!--                            <button type="button" class="option-editing-btn">수정</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="option-sold-btn">-->
+<!--                        <button type="button">품절</button>-->
+<!--                        <button type="button">숨김</button>-->
+<!--                        <button type="button">가격 변경</button>-->
+<!--                    </div>-->
+<!--                    <hr>-->
+<!--                    <div class="delete-btn-div">-->
+<!--                        <button type="button" class="delete-btn">옵션 삭제하기</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     <!--  옵션 카테고리 모달창  -->
 
     <div class="option-editing-container">
@@ -98,16 +98,20 @@
             <div class="option-editing-header">
                 <button class="option-cancel-btn">X</button>
                 <button class="option-header-btn">수정</button>
-                <span class="option-header-title">옵션2</span>
-                <div class="option-header-opt">최대 1개 최소 1개</div>
-
+<!--                <span class="option-header-title">옵션2</span>-->
+<!--                <div class="option-header-opt">최대 1개 최소 1개</div>-->
+                <input class="option-header-title" value="옵션2">
+                <input class="option-header-opt" value="최대 1개 최소 1개">
             </div>
+            <hr>
             <div class="option-editing-body">
-                <hr>
+                <div class="option-editing-add">
+                    <button>옵션 추가</button>
+                </div>
                 <div class="option-editing">
                     <div class="option-editing-div">
-                        <div class="option-title">닭다리살 소금구이 [1.5 인분]</div>
-                        <div class="option-price">0 원</div>
+                        <input class="option-modify-title" value="닭다리살 소금구이 [1.5 인분]">
+                        <input class="option-modify-price" value="0 원">
                     </div>
                     <div class="option-editing-modify">
                         <button type="button" class="option-editing-btn">수정</button>
@@ -116,8 +120,8 @@
                 <hr>
                 <div class="option-editing">
                     <div class="option-editing-div">
-                        <div class="option-title">닭다리살 양념구이 [1.5 인분]</div>
-                        <div class="option-price">0 원</div>
+                        <input class="option-modify-title" value="닭다리살 소금구이 [1.5 인분]">
+                        <input class="option-modify-price" value="0 원">
                     </div>
                     <div class="option-editing-modify">
                         <button type="button" class="option-editing-btn">수정</button>
@@ -126,16 +130,16 @@
                 <hr>
                 <div class="option-editing">
                     <div class="option-editing-div">
-                        <div class="option-title">닭목살 소금구이 [1.5 인분]</div>
-                        <div class="option-price">0 원</div>
+                        <input class="option-modify-title" value="닭다리살 소금구이 [1.5 인분]">
+                        <input class="option-modify-price" value="0 원">
                     </div>
                     <div class="option-editing-modify">
                         <button type="button" class="option-editing-btn">수정</button>
                     </div>
                 </div>
                 <hr>
-                <div class="delete-btn-div">
-                    <button type="button" class="delete-btn">적용</button>
+                <div class="modify-btn-div">
+                    <button type="button" class="modify-btn">적용</button>
                 </div>
             </div>
         </div>
@@ -143,6 +147,39 @@
 
     <!--  옵션 추가 모달 창  -->
 
+<!--    <div class="option-creating-container">-->
+<!--        <div class="option-creating-content">-->
+<!--            <div class="option-creating-header">-->
+<!--                <button class="option-cancel-btn">X</button>-->
+<!--                <input class="option-name" type="text" placeholder="옵션 카테고리 이름">-->
+<!--                <input class="option-opt" type="text" placeholder="옵션 카테고리 설정">-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="option-creating-body">-->
+<!--                <div class="option-creating-add">-->
+<!--                    <button type="button" class="option-creating-btn">추가</button>-->
+<!--                </div>-->
+<!--                <div class="option-creating">-->
+<!--                    <div class="option-creating-div">-->
+<!--                        <input class="option-title" type="text" placeholder="옵션 이름">-->
+<!--                        <input class="option-price" type="text" placeholder="옵션 가격">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="option-creating">-->
+<!--                    <div class="option-creating-div">-->
+<!--                        <input class="option-title" type="text" placeholder="옵션 이름">-->
+<!--                        <input class="option-price" type="text" placeholder="옵션 가격">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <hr>-->
+<!--                <div class="create-btn-div">-->
+<!--                    <button type="button" class="create-btn">옵션 카테고리 생성</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 </div>
 </body>
