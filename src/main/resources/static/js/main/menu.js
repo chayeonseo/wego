@@ -8,10 +8,10 @@ const menuAddModal = document.getElementById('menu-add-modal');
 const menuAddBtn = document.querySelector('.btn-div button');
 
 const productList = document.querySelectorAll('.menu-li');
-const editingModal= document.querySelectorAll('#menu-modify-modal')
+const editingModal= document.querySelector('#menu-modify-modal')
 const modifyCancel = document.querySelector('#menu-modify-cancel');
 const [editingTitleBtn, editingContentBtn] = document.querySelectorAll('.menu-editing-btn');
-const selectCategory = document.querySelector('.category-dropdown');
+const [modifySelectCategory, joinSelectCategory] = document.querySelectorAll('.category-dropdown');
 const selectOption = document.querySelector('.option-dropdown');
 const optionJoinBtn = document.querySelector('.menu-option-join-btn');
 const joinOptionContainer = document.querySelector('.join-option-container');
@@ -32,9 +32,6 @@ const selectMenuStatus = document.querySelector('.menu-sold-select');
         editingModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
-        editingBtn.onclick = () => {
-            document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = false);
-        }
 
         fetch(`/menu/${menuId.value}`)
             .then(resp => resp.json())
@@ -45,7 +42,7 @@ const selectMenuStatus = document.querySelector('.menu-sold-select');
                 menuContent.value = categorys[0]['menus'][1]['menuContent'];
                 menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
                 for (category of categorys) {
-                    selectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
+                    modifySelectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
                 }
                 for (option of categorys[0]['menus'][0]['menuOptionCategorys']) {
                     selectOption.insertAdjacentHTML('beforeend', `<option value="${option['menuOptionCategoryId']}">${option['menuOptionCategoryName']}</option>`)
@@ -107,8 +104,8 @@ modifyBtn.onclick = () => {
     const name = menuName.value;
     const content = menuContent.value;
     const price = menuPrice.value;
-    const category = selectCategory.value;
-    const menuStatus = selectMenuStatus.options[selectOption.selectedIndex].value
+    const category = modifySelectCategory.value;
+    const menuStatus = selectMenuStatus.options[selectMenuStatus.selectedIndex].value
     const menuCategorys = joinOptionContainer.querySelectorAll('input');
     let optionCategory = [];
     for (let category of menuCategorys) {
@@ -167,21 +164,20 @@ editingContentBtn.onclick = () => {
 }
 
 
-
 editingTitleBtn.onclick = () => {
     document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = false);
-    selectCategory.disabled = false;
+    modifySelectCategory.disabled = false;
 }
 
 // 닫기 버튼 눌렀을 때
-editingCancelBtn.onclick = () => {
+modifyCancel.onclick = () => {
     if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
         document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
         document.querySelector('.editing-con').disabled = true;
         document.body.style.overflow = 'auto';
-        selectCategory.disabled = true;
+        modifySelectCategory.disabled = true;
         editingModal.style.display = 'none';
-        selectCategory.innerHTML = '';
+        modifySelectCategory.innerHTML = '';
         selectOption.innerHTML = '';
     }
 }
@@ -189,14 +185,17 @@ editingCancelBtn.onclick = () => {
 //메뉴 추가 버튼 클릭
 menuAddBtn.onclick = () => {
     menuAddModal.style.display = 'block';
+
     const menuEditing =  document.querySelector('menu-editing-div');
     const menuTitle = document.querySelector('menu-title').value;
     const menuCon = document.querySelector('menu-con').value;
-    const menuDescrition = document.querySelector('editing-con');
+    const menuDescription = document.querySelector('editing-con');
     const menuAddOpt = document.getElementById('menuAddOpt');
 
     const data = {
-        menuName: menuTitle, menuPrice: menuCon, menuContent: menuDescrition, menuOptionCategorys: menuAddOpt
+        menuName: menuTitle,
+        menuPrice: menuCon,
+        menuContent: menuDescription,
     }
 
     fetch(`/menu/${menuEditing.value}` , {
@@ -216,11 +215,5 @@ addCancel.onclick = () => {
     }
 }
 
-modifyCancel.onclick = () => {
-    if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
-        document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
-        editingModal.style.display = 'none';
-    }
-}
 
 
