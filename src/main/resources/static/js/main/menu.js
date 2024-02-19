@@ -1,11 +1,9 @@
-
-
-
 const csrfToken = document.querySelector('meta[name=_csrf]').content;
 
 const addCancel = document.getElementById('menu-add-cancel');
 const menuAddModal = document.getElementById('menu-add-modal');
 const menuAddBtn = document.querySelector('.btn-div button');
+
 
 const productList = document.querySelectorAll('.menu-li');
 const editingModal= document.querySelectorAll('#menu-modify-modal')
@@ -94,7 +92,6 @@ const selectMenuStatus = document.querySelector('.menu-sold-select');
                         })
                     }
                 });
-
             });
     }
 });
@@ -189,14 +186,16 @@ editingCancelBtn.onclick = () => {
 //메뉴 추가 버튼 클릭
 menuAddBtn.onclick = () => {
     menuAddModal.style.display = 'block';
-    const menuEditing =  document.querySelector('menu-editing-div');
-    const menuTitle = document.querySelector('menu-title').value;
-    const menuCon = document.querySelector('menu-con').value;
-    const menuDescrition = document.querySelector('editing-con');
+    const menuEditing =  document.querySelector('.menu-editing-div');
+    const menuTitle = document.querySelector('.menu-title').value;
+    const menuCon = document.querySelector('.menu-con').value;
+    const menuDescrition = document.querySelector('.editing-con');
     const menuAddOpt = document.getElementById('menuAddOpt');
 
+
     const data = {
-        menuName: menuTitle, menuPrice: menuCon, menuContent: menuDescrition, menuOptionCategorys: menuAddOpt
+        menuName: menuTitle, menuPrice: menuCon, menuContent: menuDescrition,
+        menuOptionCategorys: menuAddOpt
     }
 
     fetch(`/menu/${menuEditing.value}` , {
@@ -209,17 +208,18 @@ menuAddBtn.onclick = () => {
     });
 }
 
-addCancel.onclick = () => {
-    if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
-        document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
-        menuAddModal.style.display = 'none';
-    }
-}
 
 modifyCancel.onclick = () => {
     if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
         document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
         editingModal.style.display = 'none';
+    }
+}
+
+addCancel.onclick = () => {
+    if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
+        document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
+        menuAddModal.style.display = 'none';
     }
 }
 
