@@ -42,8 +42,12 @@ class WegoApplicationTests {
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(0).getMenuOptions().get(0));
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(1).getMenuOptions().get(0));
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(2).getMenuOptions().get(0));
+//        System.out.println(menuMapper.get_store_option_info());
+//        System.out.println(menuMapper.one_menu_all_info(37));
+//        System.out.println(menuMapper.one_menu_option_category(35));
 
-        System.out.println(menuMapper.get_store_option_info());
+//        System.out.println(menuMapper.get_category(2));
+
     }
 
 }

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{public/sideHeader}">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{public/sideHeader}">
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>메뉴</title>
     <link rel="stylesheet" th:href="@{/css/main/menu.css}" href="../../static/css/main/menu.css">
     <script th:src="@{/js/main/menu.js}" src="../../static/js/main/menu.js" defer></script>
@@ -13,12 +14,12 @@
 
 <body layout:fragment="main">
     <div class="main-container">
-<!--메뉴 수정 모달 창 : js로 안 내용 변경 현재 메뉴 개별 수정 창-->
-        <div class="menu-editing-container">
+        <!--메뉴 수정 모달 창 : js로 안 내용 변경 현재 메뉴 개별 수정 창-->
+        <div class="menu-editing-container" id="menu-modify-modal">
             <div class="menu-editing-content">
                 <div class="menu-editing-header">
-                    <button class="menu-cancel-btn">X</button>
-                    <span class="menu-header-title">메뉴 수정</span>
+                    <button class="menu-cancel-btn" id="menu-modify-cancel">X</button>
+                    <span class="menu-header-title" >메뉴 수정</span>
                 </div>
                 <hr>
                 <div class="menu-editing-body">
@@ -27,107 +28,102 @@
                         <div class="menu-editing-div">
                             <input type="text" class="menu-title" value="돈까스" disabled>
                             <input type="text" class="menu-con" value="1000원" disabled>
-                            <input type="text" class="menu-people" value="2인분" disabled>
-<!--                            <button type="button">메뉴카테고리</button>-->
-                            <div class="menu-category">
-                                <select>
-                                    <option>메뉴카테고리 선택</option>
-                                    <option value="1">메인</option>
-                                    <option value="2">사이드</option>
-                                    <option value="3">음료</option>
-                                </select>
-                            </div>
-
                         </div>
                         <div class="menu-editing-modify">
                             <button type="button" class="menu-editing-btn">수정</button> <!--수정을 누르면 input disabled 해제, 이미지 수정 가능-->
                         </div>
+                        <input id="menuId" type="hidden" value="">
                     </div>
-                    <div class="menu-sold-btn">
-                        <button type="button">품절</button>
-                        <button type="button">숨김</button>
-                    </div>
+                    <select class="menu-sold-select">
+                        <option class="menu-status-btn" value="0">비활성화</option>
+                        <option class="menu-status-btn" value="1">활성화</option>
+                        <option class="menu-status-btn" value="2">품절</option>
+                    </select>
                     <hr class="hr">
                     <div class="menu-editing-con">
                         <span>구성 및 설명</span>
-                        <button type="button">수정</button>
-                        <label><input type="text" class="editing-con"></label>
+                        <button type="button" class="menu-editing-btn">수정</button>
+                        <label><input type="text" class="editing-con" disabled></label>
                     </div>
                     <hr class="hr">
                     <div class="menu-editing-opt-con">
                         <span>옵션</span>
-                        <button type="button">추가</button>
+                        <button type="button" class="menu-option-join-btn">추가</button>
                         <div class="menu-opt">
-                            <select>
-                                <option value="1">옵션1</option>
-                                <option value="2" selected>옵션2</option>
-                                <option value="3">옵션3</option>
+                            <select class="option-dropdown">
                             </select>
                         </div>
                     </div>
+                    <div class="join-option-container">
+                    </div>
                     <hr class="hr">
+
                     <div class="div-modify-btn">
                         <button type="button" class="modify-btn">적용</button>
                     </div>
                 </div>
             </div>
         </div>
-<!--   메뉴 추가 모달창     -->
-<!--        <div class="menu-editing-container">-->
-<!--            <div class="menu-editing-content">-->
-<!--                <div class="menu-editing-header">-->
-<!--                    <button class="menu-cancel-btn">X</button>-->
-<!--                    <span class="menu-header-title">메뉴 추가</span>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <div class="menu-editing-body">-->
-<!--                    <div class="menu-editing">-->
-<!--                        <img class="menu-editing-img" th:src="@{image/public/delivery.jpg}" alt="alal">-->
-<!--                        <div class="menu-editing-div">-->
-<!--                            <input type="text" class="menu-title" value="이름" disabled>-->
-<!--                            <input type="text" class="menu-con" value="가격" disabled>-->
-<!--                            <input type="text" class="menu-people" value="몇인분" disabled>-->
-<!--                            <button type="button">메뉴카테고리</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <hr class="hr">-->
-<!--                    <div class="menu-editing-con">-->
-<!--                        <span>구성 및 설명</span>-->
-<!--                        <label><input type="text" class="editing-con"></label>-->
-<!--                    </div>-->
-<!--                    <hr class="hr">-->
-<!--                    <div class="menu-editing-con">-->
-<!--                        <span>옵션</span>-->
-<!--                        <div class="menu-opt">-->
-<!--                            <select>-->
-<!--                                <option value="1">옵션1</option>-->
-<!--                                <option value="2" selected>옵션2</option>-->
-<!--                                <option value="3">옵션3</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <hr class="hr">-->
-<!--                    <div class="div-modify-btn">-->
-<!--                        <button type="button" class="modify-btn">추가</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--메뉴 목록-->
+
+    <!--    메뉴 추가 모달창 -->
+            <div class="menu-editing-container" id="menu-add-modal">
+                <div class="menu-editing-content">
+                    <div class="menu-editing-header">
+                        <button class="menu-cancel-btn" id="menu-add-cancel">X</button>
+                        <span class="menu-header-title">메뉴 추가</span>
+                    </div>
+                    <hr>
+                    <div class="menu-editing-body">
+                        <div class="menu-editing">
+                            <img class="menu-editing-img" th:src="@{image/public/delivery.jpg}" alt="alal">
+                            <div class="menu-editing-div">
+                                <input type="text" class="menu-title" value="이름" disabled>
+                                <input type="text" class="menu-con" value="가격" disabled>
+<!--                                <input type="text" class="menu-people" value="몇인분" disabled>-->
+<!--                                <button type="button">메뉴카테고리</button>-->
+                                <select class="category-dropdown">
+<!--                                    fetch로 업데이트-->
+                                </select>
+                            </div>
+                        </div>
+                        <hr class="hr">
+                        <div class="menu-editing-con">
+                            <span>구성 및 설명</span>
+                            <label><input type="text" class="editing-con"></label>
+                        </div>
+                        <hr class="hr">
+                        <div class="menu-editing-con">
+                            <span>옵션</span>
+                            <div class="menu-opt" id="menuAddOpt">
+                                <select class="option-dropdown">
+                                </select>
+                            </div>
+                        </div>
+                        <hr class="hr">
+                        <div class="div-modify-btn">
+                            <button type="button" class="modify-btn">추가</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <!--    메뉴     -->
+
         <div class="btn-div">
             <button type="button">메뉴 추가</button>
             <input type="text" class="search-input" placeholder="검색창">
         </div>
         <br>
-        <div class="con">
+        <div class="con" th:each="category:${categorys}">
             <div class="con-title">
-                <span>메뉴</span>
-<!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
+                <span th:text="${category.menuCategoryName}">메뉴</span>
+                <!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
             </div>
             <hr>
             <ul class="menu-ul">
-<!--        드랍앤 드래그 js 예정        -->
-                <li class="menu-li" th:each="menu : ${menus}">
+                <!--        드랍앤 드래그 js 예정        -->
+                <li class="menu-li" th:each="menu : ${category.menus}">
                     <div class="con-info">
                         <div class="con-drop">
                             <i class="fa-solid fa-bars fa-2x"></i>
@@ -140,14 +136,11 @@
                         </div>
                     </div>
                     <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
-<!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
+                    <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
                 </li>
 <!--                <li>메뉴가 숨겨졌어요</li>-->
             </ul>
-
         </div>
-
-
     </div>
 </body>
 </html>
