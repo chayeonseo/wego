@@ -31,7 +31,18 @@ optionModifyCancel.onclick = () => {
 [...allOptions].forEach(option => {
     option.onclick = () => {
         const optionId = option.querySelector('#optionId').value;
+        const optionName = option.querySelector('.title');
+        const optionPrice = option.querySelector('.price');
+
+        const modalNameInput = optionModifyModal.querySelector('.option-title');
+        const modalPriceInput = optionModifyModal.querySelector('.option-price');
+
+        modalNameInput.value = optionName.innerText;
+        modalPriceInput.value = optionPrice.innerText.replace('원', '');
+
         optionModifyModal.style.display = 'block';
+
+
 
         fetch(`/option/${optionId}`)
             .then()
