@@ -28,8 +28,6 @@
                         <div class="menu-editing-div">
                             <input type="text" class="menu-title" value="돈까스" disabled>
                             <input type="text" class="menu-con" value="1000원" disabled>
-                            <select class="category-dropdown" disabled>
-                            </select>
                         </div>
                         <div class="menu-editing-modify">
                             <button type="button" class="menu-editing-btn">수정</button> <!--수정을 누르면 input disabled 해제, 이미지 수정 가능-->
@@ -140,6 +138,7 @@
                     <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
                     <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
                 </li>
+<!--                <li>메뉴가 숨겨졌어요</li>-->
             </ul>
         </div>
     </div>
