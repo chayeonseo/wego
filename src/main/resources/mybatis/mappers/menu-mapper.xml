@@ -156,11 +156,8 @@
 
     <resultMap id="get_category_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true">
         <id property="menuCategoryId" column="mc_id" />
-        <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO">
-            <id property="menuId" column="" />
-            <collection property="menuOptionCategorys" javaType="list" ofType="com.wego.dto.menu.MenuOptionCategoryDTO" autoMapping="true">
-                <id property="menuOptionCategoryId" column="moca_id" />
-            </collection>
+        <collection property="menuOptionCategorys" ofType="com.wego.dto.menu.MenuOptionCategoryDTO" javaType="list" autoMapping="true" >
+            <id property="menuOptionCategoryId" column="moca_id" />
         </collection>
     </resultMap>
 
