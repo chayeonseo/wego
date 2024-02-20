@@ -6,6 +6,8 @@ const csrfToken = document.querySelector('meta[name=_csrf]').content;
 const addCancel = document.getElementById('menu-add-cancel');
 const menuAddModal = document.getElementById('menu-add-modal');
 const menuAddBtn = document.querySelector('.btn-div button');
+const menuAddOpt = document.getElementById('menuAddOpt');
+
 
 const productList = document.querySelectorAll('.menu-li');
 const editingModal= document.querySelector('#menu-modify-modal')
@@ -190,7 +192,6 @@ menuAddBtn.onclick = () => {
     const menuTitle = document.querySelector('menu-title').value;
     const menuCon = document.querySelector('menu-con').value;
     const menuDescription = document.querySelector('editing-con');
-    const menuAddOpt = document.getElementById('menuAddOpt');
 
     const data = {
         menuName: menuTitle,
@@ -206,7 +207,16 @@ menuAddBtn.onclick = () => {
         },
         body: JSON.stringify(data)
     });
+
 }
+
+menuAddOpt.onclick = () => {
+
+}
+
+
+
+
 
 addCancel.onclick = () => {
     if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
