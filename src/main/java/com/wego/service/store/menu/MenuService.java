@@ -2,8 +2,10 @@ package com.wego.service.store.menu;
 
 import com.wego.dto.menu.MenuCategoryDTO;
 import com.wego.dto.menu.MenuDTO;
+import com.wego.dto.menu.MenuOptionCategoryDTO;
 import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.MenuMapper;
+import com.wego.mappers.StoreMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.catalina.Store;
@@ -50,13 +52,11 @@ public class MenuService {
         menuMapper.delete_menu_option_category(optionCategoryId, menuId);
     }
 
-    public void menu_status_modify(int menuId, int status) {
-        menuMapper.menu_status_modify(menuId, status);
-    }
 
     public List<MenuCategoryDTO> get_category(int storeId) {
         return menuMapper.get_category(storeId);
     }
+
 
 
 }

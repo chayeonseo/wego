@@ -12,7 +12,6 @@
                 <id property="menuImgId" column="mi_id" />
             </collection>
         </collection>
-
     </resultMap>
 
     <select id="get_all_menu" resultMap="all_menu_resultMap">
@@ -83,21 +82,6 @@
         where m.menuId=#{menuId};
     </select>
 
-    <resultMap id="store_option_info" type="com.wego.dto.menu.MenuOptionCategoryDTO" autoMapping="true" >
-        <id property="menuOptionCategoryId" column="moca_id" />
-        <collection property="menuOptions" javaType="list" ofType="com.wego.dto.menu.MenuOptionDTO" autoMapping="true" >
-            <id property="optionId" column="mo_id" />
-        </collection>
-    </resultMap>
-
-    <select id="get_store_option_info" resultMap="store_option_info">
-        SELECT * , moca.menuOptionCategoryId as moca_id,
-        mo.optionId as mo_id
-        FROM menu_option_category moca
-        left outer join menu_option mo
-        on moca.menuOptionCategoryId = mo.categoryId
-        where moca.storeId = 2;
-    </select>
 
     <select id="get_all_menu_category" resultType="com.wego.dto.menu.MenuCategoryDTO">
         select * from menu_category where storeId=#{storeId};
