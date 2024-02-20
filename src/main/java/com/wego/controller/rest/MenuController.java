@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/menu")
 public class MenuController {
-
     private final MenuService menuService;
 
     // 하나의 모든 정보 조회
@@ -48,5 +47,8 @@ public class MenuController {
         System.out.println(menuDTO);
         menuService.menu_join(menuDTO);
     }
+
+
+
 
 }
