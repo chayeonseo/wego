@@ -59,6 +59,7 @@ public class MenuService {
 
     public void menu_join(MenuDTO menuDTO) {
         menuMapper.menu_join(menuDTO);
+        menuMapper.menu_option_insert(menuDTO);
     }
 
 
