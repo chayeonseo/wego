@@ -54,5 +54,9 @@ public class MenuService {
         menuMapper.menu_status_modify(menuId, status);
     }
 
+    public List<MenuCategoryDTO> get_category(int storeId) {
+        return menuMapper.get_category(storeId);
+    }
+
 
 }

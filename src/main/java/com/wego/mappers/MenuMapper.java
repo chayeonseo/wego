@@ -24,6 +24,8 @@ public interface MenuMapper {
 
     List<MenuCategoryDTO> get_store_option_info();
 
+    List<MenuCategoryDTO> get_category(int storeId);
+
     List<MenuOptionCategoryDTO> one_menu_option_category(int menuId);
 
     void delete_menu_option_category(@Param("optionCategoryId") int optionCategoryId,@Param("menuId") int menuId);

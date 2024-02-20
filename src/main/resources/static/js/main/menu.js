@@ -155,8 +155,13 @@ optionJoinBtn.onclick = () => {
                             <div style="width: 200px;" class="join-option">${selectOption.options[selectOption.selectedIndex].text}<button type="button">X</button></div>
                         </div>`
     )
-
 }
+
+fetch('/menu/category')
+    .then(resp => resp.json())
+    .then(value => {
+        console.log(value)
+    })
 
 // 수정버튼 눌렀을 때
 editingContentBtn.onclick = () => {
