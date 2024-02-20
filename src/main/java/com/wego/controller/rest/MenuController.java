@@ -42,10 +42,4 @@ public class MenuController {
         menuService.menu_option_connect_delete(optionCategoryId, menuId);
     }
 
-    // 메뉴 숨김, 활성화, 품절
-    @GetMapping("/status/{menuId}/{status}")
-    public void menu_status_modify(@PathVariable int menuId, @PathVariable int status) {
-        menuService.menu_status_modify(menuId, status);
-    }
-
 }

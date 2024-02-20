@@ -22,7 +22,6 @@ public interface MenuMapper {
 
     MenuDTO one_menu_all_info(int menuId);
 
-    List<MenuCategoryDTO> get_store_option_info();
 
     List<MenuCategoryDTO> get_category(int storeId);
 
@@ -33,6 +32,5 @@ public interface MenuMapper {
     void menu_modify(MenuDTO menuDTO);
     void menu_option_insert(MenuDTO menuDTO);
 
-    void menu_status_modify(@Param("menuId") int menuId, @Param("status") int status);
 
 }

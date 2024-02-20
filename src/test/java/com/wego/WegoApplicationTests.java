@@ -1,6 +1,7 @@
 package com.wego;
 
 import com.wego.dto.menu.MenuDTO;
+import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.MenuMapper;
 import com.wego.mappers.StoreMapper;
 import com.wego.service.store.home.StoreService;
@@ -47,6 +48,7 @@ class WegoApplicationTests {
 //        System.out.println(menuMapper.one_menu_option_category(35));
 
 //        System.out.println(menuMapper.get_category(2));
+
 
     }
 
