@@ -42,6 +42,7 @@ const joinOptionAddContainer = document.getElementById('join-option-add-containe
             .then(resp => resp.json())
             .then(categorys => {
                 console.log(categorys);
+                console.log(categorys[0]['menus'][1]['menuName']);
                 menuName.value = categorys[0]['menus'][1]['menuName'];
                 menuPrice.value = categorys[0]['menus'][1]['menuPrice'];
                 menuContent.value = categorys[0]['menus'][1]['menuContent'];

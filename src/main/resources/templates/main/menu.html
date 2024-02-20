@@ -139,7 +139,9 @@
                             <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + '원'">1000원</div>
                         </div>
                     </div>
-                    <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
+                    <th:block th:if="${menu.menuImgs[0].menuImgThm != null}">
+                        <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
+                    </th:block>
                     <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
                 </li>
             </ul>

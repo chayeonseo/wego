@@ -43,7 +43,7 @@ public class MenuService {
     public void menu_modify(MenuDTO menuDTO) {
         menuMapper.menu_modify(menuDTO);
         if (!menuDTO.getMenuOptionCategorys().isEmpty()) {
-            menuMapper.menu_option_insert(menuDTO);
+            menuMapper.menu_option_modify(menuDTO);
 
         }
     }
@@ -57,9 +57,14 @@ public class MenuService {
         return menuMapper.get_category(storeId);
     }
 
+    @Transactional
     public void menu_join(MenuDTO menuDTO) {
         menuMapper.menu_join(menuDTO);
-        menuMapper.menu_option_insert(menuDTO);
+
+        if (!menuDTO.getMenuOptionCategorys().isEmpty()) {
+            menuMapper.menu_option_insert(menuDTO);
+        }
+
     }
 
 
