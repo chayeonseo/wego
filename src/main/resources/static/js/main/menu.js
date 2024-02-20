@@ -55,8 +55,9 @@ const joinOptionAddContainer = document.getElementById('join-option-add-containe
                 }
                 document.querySelector('#menuId').value = menuId.value;
 
-
+                joinOptionContainer.innerHTML = '';
                 if (categorys[0]['menus'][1]['menuOptionCategorys'][0]['menuOptionCategoryId'] !== 0) {
+
                     for (option of categorys[0]['menus'][1]['menuOptionCategorys']) {
                         joinOptionContainer.insertAdjacentHTML('beforeend', `
                         <div class="join-option-list">
@@ -139,6 +140,7 @@ modifyBtn.onclick = () => {
         if (resp.ok) {
             alert('수정됨');
             editingModal.style.display = 'none';
+            location.reload();
         } else {
             alert('수정안됨');
         }
@@ -190,6 +192,7 @@ modifyCancel.onclick = () => {
         editingModal.style.display = 'none';
         modifySelectCategory.innerHTML = '';
         selectOption.innerHTML = '';
+        joinOptionContainer.innerHTML = '';
     }
 }
 
@@ -287,7 +290,7 @@ addBtn.onclick = () => {
 
 addCancel.onclick = () => {
     if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
-        document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
+        // document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
         menuAddModal.style.display = 'none';
     }
 }

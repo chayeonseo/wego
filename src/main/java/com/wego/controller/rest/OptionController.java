@@ -1,13 +1,14 @@
 package com.wego.controller.rest;
 
+import com.wego.dto.menu.MenuOptionCategoryDTO;
+import com.wego.dto.menu.MenuOptionDTO;
 import com.wego.dto.store.StoreDTO;
 import com.wego.service.store.menu.OptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,8 +22,24 @@ public class OptionController {
         optionService.join_option_category(categoryName, storeDTO.getStoreId());
     }
 
-    @GetMapping("/{optionId}")
-    public void get_option_info(@PathVariable int optionId) {
-
+    @GetMapping("/category")
+    public List<MenuOptionCategoryDTO> get_option_category(@AuthenticationPrincipal StoreDTO storeDTO) {
+        return optionService.get_option_category(storeDTO);
     }
+
+    @PatchMapping("/modify")
+    public void option_modify(@RequestBody MenuOptionDTO menuOptionDTO) {
+        optionService.modify_option(menuOptionDTO);
+    }
+
+    @DeleteMapping("/delete/{optionId}")
+    public void option_delete(@PathVariable int optionId) {
+        optionService.delete_option(optionId);
+    }
+
+    @PostMapping("/join")
+    public void option_join(@RequestBody List<MenuOptionDTO> menuOptions) {
+        optionService.join_option(menuOptions);
+    }
+
 }
