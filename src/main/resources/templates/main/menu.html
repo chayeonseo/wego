@@ -28,7 +28,7 @@
                         <div class="menu-editing-div">
                             <input type="text" class="menu-title" value="돈까스" disabled>
                             <input type="text" class="menu-con" value="1000원" disabled>
-                            <select class="category-dropdown" disabled>
+                            <select class="category-dropdown" id="category-modify-dropdown" disabled>
                             </select>
                         </div>
                         <div class="menu-editing-modify">
@@ -52,11 +52,11 @@
                         <span>옵션</span>
                         <button type="button" class="menu-option-join-btn">추가</button>
                         <div class="menu-opt">
-                            <select class="option-dropdown">
+                            <select class="option-dropdown" id="option-modify-dropdown">
                             </select>
                         </div>
                     </div>
-                    <div class="join-option-container">
+                    <div class="join-option-container" id="join-option-modify-container">
                     </div>
                     <hr class="hr">
 
@@ -79,11 +79,11 @@
                         <div class="menu-editing">
                             <img class="menu-editing-img" th:src="@{image/public/delivery.jpg}" alt="alal">
                             <div class="menu-editing-div">
-                                <input type="text" class="menu-title" value="이름" disabled>
-                                <input type="text" class="menu-con" value="가격" disabled>
+                                <input type="text" class="menu-title" placeholder="이름">
+                                <input type="text" class="menu-con" placeholder="가격">
 <!--                                <input type="text" class="menu-people" value="몇인분" disabled>-->
 <!--                                <button type="button">메뉴카테고리</button>-->
-                                <select class="category-dropdown">
+                                <select class="category-dropdown" id="category-add-dropdown">
 <!--                                    fetch로 업데이트-->
                                 </select>
                             </div>
@@ -97,13 +97,15 @@
                         <div class="menu-editing-con">
                             <span>옵션</span>
                             <div class="menu-opt" id="menuAddOpt">
-                                <select class="option-dropdown">
+                                <select class="option-dropdown" id="option-add-dropdown">
                                 </select>
                             </div>
                         </div>
+                        <div class="join-option-container" id="join-option-add-container">
+                        </div>
                         <hr class="hr">
-                        <div class="div-modify-btn">
-                            <button type="button" class="modify-btn">추가</button>
+                        <div class="option-add-btn">
+                            <button type="button" class="option-add-btn">추가</button>
                         </div>
                     </div>
                 </div>
