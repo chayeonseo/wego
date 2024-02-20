@@ -155,4 +155,8 @@
         where mc.storeId=#{storeId};
     </select>
 
+    <insert id="menu_join" parameterType="com.wego.dto.menu.MenuDTO">
+        insert into menu(menuCategoryId, menuName, menuContent, menuPrice) values(#{menuCategoryId}, #{menuName}, #{menuContent}, #{menuPrice})
+    </insert>
+
 </mapper>

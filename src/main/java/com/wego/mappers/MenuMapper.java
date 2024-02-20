@@ -32,5 +32,7 @@ public interface MenuMapper {
     void menu_modify(MenuDTO menuDTO);
     void menu_option_insert(MenuDTO menuDTO);
 
+    void menu_join(MenuDTO menuDTO);
+
 
 }

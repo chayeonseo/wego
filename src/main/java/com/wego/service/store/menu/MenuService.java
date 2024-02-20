@@ -57,6 +57,10 @@ public class MenuService {
         return menuMapper.get_category(storeId);
     }
 
+    public void menu_join(MenuDTO menuDTO) {
+        menuMapper.menu_join(menuDTO);
+    }
+
 
 
 }
