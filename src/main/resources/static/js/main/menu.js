@@ -260,11 +260,11 @@ addBtn.onclick = () => {
 
     for(let i=0; i < menuAddDiv.length; i++){
         const value = menuAddDiv[i].querySelector('input').value;
-        data.menuOptionCategorys.push(value);
+        data.menuOptionCategorys.push({ menuOptionCategoryId: value });
     }
 
     fetch(`/menu/join` , {
-        method: 'POST',
+        method: 'post',
         headers: {
             "X-CSRF-TOKEN": csrfToken,
             "content-type": "application/json"
