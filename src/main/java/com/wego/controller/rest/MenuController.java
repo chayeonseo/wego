@@ -23,6 +23,11 @@ public class MenuController {
         return menuService.one_menu_all_info(storeDTO, menuId);
     }
 
+    @GetMapping("/category")
+    public List<MenuCategoryDTO> get_category(@AuthenticationPrincipal StoreDTO storeDTO) {
+        return menuService.get_category(storeDTO.getStoreId());
+    }
+
 
     // 하나의 메뉴 수정
     @PatchMapping("/update")

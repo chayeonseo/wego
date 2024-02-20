@@ -154,4 +154,21 @@
     </update>
 
 
+    <resultMap id="get_category_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true">
+        <id property="menuCategoryId" column="mc_id" />
+        <collection property="menuOptionCategorys" ofType="com.wego.dto.menu.MenuOptionCategoryDTO" javaType="list" autoMapping="true" >
+            <id property="menuOptionCategoryId" column="moca_id" />
+        </collection>
+    </resultMap>
+
+    <select id="get_category" resultMap="get_category_resultMap">
+        SELECT *,
+        mc.menuCategoryId as mc_id,
+        moca.menuOptionCategoryId as moca_id
+        FROM menu_category mc
+        inner join menu_option_category moca
+        on mc.storeId = moca.storeId
+        where mc.storeId=#{storeId};
+    </select>
+
 </mapper>
