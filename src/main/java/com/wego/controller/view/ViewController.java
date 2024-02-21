@@ -2,7 +2,9 @@ package com.wego.controller.view;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.wego.dto.store.StoreDTO;
+import com.wego.service.member.MemberService;
 import com.wego.service.store.home.StoreService;
 import com.wego.service.store.menu.MenuService;
 import com.wego.service.store.menu.OptionService;
@@ -11,7 +13,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -22,7 +27,7 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class ViewController {
-
+    private final MemberService memberService;
     private final MenuService menuService;
     private final OptionService optionService;
 
@@ -62,6 +67,18 @@ public class ViewController {
         session.invalidate();
         return "user/login";
     }
+
+    @GetMapping("/user/join")
+    public String user_join(){
+        return "user/join";
+    }
+
+    @PostMapping("/user/join")
+    public String join_member(StoreDTO storeDTO){
+        memberService.join_member(storeDTO);
+        return "user/join";
+    }
+
 
 
 }

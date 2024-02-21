@@ -1,14 +1,20 @@
 package com.wego.controller.rest;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wego.dto.menu.MenuCategoryDTO;
 import com.wego.dto.menu.MenuDTO;
 import com.wego.dto.store.StoreDTO;
 import com.wego.service.store.menu.MenuService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -18,9 +24,23 @@ public class MenuController {
     private final MenuService menuService;
 
     // 하나의 모든 정보 조회
-    @GetMapping("/{menuId}")
-    public List<MenuCategoryDTO> get_menu(@AuthenticationPrincipal StoreDTO storeDTO, @PathVariable("menuId") int menuId) {
-        return menuService.one_menu_all_info(storeDTO, menuId);
+    @GetMapping(value = "/{menuId}")
+    public ResponseEntity<List<MenuCategoryDTO>> get_menu(@AuthenticationPrincipal StoreDTO storeDTO, @PathVariable("menuId") int menuId) {
+        try {
+            List<MenuCategoryDTO> menuList = menuService.one_menu_all_info(storeDTO, menuId);
+            ObjectMapper objMapper = new ObjectMapper();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            JsonGenerator jsonGenerator = objMapper.getFactory().createGenerator(byteArrayOutputStream);
+            objMapper.writeValue(jsonGenerator, menuList);
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add(HttpHeaders.CONTENT_LENGTH, String.valueOf(byteArrayOutputStream.size()));
+            System.out.println("응답 완료.!");
+            return ResponseEntity.status(HttpStatus.OK).headers(httpHeaders).body(menuList);
+        }catch (IOException e){
+            System.out.println("처리 중 오류 발생..: " + e);
+        }
+        // 500번 에러 전송
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
 
     @GetMapping("/category")

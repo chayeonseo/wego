@@ -23,8 +23,8 @@ public class SecurityConfig{
         security.csrf(config -> {});
         // request
         security.authorizeHttpRequests(config -> {
-            config.requestMatchers("/user/login", "/user/join").permitAll()
-                    .anyRequest().authenticated();
+            config.requestMatchers("/user/login", "/user/join").permitAll();
+            config.anyRequest().authenticated();
         });
 
         // form login

@@ -12,20 +12,20 @@
         <div class="tit">
             <div>회원가입</div>
         </div>
-        <form class="join-form" method="post">
+        <form class="join-form" th:action="@{/user/join}" method="post">
             <div class="join">
                 <div>아이디</div>
-                <input type="text" placeholder="로그인 할 아이디를 입력하세요">
+                <input type="text" th:name="mbId" placeholder="로그인 할 아이디를 입력하세요">
                 <div>비밀번호</div>
-                <input type="text" placeholder="비밀번호">
+                <input type="text" th:name="mbPw" placeholder="비밀번호">
                 <div>비밀번호 확인</div>
                 <input type="text" placeholder="비밀번호 확인">
                 <div>전화번호</div>
-                <input type="text" placeholder="전화번호">
+                <input type="text" th:name="storeIntro.storeIntroTel"  placeholder="전화번호">
                 <div>이름</div>
-                <input type="text" placeholder="이름">
+                <input type="text" th:name="memberName"  placeholder="이름">
                 <div>매장 이름</div>
-                <input type="text" placeholder="매장이름">
+                <input type="text" th:name="store"  placeholder="매장이름">
                 <div>태그 선택</div> <!--radio 형식 10개-->
                 <div id="tag-radio">
                     <input type="radio" name="태그1" value="태그1">1
@@ -54,7 +54,7 @@
                 <div>
                     <span>본인인증이 확인되었습니다.</span>
                 </div>
-                <input type="button" value="회원가입">
+                <input type="submit" value="회원가입">
             </div>
         </form>
 
