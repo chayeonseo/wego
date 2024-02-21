@@ -39,69 +39,63 @@ const joinOptionAddContainer = document.getElementById('join-option-add-containe
         const menuId = product.querySelector('.menuId');
         editingModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        progress_process(`/menu/${menuId.value}`, 'GET').then(categorys => {
+            menuName.value = categorys[0]['menus'][1]['menuName'];
+            menuPrice.value = categorys[0]['menus'][1]['menuPrice'];
+            menuContent.value = categorys[0]['menus'][1]['menuContent'];
+            menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
+            for (category of categorys) {
+                modifySelectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
+            }
+            for (option of categorys[0]['menus'][0]['menuOptionCategorys']) {
+                selectOption.insertAdjacentHTML('beforeend', `<option value="${option['menuOptionCategoryId']}">${option['menuOptionCategoryName']}</option>`)
+            }
+            document.querySelector('#menuId').value = menuId.value;
 
 
-        fetch(`/menu/${menuId.value}`)
-            .then(resp => resp.json())
-            .then(categorys => {
-                console.log(categorys);
-                console.log(categorys[0]['menus'][1]['menuName']);
-                menuName.value = categorys[0]['menus'][1]['menuName'];
-                menuPrice.value = categorys[0]['menus'][1]['menuPrice'];
-                menuContent.value = categorys[0]['menus'][1]['menuContent'];
-                menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
-                for (category of categorys) {
-                    modifySelectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
-                }
-                for (option of categorys[0]['menus'][0]['menuOptionCategorys']) {
-                    selectOption.insertAdjacentHTML('beforeend', `<option value="${option['menuOptionCategoryId']}">${option['menuOptionCategoryName']}</option>`)
-                }
-                document.querySelector('#menuId').value = menuId.value;
+            joinOptionContainer.innerHTML = '';
+            if (categorys[0]['menus'][1]['menuOptionCategorys'][0]['menuOptionCategoryId'] !== 0) {
 
-                joinOptionContainer.innerHTML = '';
-                if (categorys[0]['menus'][1]['menuOptionCategorys'][0]['menuOptionCategoryId'] !== 0) {
-
-                    for (option of categorys[0]['menus'][1]['menuOptionCategorys']) {
-                        joinOptionContainer.insertAdjacentHTML('beforeend', `
+                for (option of categorys[0]['menus'][1]['menuOptionCategorys']) {
+                    joinOptionContainer.insertAdjacentHTML('beforeend', `
                         <div class="join-option-list">
                             <input type="hidden" value="${option.menuOptionCategoryId}">
                             <div style="width: 200px;" class="join-option">${option.menuOptionCategoryName}<button type="button">X</button></div>
                         </div>`
-                        )
-                    }
+                    )
                 }
+            }
 
-                switch (categorys[0]['menus'][1]['menuStatus']) {
-                    case 0 :
-                        selectMenuStatus.querySelectorAll('option')[0].selected = true;
-                        break;
-                    case 1 :
-                        selectMenuStatus.querySelectorAll('option')[1].selected = true;
-                        break;
-                    case 2 :
-                        selectMenuStatus.querySelectorAll('option')[2].selected = true;
-                        break;
+            switch (categorys[0]['menus'][1]['menuStatus']) {
+                case 0 :
+                    selectMenuStatus.querySelectorAll('option')[0].selected = true;
+                    break;
+                case 1 :
+                    selectMenuStatus.querySelectorAll('option')[1].selected = true;
+                    break;
+                case 2 :
+                    selectMenuStatus.querySelectorAll('option')[2].selected = true;
+                    break;
+            }
+
+
+            const joinOptionList = document.querySelectorAll('.join-option-list');
+            [...joinOptionList].forEach(option => {
+                option.querySelector('button').onclick = () => {
+                    fetch(`/menu/${option.querySelector('input').value}/${document.querySelector('#menuId').value}`,{
+                        method: 'delete',
+                        headers: {'X-Csrf-Token' : csrfToken}
+                    }).then(resp => {
+                        console.log(resp.ok)
+                        if (resp.ok) {
+                            alert('옵션 삭제 완료');
+                            option.remove();
+                        } else {
+                            alert('옵션 삭제 실패');
+                        }
+                    })
                 }
-
-
-                const joinOptionList = document.querySelectorAll('.join-option-list');
-                [...joinOptionList].forEach(option => {
-                    option.querySelector('button').onclick = () => {
-                        fetch(`/menu/${option.querySelector('input').value}/${document.querySelector('#menuId').value}`,{
-                            method: 'delete',
-                            headers: {'X-Csrf-Token' : csrfToken}
-                        }).then(resp => {
-                            console.log(resp.ok)
-                            if (resp.ok) {
-                                alert('옵션 삭제 완료');
-                                option.remove();
-                            } else {
-                                alert('옵션 삭제 실패');
-                            }
-                        })
-                    }
-                });
-
+            });
             });
     }
 });
@@ -109,7 +103,6 @@ const joinOptionAddContainer = document.getElementById('join-option-add-containe
 
 // 적용버튼 눌렀을 때
 modifyBtn.onclick = () => {
-    console.log(modifyBtn)
     // menuid, 메뉴이름, 메뉴내용, 메뉴가격, 메뉴 카테고리, 메뉴 옵션,
     const menuId = document.querySelector('#menuId').value;
     const name = menuName.value;
@@ -132,17 +125,7 @@ modifyBtn.onclick = () => {
         menuOptionCategorys: optionCategory,
         menuStatus :menuStatus
     }
-    console.log(menuCon)
 
-    if(menuTitle === '' || menuCon === ''){
-        alert('이름과 가격은 필수사항 입니다');
-        return;
-    }
-
-    if(+menuCon + '' === 'NaN'){
-        alert('가격에는 숫자만 입력해주세요!');
-        return;
-    }
 
 
     fetch('/menu/update', {
@@ -161,12 +144,6 @@ modifyBtn.onclick = () => {
             alert('수정안됨');
         }
     })
-
-
-
-
-
-
 }
 
 
@@ -257,7 +234,6 @@ selectAddOption.onchange = () => {
                         </div>`
     )
 }
-
 
 
 addBtn.onclick = () => {
