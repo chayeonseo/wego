@@ -23,6 +23,7 @@ public class SecurityConfig{
         security.csrf(config -> {});
         // request
         security.authorizeHttpRequests(config -> {
+//            config.anyRequest().permitAll();
             config.requestMatchers("/user/login", "/user/join").permitAll()
                     .anyRequest().authenticated();
         });
@@ -31,7 +32,7 @@ public class SecurityConfig{
         security.formLogin(config -> {
             config.loginPage("/user/login")
                     .loginProcessingUrl("/user/login")
-                    .defaultSuccessUrl("/home")
+                    .defaultSuccessUrl("/home", true)
                     .permitAll();
 
         }).logout(LogoutConfigurer::permitAll);

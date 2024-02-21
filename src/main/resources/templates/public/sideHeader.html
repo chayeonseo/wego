@@ -5,6 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf}" th:content="${_csrf.token}">
     <title>main</title>
     <script src="https://kit.fontawesome.com/e5b57ad8bc.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,200&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/public/sideBar.css}" href="../../static/css/public/sideBar.css">
     <link rel="stylesheet" th:href="@{/css/public/header.css}" href="../../static/css/public/header.css">
+    <link rel="stylesheet" th:href="@{/css/public/progressSpinner.css}" href="../../static/css/public/progressSpinner.css">
+    <script th:src="@{/js/public/progressSpinner.js}" src="../../static/js/public/progressSpinner.js" defer></script>
     <script th:src="@{/js/public/sideHeader.js}" src="../../static/js/public/sideHeader.js" defer></script>
 </head>
 
@@ -58,7 +61,7 @@
                 <i class="fas fa-star"></i><span>메뉴 관리</span>
                 <ul class="sideBar-list">
                     <li><a href="/menu">메뉴 관리</a></li>
-                    <li><a href="#">옵션 관리</a></li>
+                    <li><a href="/option">옵션 관리</a></li>
                     <li><a href="#">메뉴 ㅇㅇ</a></li>
                 </ul>
             </li>
@@ -82,8 +85,7 @@
         </ul>
     </nav>
     <main layout:fragment="main"></main>
+    <th:block th:replace="~{public/progressSpinner :: spinner}"></th:block>
 </section>
-
-
 </body>
 </html>

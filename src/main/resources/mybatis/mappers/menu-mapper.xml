@@ -3,7 +3,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wego.mappers.MenuMapper" >
 
-    <resultMap id="test_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true" >
+    <resultMap id="all_menu_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true" >
         <id property="menuCategoryId" column="mc_id" />
 
         <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO" autoMapping="true">
@@ -12,10 +12,9 @@
                 <id property="menuImgId" column="mi_id" />
             </collection>
         </collection>
-
     </resultMap>
 
-    <select id="test" resultMap="test_resultMap">
+    <select id="get_all_menu" resultMap="all_menu_resultMap">
         SELECT
         *, m.menuId as m_id, mc.menuCategoryId as mc_id, mi.menuImgId as mi_id
         FROM
@@ -35,13 +34,6 @@
         </collection>
     </resultMap>
 
-    <select id="get_all_menu" resultMap="menu_resultMap" >
-        SELECT *, m.menuId as m_id, mi.menuImgId as mi_id
-        FROM menu m
-        inner join menu_img mi
-        on m.menuId = mi.menuId
-        where mi.storeId = #{storeId}
-    </select>
 
     <select id="get_menu" resultMap="menu_resultMap">
         SELECT *, m.menuId as m_id, mi.menuImgId as mi_id
@@ -59,11 +51,13 @@
         </collection>
         <collection property="menuOptionCategorys" ofType="com.wego.dto.menu.MenuOptionCategoryDTO" javaType="list" autoMapping="true">
             <id property="menuOptionCategoryId" column="moca_id"/>
+            <result property="menuId" column="" />
+            <result property="createdDate" column="" />
             <collection property="menuOptions" ofType="com.wego.dto.menu.MenuOptionDTO" javaType="list" autoMapping="true">
-                <id property="optionId" column="mi_id"/>
+                <id property="optionId" column="mo_id"/>
+                <result property="createdDate" column="" />
             </collection>
         </collection>
-
     </resultMap>
 
 
@@ -73,36 +67,96 @@
         m.menuId as m_id,
         moco.mp_id as moco_id,
         moca.menuOptionCategoryId as moca_id,
-        mo.optionId as mo_id,
+<!--        mo.optionId as mo_id,-->
         mi.menuImgId as mi_id
         FROM menu m
-        inner join menu_option_connect moco
-        on m.menuId=moco.menuId
-        inner join menu_option_category moca
-        on moco.optionCategoryId = moca.menuOptionCategoryId
-        inner join menu_option mo
-        on moca.menuOptionCategoryId = mo.categoryId
         inner join menu_img mi
         on m.menuId = mi.menuId
+        left outer join menu_option_connect moco
+        on m.menuId=moco.menuId
+        left outer join menu_option_category moca
+        on moco.optionCategoryId = moca.menuOptionCategoryId
+<!--        left outer join menu_option mo-->
+<!--        on moca.menuOptionCategoryId = mo.categoryId-->
 
-        where m.menuId=35;
+        where m.menuId=#{menuId};
     </select>
 
-    <resultMap id="store_option_info" type="com.wego.dto.menu.MenuOptionCategoryDTO" autoMapping="true" >
+
+    <select id="get_all_menu_category" resultType="com.wego.dto.menu.MenuCategoryDTO">
+        select * from menu_category where storeId=#{storeId};
+    </select>
+
+    <select id="get_all_menu_option_category" resultType="com.wego.dto.menu.MenuOptionCategoryDTO">
+        SELECT * FROM menu_option_category where storeId = #{storeId};
+    </select>
+
+    <resultMap id="menu_option_category_resultMap" type="com.wego.dto.menu.MenuOptionCategoryDTO" autoMapping="true">
         <id property="menuOptionCategoryId" column="moca_id" />
-        <collection property="menuOptions" javaType="list" ofType="com.wego.dto.menu.MenuOptionDTO" autoMapping="true" >
-            <id property="optionId" column="mo_id" />
+    </resultMap>
+
+    <select id="one_menu_option_category" resultMap="menu_option_category_resultMap">
+        SELECT *, moca.menuOptionCategoryId as moca_id FROM menu m
+        left outer join menu_option_connect moco
+        on m.menuId = moco.menuId
+        left outer join menu_option_category moca
+        on moco.optionCategoryId = moca.menuOptionCategoryId
+        where m.menuId=#{menuId};
+    </select>
+
+
+
+
+    <update id="menu_modify" parameterType="com.wego.dto.menu.MenuDTO">
+        update menu
+        set
+        menuName = #{menuName},
+        menuContent = #{menuContent},
+        menuPrice = #{menuPrice},
+        menuCategoryId = #{menuCategoryId},
+        menuStatus = #{menuStatus}
+
+        where menuId = #{menuId};
+    </update>
+
+    <delete id="delete_menu_option_category" parameterType="int" >
+        delete from menu_option_connect
+        where menuId=#{menuId} and optionCategoryId=#{optionCategoryId};
+    </delete>
+
+    <insert id="menu_option_insert" parameterType="com.wego.dto.menu.MenuDTO">
+        insert ignore
+        into menu_option_connect(menuId, optionCategoryId, modified_date)
+        values
+        <foreach collection="menuOptionCategorys" item="option" separator=",">
+            (#{menuId}, #{option.menuOptionCategoryId}, now())
+        </foreach>
+    </insert>
+
+    <update id="menu_status_modify" parameterType="int" >
+        update menu set menuStatus = #{status} where menuId = #{menuId};
+    </update>
+
+
+    <resultMap id="get_category_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true">
+        <id property="menuCategoryId" column="mc_id" />
+        <collection property="menuOptionCategorys" ofType="com.wego.dto.menu.MenuOptionCategoryDTO" javaType="list" autoMapping="true" >
+            <id property="menuOptionCategoryId" column="moca_id" />
         </collection>
     </resultMap>
 
-    <select id="get_store_option_info" resultMap="store_option_info">
-        SELECT * , moca.menuOptionCategoryId as moca_id,
-        mo.optionId as mo_id
-        FROM menu_option_category moca
-        left outer join menu_option mo
-        on moca.menuOptionCategoryId = mo.categoryId
-        where moca.menuOptionCategoryStoreId = 2;
+    <select id="get_category" resultMap="get_category_resultMap">
+        SELECT *,
+        mc.menuCategoryId as mc_id,
+        moca.menuOptionCategoryId as moca_id
+        FROM menu_category mc
+        inner join menu_option_category moca
+        on mc.storeId = moca.storeId
+        where mc.storeId=#{storeId};
     </select>
 
+    <insert id="menu_join" parameterType="com.wego.dto.menu.MenuDTO">
+        insert into menu(menuCategoryId, menuName, menuContent, menuPrice) values(#{menuCategoryId}, #{menuName}, #{menuContent}, #{menuPrice})
+    </insert>
 
 </mapper>

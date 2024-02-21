@@ -13,7 +13,7 @@
         SELECT DATE_FORMAT(created_date,'%a') as day, sum(orderTotalPrice) as totalPrice
         FROM web_dev.order
         where created_date
-        between #{mon} and #{sun}
+        between #{mon} and #{sun} and storeId=#{storeId}
         group by DATE_FORMAT(created_date,'%Y-%m-%d');
     </select>
 
@@ -22,7 +22,7 @@
         SELECT DATE_FORMAT(created_date,'%a') as day, count(orderId) as count
         FROM web_dev.order
         where created_date
-        between #{mon} and #{sun}
+        between #{mon} and #{sun} and storeId=#{storeId}
         group by DATE_FORMAT(created_date,'%Y-%m-%d');
     </select>
 
@@ -31,7 +31,7 @@
     <select id="get_order_status" resultType="map" >
         SELECT orderStatus, count(orderStatus) as orderCount
         FROM web_dev.order
-        where created_date BETWEEN DATE_ADD(NOW(),INTERVAL -1 MONTH ) AND NOW()
+        where created_date BETWEEN DATE_ADD(NOW(),INTERVAL -1 MONTH ) AND NOW() and storeId=#{storeId}
         group by orderStatus;
     </select>
 

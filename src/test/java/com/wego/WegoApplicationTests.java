@@ -1,6 +1,7 @@
 package com.wego;
 
 import com.wego.dto.menu.MenuDTO;
+import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.MenuMapper;
 import com.wego.mappers.StoreMapper;
 import com.wego.service.store.home.StoreService;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
 class WegoApplicationTests {
@@ -23,6 +25,7 @@ class WegoApplicationTests {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
 
 
     @Test
@@ -42,8 +45,13 @@ class WegoApplicationTests {
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(0).getMenuOptions().get(0));
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(1).getMenuOptions().get(0));
 //        System.out.println("카테고리에 옵션 개수: " +result.getMenuOptionCategorys().get(2).getMenuOptions().get(0));
+//        System.out.println(menuMapper.get_store_option_info());
+//        System.out.println(menuMapper.one_menu_all_info(37));
+//        System.out.println(menuMapper.one_menu_option_category(35));
 
-        System.out.println(menuMapper.get_store_option_info());
+//        System.out.println(menuMapper.get_category(2));
+
+
     }
 
 }
