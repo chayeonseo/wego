@@ -20,9 +20,9 @@ const optionJoinBtn = document.querySelector('.menu-option-join-btn');
 const joinOptionContainer = document.getElementById('join-option-modify-container');
 const modifyBtn = document.querySelector('.modify-btn');
 const addBtn = document.querySelector('.option-add-btn');
-const menuName = document.querySelector('.menu-title');
-const menuModifyPrice = document.querySelector('#menu-modify-modal .menu-con');
-const menuAddPrice = document.querySelector('#menu-add-modal .menu-con');
+const menuName = document.querySelector('#menu-modify-modal .menu-title');
+const menuPrice = document.querySelector('#menu-modify-modal .menu-con');
+
 
 
 const menuContent = document.querySelector('.editing-con');
@@ -99,9 +99,8 @@ const joinOptionAddContainer = document.getElementById('join-option-add-containe
 });
 
 
-// 적용버튼 눌렀을 때
+// 수정 모달창 -적용 버튼  눌렀을 때
 modifyBtn.onclick = () => {
-    console.log(modifyBtn)
     // menuid, 메뉴이름, 메뉴내용, 메뉴가격, 메뉴 카테고리, 메뉴 옵션,
     const menuId = document.querySelector('#menuId').value;
     const name = menuName.value;
@@ -124,17 +123,19 @@ modifyBtn.onclick = () => {
         menuOptionCategorys: optionCategory,
         menuStatus :menuStatus
     }
-    console.log(menuCon)
 
-    if(menuTitle === '' || menuCon === ''){
+
+    if(name === '' || price === ''){
         alert('이름과 가격은 필수사항 입니다');
         return;
     }
 
-    if(+menuCon + '' === 'NaN'){
+    if(+price + '' === 'NaN'){
         alert('가격에는 숫자만 입력해주세요!');
         return;
     }
+
+
 
 
     fetch('/menu/update', {
@@ -152,12 +153,6 @@ modifyBtn.onclick = () => {
             alert('수정안됨');
         }
     })
-
-
-
-
-
-
 }
 
 
@@ -247,7 +242,6 @@ selectAddOption.onchange = () => {
                         </div>`
     )
 }
-
 
 
 addBtn.onclick = () => {
