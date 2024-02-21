@@ -44,7 +44,6 @@ public class MenuController {
     // 메뉴 insert
     @PostMapping("/join")
     public void join_menu(@RequestBody MenuDTO menuDTO) {
-        System.out.println(menuDTO);
         menuService.menu_join(menuDTO);
     }
 

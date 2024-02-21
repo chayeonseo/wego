@@ -21,7 +21,7 @@
         web_dev.menu_category mc
         left outer join menu m
         on mc.menuCategoryId=m.menuCategoryId
-        inner join menu_img mi
+        left outer join menu_img mi
         on m.menuId=mi.menuId
         where mc.storeId = #{storeId}
         order by mc.menuCategoryNumber, m.menuNumber
@@ -70,7 +70,7 @@
 <!--        mo.optionId as mo_id,-->
         mi.menuImgId as mi_id
         FROM menu m
-        inner join menu_img mi
+        left outer join menu_img mi
         on m.menuId = mi.menuId
         left outer join menu_option_connect moco
         on m.menuId=moco.menuId
@@ -124,9 +124,21 @@
         where menuId=#{menuId} and optionCategoryId=#{optionCategoryId};
     </delete>
 
-    <insert id="menu_option_insert" parameterType="com.wego.dto.menu.MenuDTO">
+    <insert id="menu_option_modify" parameterType="com.wego.dto.menu.MenuDTO">
         insert ignore
         into menu_option_connect(menuId, optionCategoryId, modified_date)
+        values
+        <foreach collection="menuOptionCategorys" item="option" separator=",">
+            (#{menuId}, #{option.menuOptionCategoryId}, now())
+        </foreach>
+    </insert>
+
+    <insert id="menu_option_insert" parameterType="com.wego.dto.menu.MenuDTO">
+        <selectKey keyProperty="menuId" resultType="int" order="BEFORE">
+            select last_insert_id()
+        </selectKey>
+        insert ignore
+        into menu_option_connect(menuId, optionCategoryId, created_date)
         values
         <foreach collection="menuOptionCategorys" item="option" separator=",">
             (#{menuId}, #{option.menuOptionCategoryId}, now())

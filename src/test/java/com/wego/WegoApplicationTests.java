@@ -3,6 +3,7 @@ package com.wego;
 import com.wego.dto.menu.MenuDTO;
 import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.MenuMapper;
+import com.wego.mappers.OptionMapper;
 import com.wego.mappers.StoreMapper;
 import com.wego.service.store.home.StoreService;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,9 @@ class WegoApplicationTests {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    OptionMapper optionMapper;
 
 
     @Test
@@ -49,6 +53,7 @@ class WegoApplicationTests {
 
 //        System.out.println(menuMapper.get_category(2));
 
+        System.out.println(optionMapper.one_category_info(23));
 
     }
 

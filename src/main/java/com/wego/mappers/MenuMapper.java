@@ -30,9 +30,12 @@ public interface MenuMapper {
     void delete_menu_option_category(@Param("optionCategoryId") int optionCategoryId,@Param("menuId") int menuId);
 
     void menu_modify(MenuDTO menuDTO);
+    void menu_option_modify(MenuDTO menuDTO);
+
     void menu_option_insert(MenuDTO menuDTO);
 
     void menu_join(MenuDTO menuDTO);
+
 
 
 }
