@@ -38,4 +38,12 @@ public class OptionService {
     public void join_option(List<MenuOptionDTO> menuOptions) {
         optionMapper.join_option(menuOptions);
     }
+
+    public MenuOptionCategoryDTO one_option_category_info(int categoryId) {
+        return optionMapper.one_category_info(categoryId);
+    }
+
+    public void delete_option_category(int categoryId) {
+        optionMapper.delete_option_category(categoryId);
+    }
 }

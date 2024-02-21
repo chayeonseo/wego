@@ -1,5 +1,6 @@
 package com.wego.mappers;
 
+import com.wego.dto.menu.MenuCategoryDTO;
 import com.wego.dto.menu.MenuOptionCategoryDTO;
 import com.wego.dto.menu.MenuOptionDTO;
 import com.wego.dto.store.StoreDTO;
@@ -21,6 +22,10 @@ public interface OptionMapper {
 
     void delete_option(int optionId);
 
-    void join_option(List<MenuOptionDTO> menuOptions);
+    void join_option(@Param("menuOptions") List<MenuOptionDTO> menuOptions);
+
+    MenuOptionCategoryDTO one_category_info(int optionCategoryId);
+
+    void delete_option_category(int categoryId);
 
 }

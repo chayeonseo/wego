@@ -22,7 +22,7 @@ public class OptionController {
         optionService.join_option_category(categoryName, storeDTO.getStoreId());
     }
 
-    @GetMapping("/category")
+    @GetMapping("/categorys")
     public List<MenuOptionCategoryDTO> get_option_category(@AuthenticationPrincipal StoreDTO storeDTO) {
         return optionService.get_option_category(storeDTO);
     }
@@ -39,7 +39,19 @@ public class OptionController {
 
     @PostMapping("/join")
     public void option_join(@RequestBody List<MenuOptionDTO> menuOptions) {
+        System.out.println(menuOptions);
         optionService.join_option(menuOptions);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    public MenuOptionCategoryDTO one_option_info(@PathVariable int categoryId) {
+        System.out.println(categoryId);
+        return optionService.one_option_category_info(categoryId);
+    }
+
+    @DeleteMapping("/category/delete/{categoryId}")
+    public void option_category_delete(@PathVariable int categoryId) {
+        optionService.delete_option_category(categoryId);
     }
 
 }

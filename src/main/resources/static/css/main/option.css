@@ -181,7 +181,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    display: block;
+    display: none;
     background-color: rgba(0, 0, 0, 0.4);
 }
 .option-category-content {
@@ -198,11 +198,14 @@
 
     transform: translateX(-50%) translateY(-50%);
 }
+.option-header-container {
+    margin: 15px 0;
+}
 .option-category-header{
-    height: 60px;
+    height: 30px;
 }
 .option-header-title{
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 .option-header-opt{
@@ -221,6 +224,7 @@
     float: right;
 }
 .modify-btn-div{
+    display: flex;
     margin: 10px;
 }
 .modify-btn{

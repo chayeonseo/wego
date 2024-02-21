@@ -29,8 +29,9 @@
     <!--menu List-->
     <div class="con" th:each="category : ${categorys}">
         <div class="con-title">
+            <input type="hidden" th:value="${category.menuOptionCategoryId}" id="categoryId">
             <div th:text="${category.menuOptionCategoryName}">옵션2 <div class="con-subtitle">최대 1개 최소 1개</div> </div>
-            <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>
+            <button type="button" class="category-modify-btn"><i class="fa-solid fa-pencil"></i>변경</button>
         </div>
 <!--        <div class="con-used">-->
 <!--            <div class="used-count">이 옵션을 사용하는 메뉴 1개 </div>-->
@@ -89,57 +90,36 @@
             </div>
         </div>
 
+
     <!--  옵션 카테고리 변경 모달창 삭제버트느 -->
-<!--    <div class="option-category-container">-->
-<!--        <div class="option-category-content">-->
-<!--            <div class="option-category-header">-->
-<!--                <button class="option-cancel-btn">X</button>-->
-<!--                <button class="option-header-btn">수정</button>-->
-<!--                <input class="option-header-title" value="옵션2">-->
+    <div class="option-category-container">
+        <div class="option-category-content">
+            <div class="option-category-header">
+                <button class="option-cancel-btn">X</button>
+                <input type="hidden" id="modify-categoryId" value="">
 <!--                <input class="option-header-opt" value="최대 1개 최소 1개">-->
-<!--            </div>-->
-<!--            <hr>-->
+            </div>
+            <hr>
 <!--            <div class="option-category-add">-->
 <!--                <button class="add-btn">옵션 추가</button>-->
 <!--            </div>-->
-<!--            <div class="option-editing-body">-->
-<!--                <div class="option-editing">-->
-<!--                    <div class="option-editing-div">-->
+            <div class="option-header-container">
+                <button class="option-header-btn">수정</button>
+                <input class="option-header-title" value="옵션2" disabled>
+            </div>
+            <hr>
+            <div class="option-editing-body">
 
-<!--                        <input class="option-modify-title" value="닭다리살 소금구이 [1.5 인분]">-->
-<!--                        <input class="option-modify-price" value="0 원">-->
-<!--                    </div>-->
-<!--                    <div class="option-editing-modify">-->
-<!--                        <button type="button" class="option-editing-btn">수정</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <div class="option-editing">-->
-<!--                    <div class="option-editing-div">-->
-<!--                        <input class="option-modify-title" value="닭다리살 소금구이 [1.5 인분]">-->
-<!--                        <input class="option-modify-price" value="0 원">-->
-<!--                    </div>-->
-<!--                    <div class="option-editing-modify">-->
-<!--                        <button type="button" class="option-editing-btn">수정</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <div class="option-editing">-->
-<!--                    <div class="option-editing-div">-->
-<!--                        <input class="option-modify-title" value="닭다리살 소금구이 [1.5 인분]">-->
-<!--                        <input class="option-modify-price" value="0 원">-->
-<!--                    </div>-->
-<!--                    <div class="option-editing-modify">-->
-<!--                        <button type="button" class="option-editing-btn">수정</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <div class="modify-btn-div">-->
-<!--                    <button type="button" class="modify-btn">적용</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+            </div>
+            <div class="modify-btn-div">
+                <button type="button" class="apply-btn">변경사항 저장</button>
+                <button type="button" class="delete-btn">옵션 그룹 삭제</button>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <!--  옵션 추가 모달 창 => js promp  -->
     <div class="option-creating-container">

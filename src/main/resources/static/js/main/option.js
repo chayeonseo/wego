@@ -1,10 +1,12 @@
 const csrfToken = document.querySelector('meta[name=_csrf]').content; // csrf
 
+const optionJoinModalBtn = document.querySelector('.con-add'); // 옵션 추가 버튼
 const categoryJoinBtn = document.querySelector('.con-category-add'); // 옵션 카테고리 추가 버튼
 const allOptions = document.querySelectorAll('.option-list'); // 옵션 리스트 들
 const optionModifyModal = document.querySelector('.option-editing-container'); // 옵션 수정 모달창 node
 const optionJoinModal = document.querySelector('.option-creating-container'); // 옵션 추가 모달창 node
-const optionJoinModalBtn = document.querySelector('.con-add');
+const categoryModifyModal = document.querySelector('.option-category-container'); // 옵션 카테고리 수정 모달창 node
+const categoryList = document.querySelectorAll('.con'); // 카테고리 별 container
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -28,6 +30,14 @@ const optionCreateAddBtn = optionJoinModal.querySelector('.create-add-btn'); // 
 // const optionCreatingDiv = optionJoinModal.querySelectorAll('.option-creating-div')[0]; // [추가모달] 옵션 추가 시 들어갈 원래 있는 node
 const optionJoinBtn = optionJoinModal.querySelector('.create-btn'); // [추가모달] 옵션 추가 요청 버튼
 let optionCreatingDiv; // [추가모달] 옵션 추가할 때 사용할 node
+
+///////////////////////////////////////////////////////////////////////////
+
+const categoryModifyCancel = categoryModifyModal.querySelector('.option-cancel-btn'); // [카테고리 모달] 모달창 닫기 버튼
+const categoryTitle = categoryModifyModal.querySelector('.option-header-title'); // [카테고리 모달] category name input node
+const optionContainer = categoryModifyModal.querySelector('.option-editing-body'); // [카테고리 모달] 옵션 리스트 container
+const categoryDeleteBtn = categoryModifyModal.querySelector('.delete-btn'); // [카테고리 모달] 카테고리 삭제 버튼
+let categoryId = categoryModifyModal.querySelector('#modify-categoryId'); // [카테고리 모달] 현재 모달에 띄워진 카테고리 id
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -75,7 +85,7 @@ optionModifyCancel.onclick = () => {
         document.body.style.overflow = 'hidden';
 
 
-        fetch(`/option/category`)
+        fetch(`/option/categorys`)
             .then(resp => resp.json())
             .then(categorys => {
                 console.log(categorys);
@@ -226,6 +236,64 @@ optionJoinBtn.onclick = () => {
 
 
 //////////////////////////////////////// 옵션 그룹 변경
+
+categoryModifyCancel.onclick = () => {
+    if (confirm('진짜 닫을래? 자동 저장 안됨')) {
+        categoryModifyModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+categoryList.forEach(category => {
+    const categoryModifyBtn = category.querySelector('.category-modify-btn');
+
+    // 변경 버튼 클릭 시
+    categoryModifyBtn.onclick = () => {
+
+        categoryModifyModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+
+        categoryId = category.querySelector('#categoryId').value;
+
+        fetch(`/option/category/${categoryId}`)
+            .then(resp => resp.json())
+            .then(category => {
+                categoryTitle.value = category['menuOptionCategoryName'];
+
+                optionContainer.innerHTML = '';
+                for (let option of category['menuOptions']) {
+                    optionContainer.insertAdjacentHTML('beforeend', 
+                        `<div class="option-editing">
+                    <div class="option-editing-div">
+                        <input type="hidden" value="${option['optionId']}">
+                        <div class="option-modify-title">${option['menuOptionName']}</div>
+                        <div class="option-modify-price">${option['menuOptionPrice'] + '원'}</div>
+                    </div>
+                </div>
+                <hr>`)
+                }
+            })
+    }
+})
+
+
+categoryDeleteBtn.onclick = () => {
+    console.log('delete 클릭')
+    if (confirm('삭제하면 그룹에 속한 옵션도 같이 삭제되는데 그래도 할래?')) {
+        fetch(`/option/category/delete/${categoryId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-Csrf-Token' : csrfToken
+            }
+        }).then(resp => {
+            if (resp.ok) {
+                alert('삭제 됨');
+                location.reload();
+            }
+        })
+    }
+}
+
 
 
 

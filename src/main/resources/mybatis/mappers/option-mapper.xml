@@ -54,4 +54,24 @@
         delete from menu_option where optionId = #{optionId};
     </delete>
 
+    <resultMap id="category_info_resultMap" type="com.wego.dto.menu.MenuOptionCategoryDTO" autoMapping="true">
+        <id property="menuOptionCategoryId" column="moca_id" />
+        <collection property="menuOptions" javaType="list" ofType="com.wego.dto.menu.MenuOptionDTO" autoMapping="true">
+            <id property="optionId" column="mo_id" />
+        </collection>
+    </resultMap>
+
+    <select id="one_category_info" resultMap="category_info_resultMap">
+        SELECT *, moca.menuOptionCategoryId as moca_id, mo.optionId as mo_id
+        FROM web_dev.menu_option_category moca
+        inner join menu_option mo
+        on moca.menuOptionCategoryId = mo.categoryId
+        where menuOptionCategoryId = #{optionCategoryId};
+    </select>
+
+    <delete id="delete_option_category" parameterType="int">
+        delete from menu_option_category where menuOptionCategoryId = #{categoryId};
+    </delete>
+
+
 </mapper>
