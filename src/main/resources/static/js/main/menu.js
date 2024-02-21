@@ -29,75 +29,67 @@ const selectMenuStatus = document.querySelector('.menu-sold-select');
 const categoryAddSelect = document.getElementById('category-add-dropdown');
 const joinOptionAddContainer = document.getElementById('join-option-add-container');
 
-
-
 [...productList].forEach(product => {
     product.onclick = () => {
         const menuId = product.querySelector('.menuId');
         editingModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        progress_process(`/menu/${menuId.value}`, 'GET').then(categorys => {
+            menuName.value = categorys[0]['menus'][1]['menuName'];
+            menuPrice.value = categorys[0]['menus'][1]['menuPrice'];
+            menuContent.value = categorys[0]['menus'][1]['menuContent'];
+            menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
+            for (category of categorys) {
+                modifySelectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
+            }
+            for (option of categorys[0]['menus'][0]['menuOptionCategorys']) {
+                selectOption.insertAdjacentHTML('beforeend', `<option value="${option['menuOptionCategoryId']}">${option['menuOptionCategoryName']}</option>`)
+            }
+            document.querySelector('#menuId').value = menuId.value;
 
 
-        fetch(`/menu/${menuId.value}`)
-            .then(resp => resp.json())
-            .then(categorys => {
-                console.log(categorys);
-                menuName.value = categorys[0]['menus'][1]['menuName'];
-                menuPrice.value = categorys[0]['menus'][1]['menuPrice'];
-                menuContent.value = categorys[0]['menus'][1]['menuContent'];
-                menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
-                for (category of categorys) {
-                    modifySelectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
-                }
-                for (option of categorys[0]['menus'][0]['menuOptionCategorys']) {
-                    selectOption.insertAdjacentHTML('beforeend', `<option value="${option['menuOptionCategoryId']}">${option['menuOptionCategoryName']}</option>`)
-                }
-                document.querySelector('#menuId').value = menuId.value;
-
-
-                if (categorys[0]['menus'][1]['menuOptionCategorys'][0]['menuOptionCategoryId'] !== 0) {
-                    for (option of categorys[0]['menus'][1]['menuOptionCategorys']) {
-                        joinOptionContainer.insertAdjacentHTML('beforeend', `
+            if (categorys[0]['menus'][1]['menuOptionCategorys'][0]['menuOptionCategoryId'] !== 0) {
+                for (option of categorys[0]['menus'][1]['menuOptionCategorys']) {
+                    joinOptionContainer.insertAdjacentHTML('beforeend', `
                         <div class="join-option-list">
                             <input type="hidden" value="${option.menuOptionCategoryId}">
                             <div style="width: 200px;" class="join-option">${option.menuOptionCategoryName}<button type="button">X</button></div>
                         </div>`
-                        )
-                    }
+                    )
                 }
+            }
 
-                switch (categorys[0]['menus'][1]['menuStatus']) {
-                    case 0 :
-                        selectMenuStatus.querySelectorAll('option')[0].selected = true;
-                        break;
-                    case 1 :
-                        selectMenuStatus.querySelectorAll('option')[1].selected = true;
-                        break;
-                    case 2 :
-                        selectMenuStatus.querySelectorAll('option')[2].selected = true;
-                        break;
+            switch (categorys[0]['menus'][1]['menuStatus']) {
+                case 0 :
+                    selectMenuStatus.querySelectorAll('option')[0].selected = true;
+                    break;
+                case 1 :
+                    selectMenuStatus.querySelectorAll('option')[1].selected = true;
+                    break;
+                case 2 :
+                    selectMenuStatus.querySelectorAll('option')[2].selected = true;
+                    break;
+            }
+
+
+            const joinOptionList = document.querySelectorAll('.join-option-list');
+            [...joinOptionList].forEach(option => {
+                option.querySelector('button').onclick = () => {
+                    fetch(`/menu/${option.querySelector('input').value}/${document.querySelector('#menuId').value}`,{
+                        method: 'delete',
+                        headers: {'X-Csrf-Token' : csrfToken}
+                    }).then(resp => {
+                        console.log(resp.ok)
+                        if (resp.ok) {
+                            alert('옵션 삭제 완료');
+                            option.remove();
+                        } else {
+                            alert('옵션 삭제 실패');
+                        }
+                    })
                 }
-
-
-                const joinOptionList = document.querySelectorAll('.join-option-list');
-                [...joinOptionList].forEach(option => {
-                    option.querySelector('button').onclick = () => {
-                        fetch(`/menu/${option.querySelector('input').value}/${document.querySelector('#menuId').value}`,{
-                            method: 'delete',
-                            headers: {'X-Csrf-Token' : csrfToken}
-                        }).then(resp => {
-                            console.log(resp.ok)
-                            if (resp.ok) {
-                                alert('옵션 삭제 완료');
-                                option.remove();
-                            } else {
-                                alert('옵션 삭제 실패');
-                            }
-                        })
-                    }
-                });
-
             });
+        });
     }
 });
 
