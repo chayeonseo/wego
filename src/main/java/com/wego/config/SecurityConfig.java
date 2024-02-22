@@ -23,7 +23,7 @@ public class SecurityConfig{
         security.csrf(config -> {});
         // request
         security.authorizeHttpRequests(config -> {
-            config.requestMatchers("/user/login", "/user/join").permitAll();
+            config.requestMatchers("/user/login", "/user/join", "/user/selectId**").permitAll();
             config.anyRequest().authenticated();
         });
 

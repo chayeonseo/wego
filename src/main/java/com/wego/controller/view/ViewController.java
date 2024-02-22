@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -68,6 +69,7 @@ public class ViewController {
         return "user/login";
     }
 
+    // 회원가입
     @GetMapping("/user/join")
     public String user_join(){
         return "user/join";
@@ -79,6 +81,18 @@ public class ViewController {
         return "user/join";
     }
 
+    // 아이디 중복 조회
+    @ResponseBody
+    @GetMapping ("/user/selectId")
+    public boolean select_id(@RequestParam String id){
+        System.out.println(id);
+        return memberService.select_id(id);
+    }
 
+    // 매장 카테고리
+//    @GetMapping("")
+//    public void category_no(StoreDTO storeDTO){
+//        memberService.category_no(storeDTO);
+//    }
 
 }

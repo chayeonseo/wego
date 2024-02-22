@@ -6,6 +6,8 @@
     <meta name="viewport" content="initial-scale=2.3, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no" /> <!--반응형-->
     <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script> <!--임시 로고-->
     <link rel="stylesheet" th:href="@{/css/user/join.css}" href="../../static/css/user/join.css">
+    <script src="../../static/js/user/join.js" th:src="@{/js/user/join.js}" defer></script>
+
 </head>
 <body>
     <div class="join-content">
@@ -15,9 +17,9 @@
         <form class="join-form" th:action="@{/user/join}" method="post">
             <div class="join">
                 <div>아이디</div>
-                <input type="text" th:name="mbId" placeholder="로그인 할 아이디를 입력하세요">
+                <input type="text" id="mbId" th:name="mbId" placeholder="로그인 할 아이디를 입력하세요">
                 <div class="check-div">
-                    <button class="id-check" id="id-check">아이디 중복확인</button>
+                    <button class="id-check" id="id-check" type="button">아이디 중복확인</button>
                     <div class="check-message">아이디 중복 메세지칸</div>
                 </div>
                 <div>비밀번호</div>
@@ -44,7 +46,7 @@
                     <input type="radio" name="3" value="3">10
                 </div>
                 <div>매장카테고리</div>
-                <select>
+                <select th:name="storeCategoryId">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
