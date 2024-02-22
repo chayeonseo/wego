@@ -1,7 +1,10 @@
+/*body {*/
+/*    overflow: hidden;*/
+/*    height: 100%;*/
+/*}*/
 .main-container {
     margin: 30px auto;
     width: 700px;
-    padding-left: 270px;
 }
 .main-container-header{
     margin: 10px;
@@ -15,17 +18,23 @@
 }
 .con-div-btn{
     margin: 5px;
-    height: 50px;
+    height: 45px;
+}
+.con-div-btn > input{
+    height: 30px;
+    width: 300px;
 }
 .con-add{
     float: right;
     width: 80px;
-    height: 40px;
+    height: 35px;
+    margin: 5px;
 }
 .con-category-add{
     float: right;
     width: 160px;
-    height: 40px;
+    height: 35px;
+    margin: 5px;
 }
 .con {
     margin: 10px;
@@ -34,7 +43,7 @@
 }
 
 .con > div {
-    padding: 10px;
+    padding: 5px;
 }
 .con-title{
     display: flex;
@@ -57,13 +66,14 @@
     border: none;
     color: deepskyblue;
     cursor: pointer;
+    font-size: 16px;
 }
 .con-info{
     margin: 10px;
 }
 .title{
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .price{
     margin-top: 5px;
@@ -85,7 +95,13 @@
     margin: 5px;
     font-size: 14px;
 }
-
+.con-category-add , .con-add{
+    border: 1px solid black;
+    background-color: white;
+}
+.hr{
+    margin: 5px 0
+}
 /*************************************/
 /*옵션 개별 변경 모달창*/
 .option-editing-container{
@@ -143,38 +159,44 @@
 .option-editing-modify{
     margin: 10px;
 }
+.option-editing-btn{
+    float: right;
+    height: 25px;
+    width: 70px;
+    border: 1px solid #0059ff;
+    background: white;
+    color: #0059ff;
+}
 .option-sold-btn{
     margin: 10px;
 }
 .option-sold-btn > button{
     margin: 2px;
-
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
 }
-.delete-btn-div{
-    display: flex;
+.btn-div{
     margin: 10px;
+    width: 490px;
 }
-
-.delete-btn{
-    width: 480px;
+.opt-delete-btn{
+    width: 240px;
     height: 40px;
     color: #ff5624;
     background-color: white;
     border: 1px solid #ff5624;
-    margin: 5px 0;
 }
-
-.apply-btn {
-    width: 480px;
+.opt-modify-btn{
+    width: 240px;
     height: 40px;
-    color: blue;
+    color: #0059ff;
     background-color: white;
-    border: 1px solid blue;
-    margin: 5px;
+    border: 1px solid #0059ff;
 }
-
 /**************************************/
-/*옵션 카테고리 변경 모달창 css*/
+/*옵션 그룹 변경 모달창 css*/
 .option-category-container{
     position: fixed;
     top: 0;
@@ -198,14 +220,11 @@
 
     transform: translateX(-50%) translateY(-50%);
 }
-.option-header-container {
-    margin: 15px 0;
-}
 .option-category-header{
-    height: 30px;
+    height: 40px;
 }
 .option-header-title{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
 }
 .option-header-opt{
@@ -217,20 +236,54 @@
 }
 .option-category-add{
     width: 490px;
-    height: 25px;
+    height: 35px;
     margin: 10px;
+    /*padding: 10px;*/
 }
-.add-btn{
+.option-category-body{
+    height: 550px;
+}
+.option-category{
+    display: flex;
+    /*justify-content: space-between;*/
+}
+.option-category-div{
+    width: 300px;
+    height: 65px;
+    margin: 5px;
+}
+.opt-add-btn{
     float: right;
+    margin: 5px;
+}
+.opt-del-btn{
+    float: right;
+    margin: 5px;
 }
 .modify-btn-div{
-    display: flex;
     margin: 10px;
+    width: 490px;
 }
 .modify-btn{
     width: 480px;
     height: 40px;
 }
+
+.group-delete-btn{
+    width: 240px;
+    height: 40px;
+    color: #ff5624;
+    background-color: white;
+    border: 1px solid #ff5624;
+}
+.group-modify-btn{
+    width: 240px;
+    height: 40px;
+    color: #2492ff;
+    background-color: white;
+    border: 1px solid #2492ff;
+}
+
 .option-modify-title{
     font-size: 20px;
     width: 300px;
@@ -239,6 +292,9 @@
 .option-modify-price{
     font-size: 18px;
     width: 300px;
+}
+.opt-drop{
+    margin: 5px;
 }
 
 /***********************************************/
@@ -288,17 +344,23 @@
     height: 550px;
 }
 .option-creating{
-    /*display: flex;*/
+    display: flex;
     justify-content: space-between;
 }
 .option-creating-div{
     width: 300px;
     height: 65px;
-    margin: 20px 10px;
+    margin: 10px;
 }
 .option-creating-add{
     margin: 10px;
     float: right;
+}
+.create-add-btn{
+    width: 70px;
+    height: 25px;
+    border: 1px solid black;
+    background-color: white;
 }
 .create-btn-div{
     margin: 10px;
@@ -307,6 +369,14 @@
     width: 480px;
     height: 40px;
     border: 1px solid black;
-    margin: 10px 0;
+    background-color: white;
 }
 
+.option-creating-name{
+    width: 490px;
+    height: 35px;
+    margin: 10px;
+}
+.option-name{
+    font-weight: bold;
+}

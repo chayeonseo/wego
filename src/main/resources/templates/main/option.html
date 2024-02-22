@@ -17,10 +17,11 @@
 
     <!--header-->
     <div class="main-container-header">
-        <div class="search-div">
-            <input type="text" placeholder="옵션명을 입력해주세요">
-        </div>
+<!--        <div class="search-div">-->
+<!--            <input type="text" placeholder="옵션명을 입력해주세요">-->
+<!--        </div>-->
         <div class="con-div-btn">
+            <input type="text" placeholder="옵션명을 입력해주세요">
             <button type="button" class="con-category-add">옵션 카테고리 추가</button>
             <button type="button" class="con-add">옵션 추가</button>
         </div>
@@ -39,7 +40,7 @@
 <!--        </div>-->
         <div class="con-info">
             <div class="option-list" th:each="option : ${category.menuOptions}">
-                <hr>
+                <hr class="hr">
                 <input type="hidden" id="optionId" th:value="${option.optionId}">
                 <div class="title" th:text="${option.menuOptionName}">닭다리살 소금구이 [1.5 인분]</div>
                 <div class="price" th:text="${option.menuOptionPrice} + '원'">0 원</div>
@@ -56,7 +57,7 @@
                     <button class="option-cancel-btn">X</button>
                 </div>
                 <input type="hidden" id="modal-optionId">
-                <hr>
+                <hr class="hr">
                 <div class="option-editing-body">
                     <div class="option-editing">
                         <div class="option-editing-div">
@@ -81,7 +82,7 @@
                         </label>
                     </div>
 
-                    <hr>
+                    <hr class="hr">
                     <div class="delete-btn-div">
                         <button type="button" class="apply-btn">옵션 적용하기</button>
                         <button type="button" class="delete-btn">옵션 삭제하기</button>
@@ -99,7 +100,7 @@
                 <input type="hidden" id="modify-categoryId" value="">
 <!--                <input class="option-header-opt" value="최대 1개 최소 1개">-->
             </div>
-            <hr>
+            <hr class="hr">
 <!--            <div class="option-category-add">-->
 <!--                <button class="add-btn">옵션 추가</button>-->
 <!--            </div>-->
@@ -107,7 +108,7 @@
                 <button class="option-header-btn">수정</button>
                 <input class="option-header-title" value="옵션2" disabled>
             </div>
-            <hr>
+            <hr class="hr">
             <div class="option-editing-body">
 
             </div>
@@ -129,7 +130,7 @@
 <!--                <input class="option-name" type="text" placeholder="옵션 카테고리 이름">-->
 <!--                <input class="option-opt" type="text" placeholder="옵션 카테고리 설정">-->
             </div>
-            <hr>
+            <hr class="hr">
             <div class="option-creating-add">
                 <button class="create-add-btn">옵션 추가</button>
             </div>
