@@ -2,7 +2,7 @@ const csrfToken = document.querySelector('meta[name=_csrf]').content;
 
 const addCancel = document.getElementById('menu-add-cancel');
 const menuAddModal = document.getElementById('menu-add-modal');
-const menuAddBtn = document.querySelector('.btn-div button');
+const [menuAddBtn, menuCategoryAddBtn] = document.querySelectorAll('.btn-div button');
 const menuAddOpt = document.getElementById('menuAddOpt');
 
 
@@ -53,7 +53,7 @@ for(let i = 0; i < menuContainers.length; i++){
         document.body.style.overflow = 'hidden';
         progress_process(`/menu/${menuId.value}`, 'GET').then(categorys => {
             menuName.value = categorys[0]['menus'][1]['menuName'];
-            menuPrice.value = categorys[0]['menus'][1]['menuPrice'];
+            menuModifyPrice.value = categorys[0]['menus'][1]['menuPrice'];
             menuContent.value = categorys[0]['menus'][1]['menuContent'];
             menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
             for (category of categorys) {
@@ -110,6 +110,39 @@ for(let i = 0; i < menuContainers.length; i++){
             });
             });
     }
+
+    // drag and drop event
+    product.ondragend = (event) => {
+        const categoryContainer = product.parentElement.parentElement;
+        const categoryId = categoryContainer.querySelector('.menu-categoryId');
+        const menuList = categoryContainer.querySelectorAll('.menu-li .menuId');
+        console.log(categoryId);
+        console.log(menuList[0].value);
+        // [i + 1] : menuList[i].value}
+        let data = []
+        for (let i = 0; i < menuList.length; i++) {
+            data.push({
+                menuId: menuList[i].value,
+                menuCategoryId : categoryId.value,
+                menuNumber : i + 1
+            })
+        }
+
+        console.log(data);
+
+
+        fetch('/menu/number', {
+            method : 'PATCH',
+            headers : {
+                'content-type' : 'application/json',
+                'X-Csrf-Token' : csrfToken
+            },
+            body : JSON.stringify(data)
+        }).then(resp => {
+            console.log(resp.ok)
+        })
+        
+    }
 });
 
 
@@ -119,7 +152,7 @@ modifyBtn.onclick = () => {
     const menuId = document.querySelector('#menuId').value;
     const name = menuName.value;
     const content = menuContent.value;
-    const price = menuPrice.value;
+    const price = menuModifyPrice.value;
     const category = modifySelectCategory.value;
     const menuStatus = selectMenuStatus.options[selectMenuStatus.selectedIndex].value
     const menuCategorys = joinOptionContainer.querySelectorAll('input');
@@ -303,6 +336,22 @@ addCancel.onclick = () => {
     if (confirm('창을 닫으시겠습니까? 저장되지 않습니다')){
         // document.querySelectorAll('.menu-editing-div input').forEach(input => input.disabled = true);
         menuAddModal.style.display = 'none';
+    }
+}
+
+
+// 메뉴 카테고리 추가
+menuCategoryAddBtn.onclick = () => {
+    let categoryName = prompt('카테고리 이름 입력');
+
+    if (categoryName !== null) {
+        fetch(`/menu/categoryJoin/${categoryName}`)
+            .then(resp => {
+                if (resp.ok) {
+                    alert('카테고리 추가 성공')
+                    location.reload();
+                }
+            })
     }
 }
 

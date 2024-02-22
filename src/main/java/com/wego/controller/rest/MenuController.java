@@ -28,6 +28,7 @@ public class MenuController {
     public ResponseEntity<List<MenuCategoryDTO>> get_menu(@AuthenticationPrincipal StoreDTO storeDTO, @PathVariable("menuId") int menuId) {
         try {
             List<MenuCategoryDTO> menuList = menuService.one_menu_all_info(storeDTO, menuId);
+            System.out.println("menuList : " + menuList);
             ObjectMapper objMapper = new ObjectMapper();
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             JsonGenerator jsonGenerator = objMapper.getFactory().createGenerator(byteArrayOutputStream);
@@ -48,6 +49,13 @@ public class MenuController {
         return menuService.get_category(storeDTO.getStoreId());
     }
 
+    // TODO 메뉴 카테고리 생성 아직 진행중
+    @GetMapping("/categoryJoin/{categoryName}")
+    public void menu_category_join(@PathVariable String categoryName, @AuthenticationPrincipal StoreDTO storeDTO) {
+        System.out.println(categoryName);
+//        optionService.join_option_category(categoryName, storeDTO.getStoreId());
+    }
+
 
     // 하나의 메뉴 수정
     @PatchMapping("/update")
@@ -65,6 +73,11 @@ public class MenuController {
     @PostMapping("/join")
     public void join_menu(@RequestBody MenuDTO menuDTO) {
         menuService.menu_join(menuDTO);
+    }
+
+    @PatchMapping("/number")
+    public void number_patch(@RequestBody List<MenuDTO> menus) {
+        menuService.menu_number_update(menus);
     }
 
 

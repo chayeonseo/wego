@@ -8,6 +8,7 @@
 
         <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO" autoMapping="true">
             <id property="menuId" column="m_id" />
+            <result property="createdDate" column="" />
             <collection property="menuImgs" javaType="list" ofType="com.wego.dto.menu.MenuImgDTO" autoMapping="true">
                 <id property="menuImgId" column="mi_id" />
             </collection>
@@ -170,5 +171,10 @@
     <insert id="menu_join" parameterType="com.wego.dto.menu.MenuDTO">
         insert into menu(menuCategoryId, menuName, menuContent, menuPrice) values(#{menuCategoryId}, #{menuName}, #{menuContent}, #{menuPrice})
     </insert>
+
+    <update id="menu_number_update" parameterType="com.wego.dto.menu.MenuDTO" >
+        update menu set menuNumber = #{menuNumber} where menuId = #{menuId}
+    </update>
+
 
 </mapper>

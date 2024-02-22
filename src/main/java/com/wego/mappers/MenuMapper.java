@@ -36,6 +36,8 @@ public interface MenuMapper {
 
     void menu_join(MenuDTO menuDTO);
 
+    void menu_number_update(MenuDTO menu);
+
 
 
 }

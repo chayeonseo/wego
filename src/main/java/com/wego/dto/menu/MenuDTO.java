@@ -32,4 +32,5 @@ public class MenuDTO {
     private List<MenuOptionConnectDTO> menuOptionConnects;
     private List<MenuOptionCategoryDTO> menuOptionCategorys;
     private List<MenuOptionDTO> menuOptions;
+
 }

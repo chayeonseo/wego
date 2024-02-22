@@ -67,6 +67,11 @@ public class MenuService {
 
     }
 
+    public void menu_number_update(List<MenuDTO> menus) {
+        for (MenuDTO menu : menus) {
+            menuMapper.menu_number_update(menu);
+        }
+    }
 
 
 }
