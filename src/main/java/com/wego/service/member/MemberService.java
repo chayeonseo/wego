@@ -30,7 +30,5 @@ public class MemberService {
         return false;
     }
 
-//    public void category_no(StoreDTO storeDTO) {
-//        memberMapper.category_no(storeDTO);
-//    }
+
 }

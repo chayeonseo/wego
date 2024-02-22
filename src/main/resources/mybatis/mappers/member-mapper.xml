@@ -19,9 +19,4 @@
         SELECT mb_id FROM store where mb_id = #{id};
     </select>
 
-<!--    <insert id="category_no" parameterType="com.wego.dto.store.StoreDTO">-->
-<!--        INSERT INTO store (storeCategoryId)-->
-<!--        VALUES ( #{storeCategoryId})-->
-<!--    </insert>-->
-
 </mapper>

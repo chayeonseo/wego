@@ -10,5 +10,5 @@ public interface MemberMapper {
     void join_storeIntro(StoreDTO storeDTO);
     String select_id(String id); //중복 Id 검색
 
-//    void category_no(StoreDTO storeDTO); // 메뉴 카테고리 번호
+
 }

@@ -89,10 +89,6 @@ public class ViewController {
         return memberService.select_id(id);
     }
 
-    // 매장 카테고리
-//    @GetMapping("")
-//    public void category_no(StoreDTO storeDTO){
-//        memberService.category_no(storeDTO);
-//    }
+
 
 }
