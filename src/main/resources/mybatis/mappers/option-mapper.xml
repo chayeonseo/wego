@@ -58,13 +58,14 @@
         <id property="menuOptionCategoryId" column="moca_id" />
         <collection property="menuOptions" javaType="list" ofType="com.wego.dto.menu.MenuOptionDTO" autoMapping="true">
             <id property="optionId" column="mo_id" />
+            <result property="createdDate" column="" />
         </collection>
     </resultMap>
 
     <select id="one_category_info" resultMap="category_info_resultMap">
         SELECT *, moca.menuOptionCategoryId as moca_id, mo.optionId as mo_id
         FROM web_dev.menu_option_category moca
-        inner join menu_option mo
+        left outer join menu_option mo
         on moca.menuOptionCategoryId = mo.categoryId
         where menuOptionCategoryId = #{optionCategoryId};
     </select>

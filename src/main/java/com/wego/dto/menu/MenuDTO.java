@@ -31,4 +31,5 @@ public class MenuDTO {
     private List<MenuImgDTO> menuImgs;
     private List<MenuOptionConnectDTO> menuOptionConnects;
     private List<MenuOptionCategoryDTO> menuOptionCategorys;
+    private List<MenuOptionDTO> menuOptions;
 }

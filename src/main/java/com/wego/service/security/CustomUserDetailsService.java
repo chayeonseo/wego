@@ -28,7 +28,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("username이 존재하지 않음 [" + username + "]");
         }
 
-        System.out.println(storeDTO);
+        log.warn(storeDTO);
+
         return storeDTO;
     }
 }

@@ -41,8 +41,8 @@
             <div class="option-list" th:each="option : ${category.menuOptions}">
                 <hr>
                 <input type="hidden" id="optionId" th:value="${option.optionId}">
-                <div class="title" th:text="${option.menuOptionName}">닭다리살 소금구이 [1.5 인분]</div>
-                <div class="price" th:text="${option.menuOptionPrice} + '원'">0 원</div>
+                <div class="title" th:text="${option.menuOptionName}"></div>
+                <div class="price" th:text="${option.menuOptionPrice} + '원'"></div>
             </div>
         </div>
     </div>

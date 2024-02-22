@@ -33,11 +33,12 @@ let optionCreatingDiv; // [추가모달] 옵션 추가할 때 사용할 node
 
 ///////////////////////////////////////////////////////////////////////////
 
+let categoryId = categoryModifyModal.querySelector('#modify-categoryId'); // [카테고리 모달] 현재 모달에 띄워진 카테고리 id
+
 const categoryModifyCancel = categoryModifyModal.querySelector('.option-cancel-btn'); // [카테고리 모달] 모달창 닫기 버튼
 const categoryTitle = categoryModifyModal.querySelector('.option-header-title'); // [카테고리 모달] category name input node
 const optionContainer = categoryModifyModal.querySelector('.option-editing-body'); // [카테고리 모달] 옵션 리스트 container
 const categoryDeleteBtn = categoryModifyModal.querySelector('.delete-btn'); // [카테고리 모달] 카테고리 삭제 버튼
-let categoryId = categoryModifyModal.querySelector('#modify-categoryId'); // [카테고리 모달] 현재 모달에 띄워진 카테고리 id
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -176,7 +177,7 @@ optionJoinModalBtn.onclick = () => {
     optionJoinModal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 
-    fetch(`/option/category`)
+    fetch(`/option/categorys`)
         .then(resp => resp.json())
         .then(categorys => {
             joinOptionCategory.innerHTML = '';

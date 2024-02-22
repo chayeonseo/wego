@@ -1,16 +1,14 @@
 package com.wego;
 
-import com.wego.dto.menu.MenuDTO;
-import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.MenuMapper;
 import com.wego.mappers.OptionMapper;
+import com.wego.mappers.OrderMapper;
 import com.wego.mappers.StoreMapper;
-import com.wego.service.store.home.StoreService;
+import com.wego.service.store.home.HomeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
 class WegoApplicationTests {
@@ -19,7 +17,7 @@ class WegoApplicationTests {
     StoreMapper storeMapper;
 
     @Autowired
-    StoreService storeService;
+    HomeService homeService;
 
     @Autowired
     MenuMapper menuMapper;
@@ -29,6 +27,11 @@ class WegoApplicationTests {
 
     @Autowired
     OptionMapper optionMapper;
+
+    @Autowired
+    OrderMapper orderMapper;
+
+
 
 
 
@@ -55,7 +58,10 @@ class WegoApplicationTests {
 
 //        System.out.println(menuMapper.get_category(2));
 
-        System.out.println(optionMapper.one_category_info(23));
+//        System.out.println(optionMapper.one_category_info(23));
+//        System.out.println(optionMapper.one_category_info(37));
+
+//        System.out.println(orderMapper.store_all_order());
 
     }
 

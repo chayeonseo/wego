@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -45,7 +46,7 @@ public class OptionController {
 
     @GetMapping("/category/{categoryId}")
     public MenuOptionCategoryDTO one_option_info(@PathVariable int categoryId) {
-        System.out.println(categoryId);
+        System.out.println(optionService.one_option_category_info(categoryId));
         return optionService.one_option_category_info(categoryId);
     }
 

@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class StoreService {
+public class HomeService {
     
     ///////////////////////////////////////////// 의존성
     private final StoreMapper storeMapper;

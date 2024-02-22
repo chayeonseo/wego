@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wego.mappers.OrderMapper" >
+
+    <resultMap id="store_all_order_resultMap" type="com.wego.dto.order.OrderDTO" autoMapping="true">
+        <id property="orderId" column="o_id" />
+        <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO" autoMapping="true" >
+            <id property="menuId" column="m_id" />
+            <collection property="menuOptions" javaType="list" ofType="com.wego.dto.menu.MenuOptionDTO" autoMapping="true" >
+                <id property="optionId" column="mo_id" />
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="store_all_order" resultMap="store_all_order_resultMap">
+        SELECT *, o.orderId as o_id, m.menuId as m_id, mo.optionId as mo_id
+        FROM `order` o
+        inner join order_menu om
+        on o.orderId = om.orderId
+        inner join menu m
+        on om.menuId = m.menuId
+        inner join order_option_list ool
+        on om.orderMenuId = ool.orderMenuId
+        inner join menu_option mo
+        on ool.optionId = mo.optionId
+
+        where o.storeId = #{storeId};
+    </select>
+
+
+
+</mapper>
