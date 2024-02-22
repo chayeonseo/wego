@@ -1,27 +1,31 @@
+/*body {*/
+/*    overflow: hidden;*/
+/*    height: 100%;*/
+/*}*/
 .main-container {
     margin: 30px auto;
     width: 700px;
-    padding-left: 270px;
+    /*padding-left: 270px;*/
 }
-/*.main-content{*/
-/*    width: 700px;*/
-/*    height: 1000px;*/
-/*    !*border: 1px solid black;*!*/
-/*}*/
 .con {
     margin: 10px;
     border: 1px solid #545454;
     border-radius: 5px;
 }
 .btn-div{
-    margin: 10px;
+    margin: 5px;
+    height: 45px;
 }
 .btn-div > button{
     height: 30px;
     width: 100px;
-    background-color: #cecece;
+    background-color: white;
     border: 1px #333333 solid;
     cursor: pointer;
+}
+.btn-div > input{
+    height: 30px;
+    width: 300px;
 }
 .search-input{
     margin-left: 20px;
@@ -30,9 +34,6 @@
     font-size: 15px;
     border: 1px solid black;
     border-radius: 3px;
-}
-.btn-div > i{
-    position: absolute;
 }
 .con > div {
     padding: 10px;
@@ -47,16 +48,9 @@
     font-size: 20px;
     color: #333;
 }
-.con-title > button[type=button]{
-    background: none;
-    border: none;
-    color: deepskyblue;
-    cursor: pointer;
-}
 .con-drop{
     margin: 5px;
     float: left;
-    align-content: center;
 }
 .info{
     float: right;
@@ -93,7 +87,7 @@
 }
 
 /********************************************************************/
-/*모달창*/
+/*메뉴 수정 모달창*/
 .menu-editing-container {
     /*position: absolute;*/
     position: fixed;
@@ -144,6 +138,11 @@
 }
 .menu-editing-btn{
     float: right;
+    height: 25px;
+    width: 70px;
+    border: 1px solid #0059ff;
+    background: white;
+    color: #0059ff;
 }
 .menu-editing-body{
     height: 550px;
@@ -155,7 +154,6 @@
 .menu-editing{
     display: flex;
 }
-
 .menu-editing-img {
     width: 100px;
     height: 100px;
@@ -165,6 +163,9 @@
 .menu-editing-div{
     margin: 10px;
     width: 300px;
+}
+.menu-editing-div > input{
+    margin: 5px;
 }
 .menu-title {
     font-size: 18px;
@@ -201,6 +202,13 @@
 .menu-editing-con > button{
     float: right;
 }
+.menu-option-join-btn{
+    height: 25px;
+    width: 70px;
+    border: 1px solid #0059ff;
+    background: white;
+    color: #0059ff;
+}
 .menu-editing-opt-con > span{
     font-size: 18px;
     font-weight: bold;
@@ -236,11 +244,19 @@
     height: 30px;
     border-radius: 3px;
     font-size: 16px;
+    background-color: white;
+    border: 1px solid black;
 }
+.menu-sold-select{
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+}
+
 
 /*********************************/
 /*메뉴 추가 모달창 css*/
-.menu-editing-container {
+.menu-create-container {
     /*position: absolute;*/
     position: fixed;
     top: 0;
@@ -251,7 +267,7 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.menu-editing-content {
+.menu-creating-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -266,11 +282,11 @@
     transform: translateX(-50%) translateY(-50%);
 }
 
-.menu-editing-header {
+.menu-creating-header {
     margin: 10px 10px;
 }
 
-.menu-editing-body {
+.menu-creating-body {
     max-height: calc(100vh - 200px);
     overflow-x: hidden;
     overflow-y: auto;
@@ -288,27 +304,27 @@
 .menu-header-title {
     font-size: 20px;
 }
-.menu-editing-btn{
+.menu-creating-btn{
     float: right;
 }
-.menu-editing-body{
+.menu-creating-body{
     height: 550px;
 }
-.menu-editing-modify{
+.menu-creating-modify{
     height: 30px;
     margin: 5px;
 }
-.menu-editing{
+.menu-creating{
     display: flex;
 }
 
-.menu-editing-img {
+.menu-creating-img {
     width: 100px;
     height: 100px;
     border: 1px solid black;
     margin: 10px;
 }
-.menu-editing-div{
+.menu-creating-div{
     margin: 10px;
     width: 300px;
 }
@@ -317,6 +333,11 @@
 }
 .menu-con{
     font-size: 18px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 .menu-people{
     font-size: 15px;
@@ -333,34 +354,28 @@
 .menu-sold-btn{
     margin: 10px;
 }
-.menu-editing-con{
+.menu-creating-con{
     height: 80px;
 }
 .menu-editing-opt-con{
-    height: 100px;
+    height: 80px;
 }
-.menu-editing-con > span{
+.menu-creating-con > span{
     font-size: 18px;
     font-weight: bold;
     margin: 10px;
 }
-.menu-editing-con > button{
+.menu-creating-con > button{
     float: right;
 }
-.menu-editing-opt-con > span{
+.menu-creating-opt-con > span{
     font-size: 18px;
     font-weight: bold;
     margin: 10px;
 }
-.menu-editing-opt-con > button{
+.menu-creating-opt-con > button{
     float: right;
 }
-.editing-con{
-    width: 490px;
-    height: 25px;
-    margin-top: 15px;
-}
-
 .menu-opt{
     margin: 10px;
 }
@@ -373,18 +388,49 @@
 .hr{
     margin: 5px 0
 }
-.div-modify-btn{
+.div-add-btn{
     position: absolute;
     bottom: 10px;
 }
-.modify-btn{
+.add-btn{
     width: 500px;
     height: 30px;
     border-radius: 3px;
     font-size: 16px;
 }
-
+.join-option-container{
+    padding: 10px;
+}
+.join-option-list{
+    margin: 5px;
+    width: 470px;
+}
 .join-option {
     padding: 5px;
     border: 1px solid black;
+    border-radius: 3px;
+}
+.join-option > button{
+    float: right;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+.option-add-div{
+    width: 490px;
+    height: 30px;
+    margin: 5px;
+}
+.option-add-btn{
+    width: 490px;
+    height: 30px;
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid black;
+}
+.category-dropdown{
+    margin: 5px;
+    width: 230px;
+    height: 25px;
 }

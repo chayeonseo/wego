@@ -60,15 +60,34 @@ body{
         color: white;
         font-size: 16px;
     }
+    .join > input[type=submit]{
+    height: 50px;
+    background-color: #ff5624;
+    border: none;
+    cursor: pointer;
+    border-radius: 40px;
+    color: white;
+    font-size: 16px;
+    }
 
     .join > div{
         text-align: left;
     }
 
-
     .uncorrected {
         text-align: left;
         color: #fa7f7f;
+    }
+
+    .id-check{
+        width: 130px;
+        height: 35px;
+        float: left;
+    }
+
+    .check-message{
+        font-size: 14px;
+
     }
 
 

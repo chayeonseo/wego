@@ -270,7 +270,7 @@ categoryList.forEach(category => {
                         <div class="option-modify-price">${option['menuOptionPrice'] + '원'}</div>
                     </div>
                 </div>
-                <hr>`)
+                <hr class="hr">`)
                 }
             })
     }
