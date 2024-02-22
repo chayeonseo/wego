@@ -91,6 +91,22 @@
     list-style: none;
     border-bottom: 1px solid darkgray;
 }
+.menu-li .con-info{
+    display: flex;
+}
+.menu-li .con-drop{
+    align-self: center;
+    margin: 0 15px;
+}
+.drag-menu{
+    background-color: aliceblue;
+    border: 2px solid black;
+    box-shadow: 0 0 10px gray;
+}
+.handle{
+    cursor: pointer;
+}
+
 
 /********************************************************************/
 /*모달창*/

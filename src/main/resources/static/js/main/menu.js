@@ -1,6 +1,3 @@
-
-
-
 const csrfToken = document.querySelector('meta[name=_csrf]').content;
 
 const addCancel = document.getElementById('menu-add-cancel');
@@ -33,7 +30,22 @@ const categoryAddSelect = document.getElementById('category-add-dropdown');
 const joinOptionAddContainer = document.getElementById('join-option-add-container');
 
 
+/**************************** 메뉴 드래그 앤 드랍 *************************************/
+const menuContainers = document.getElementsByClassName('con'); // 모든 메뉴 컨테이너들 (하나의 메뉴 카테고리들)
+for(let i = 0; i < menuContainers.length; i++){
+    const menuContainer = menuContainers[i];
+    const menuUl = menuContainer.querySelector('ul');
+    new Sortable(menuUl, {
+        group: `menu-${i}`,
+        animation: 150,
+        ghostClass: 'drag-menu',
+        handle: '.handle', // handle's class
+    });
+}
 
+
+
+/******************************************************************************/
 [...productList].forEach(product => {
     product.onclick = () => {
         const menuId = product.querySelector('.menuId');

@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/main/menu.css}" href="../../static/css/main/menu.css">
     <script th:src="@{/js/main/menu.js}" src="../../static/js/main/menu.js" defer></script>
     <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script><!--버튼 이모티콘-->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script> <!-- sortable.js - 메뉴드래그드랍 -->
 </head>
 
 <body layout:fragment="main">
@@ -131,7 +132,7 @@
                 <li class="menu-li" th:each="menu : ${category.menus}">
                     <div class="con-info">
                         <div class="con-drop">
-                            <i class="fa-solid fa-bars fa-2x"></i>
+                            <i class="handle fa-solid fa-bars fa-2x"></i>
                         </div>
                         <div class="info">
                             <input class="menuId" type="hidden" th:value="${menu.menuId}">
