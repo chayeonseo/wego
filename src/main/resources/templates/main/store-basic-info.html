@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{public/sideHeader}">
+<head>
+    <meta charset="UTF-8">
+    <title>화면 템플릿</title>
+    <script src="https://kit.fontawesome.com/5588f562de.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/main/store-basic-info.css}" href="../../static/css/main/store-basic-info.css">
+    <script src="../../static/js/public/store-basic-info.js"></script>
+    <script src="store-basic-info.js"></script>
+    <link rel="stylesheet" href="store-basic-info.css">
+</head>
+
+<body layout:fragment="main">
+    <div class="main-container">
+        <section class="main-content">
+            <section id="store-main-info">
+                <div class="title">가게 정보</div>
+                <div id="store-name-container">
+                    <div class="sub-title">가게이름</div>
+                    <div id="store-name" th:text="${store_info.store}" class="text">진진</div>
+                    <div class="info">변경이 필요한 경우 고객센터로 문의해주세요</div>
+                </div>
+                <div id="store-num-container">
+                    <div class="sub-title">가게번호</div>
+                    <div id="store-num" class="text" th:text="${store_info.storeLocationCode}">13594414</div>
+                </div>
+                <div id="store-category-container">
+                    <div class="sub-title">가게 가테고리</div>
+                    <div id="store-category" class="text" th:text="${store_info.category}">고기·구이</div>
+                </div>
+                <div id="store-location-container">
+                    <div class="sub-title">실제 위치</div>
+                    <div id="store-location" class="text" >(41943)대구광역시 중구 봉산동 37-7(봉산동,지상1층)</div>
+                    <div class="info">위 정보의 변경이 필요한 경우 고객센터로 문의해주세요</div>
+                    <button id="location-change-btn">가게 노출 위치 변경</button>
+                </div>
+            </section>
+            <section id="store-status-info">
+                <div class="tab">
+                    <div class="title">가게 상태</div>
+                    <button class="change-info" id="store-status-change-btn"><i class="fa-solid fa-pen"></i> 변경</button>
+                </div>
+                <div id="store-status-container">
+                    <div id="store-status" class="text"  th:text="${store_info.status} == 1 ? '영업' : '휴무'">영업</div>
+                </div>
+
+            </section>
+            <section id="store-call-num-info">
+                <div class="tab">
+                    <div class="title">가게 전화번호</div>
+                    <button class="change-info" id="store-call-num-change-btn"><i class="fa-solid fa-pen"></i> 변경</button>
+                </div>
+                <div id="store-call-num-container">
+                    <div class="sub-title">대표 번호</div>
+                <div id="store-call-num" class="text">010-8774-2506</div>
+                </div>
+            </section>
+            <section id="store-content-board-info">
+                <div class="tab">
+                    <div class="title">가게 콘텐츠보드</div>
+                    <button class="change-info" id="store-content-board-change-btn"><i class="fa-solid fa-pen"></i> 변경</button>
+                </div>
+                <div id="store-content-container">
+                    <div id="store-content-board" class="text">가게의 이벤트를 소개합니다. 또는 등록되 내용 없음</div>
+                </div>
+            </section>
+            <section id="store-introduce-info">
+                <div class="tab">
+                    <div class="title">가게 소개</div>
+                    <button class="change-info" id="store-introduce-change-btn"><i class="fa-solid fa-pen"></i> 변경</button>
+                </div>
+                <div id="store-introduce-container">
+                    <div id="store-introduce" class="text">안녕하세요 진진입니다 긴 글 읽어주셔서 감사합니다.</div>
+                </div>
+            </section>
+        </section>
+        <div id="statusModalContainer" class="hidden">
+            <div class="modalContent">
+                변경할 내용을 입력해주세요<input type="text">
+                <button id="statusModalCloseButton">닫기</button>
+            </div>
+        </div>
+
+        <div id="numModalContainer" class="hidden">
+            <div class="modalContent">
+                <p>모달 창 입니다.</p>
+                <button id="numModalCloseButton">닫기</button>
+            </div>
+        </div>
+
+        <div id=textModalContainer" class="hidden">
+            <div class="modalContent">
+                <p>모달 창 입니다.</p>
+                <button id="textModalCloseButton">닫기</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

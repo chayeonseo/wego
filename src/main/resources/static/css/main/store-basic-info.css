@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-content{
+    margin: 0 auto;
+    width: 70%;
+}
+
+/*section{*/
+/*    margin-bottom: 15px;*/
+/*    width: 80%;*/
+/*}*/
+
+.text{
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.info{
+    padding-left: 10px;
+    color: #939292;
+}
+
+/*div{*/
+/*    margin-bottom: 5px;*/
+/*    margin-left: 5px;*/
+/*    font-size: 0.8rem;*/
+/*}*/
+
+.title{
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.sub-title{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#location-change-btn{
+    padding: 3px 3px;
+    margin-left: 13px;
+}
+
+#store-main-info{
+    background-color: #ceeadd;
+    padding: 5px 5px;
+}
+
+#store-content-board-info{
+    background-color: darksalmon;
+    padding: 5px 5px;
+}
+
+#store-call-num-info{
+    background-color: lightblue;
+    padding: 5px 5px;
+
+}
+
+#store-status-info{
+    background-color: bisque;
+    padding: 5px 5px;
+
+}
+
+#store-introduce-info{
+    background-color: lavender;
+    padding: 5px 5px;
+
+}
+
+.tab{
+    display: flex;
+    justify-content: space-between;
+}
+
+.change-info{
+    height: 30px;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+
+
+
+
+
+#modalContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+    position: absolute;
+    background-color: #ffffff;
+    width: 300px;
+    height: 150px;
+    padding: 15px;
+}
+
+#modalContainer.hidden {
+    display: none;
+}
+
+#modalContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#modalContainer.hidden {
+    display: none;
+}
+
+.modalContent {
+    position: absolute;
+    background-color: #ffffff;
+    width: 300px;
+    height: 150px;
+    padding: 15px;
+}
