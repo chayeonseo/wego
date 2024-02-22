@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{public/sideHeader}">
+<head>
+    <meta charset="UTF-8">
+    <title>주문내역</title>
+    <link rel="stylesheet" th:href="@{/css/main/orderResult.css.css}" href="../../static/css/main/orderResult.css">
+</head>
+
+<body layout:fragment="main">
+<div class="main-container">
+    <div class="order-payResult">
+        <div class="order-payResult-header">
+            <div class="order-search">
+                <label class="date">
+<!--                    <span>날짜 직접 선택</span>-->
+                    <input class="date-input" type="date"> - <input class="date-input" type="date">
+                    <input type="button" value="조회">
+                </label>
+            </div>
+
+            <div class="order-list-result">
+                <span class="count-order">
+                    <span class="">주문수 </span>
+                    <span id="order-count">10</span>
+                    <span>건</span>
+                </span>
+                <span class="price-order">
+                    <span>결제금액</span>
+                    <span id="order-price">311800</span>
+                    <span>원</span>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="order-payResult-body">
+            <div class="list-dropdown">
+                <button id="list-dropdown" type="button">모두 펼쳐보기</button>
+            </div>
+            <div class="order-list">
+                <section class="order-list-section">
+                    <ul class="order-list-header">
+                        <li>버튼</li>
+                        <li>주문번호</li>
+                        <li>주문시각</li>
+                        <li>광고상품</li>
+                        <li>캠페인ID</li>
+                        <li>주문내역</li>
+                        <li>결제타입</li>
+                        <li>수령방법</li>
+                        <li>결제금액</li>
+                    </ul>
+                </section>
+                <section class="order-list-section">
+                    <ul class="order-list-container">
+                        <li>0</li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                    </ul>
+                        <div class="order-list-menu">
+                            <div class="title">
+                                <span>주문정보</span>
+                            </div>
+                            <div class="price">
+                                <div class="total" id="total">
+                                    <div class="menu-name">닭목살 소금구이 1개 <span class="menu-price">25,800원</span> </div>
+                                    <div class="menu-option">
+                                        <span></span><div>2인분(24,800원)</div>
+                                        <div>쌈채소(알배추)추가(1,000원)</div>
+                                        <div>쌈채소(알배추)0원</div>
+                                    </div>
+                                </div>
+                                <hr class="hr">
+                                <div class="total-price" id="total-price">
+                                    <div class="all-total">총결제금액 <span class="all-total-price">25,800원</span></div>
+                                </div>
+                                <div class="menu-cupon">
+                                    <div class="cupon-name">사용한 쿠폰 <span class="">2,000원</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="order-list-price">
+                        <div class="title">
+                            <span>정산정보</span>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

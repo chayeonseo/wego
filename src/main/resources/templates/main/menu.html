@@ -119,7 +119,6 @@
             <button type="button">메뉴 추가</button>
             <input type="text" class="search-input" placeholder="검색창">
         </div>
-        <br>
         <div class="con" th:each="category:${categorys}">
             <div class="con-title">
                 <span th:text="${category.menuCategoryName}">메뉴</span>
