@@ -26,7 +26,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class MenuService {
 
-    private final String UP_LOAD_PATH = "C:\\uploadTest";
+    private final String UP_LOAD_PATH = "/Users/leejaeho/Documents/upload";
     private final int WIDTH = 150;
     private final int HEIGHT = 150;
 

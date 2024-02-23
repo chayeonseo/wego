@@ -20,6 +20,12 @@ public class ViewController {
     private final OptionService optionService;
     private final OrderService orderService;
 
+    @GetMapping("/test")
+    public String test() {
+        return "index";
+    }
+
+
     @GetMapping("/menu")
     public String menu_view(@AuthenticationPrincipal StoreDTO storeDTO, Model model) {
         model.addAttribute("categorys", menuService.get_all_menu(storeDTO));
