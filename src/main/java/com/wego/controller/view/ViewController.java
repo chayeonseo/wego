@@ -39,6 +39,7 @@ public class ViewController {
         return "main/menu";
     }
 
+
     @GetMapping("/option")
     public String option_view(@AuthenticationPrincipal StoreDTO storeDTO, Model model) {
         model.addAttribute("categorys", optionService.get_store_option_info(storeDTO));
