@@ -8,9 +8,12 @@
 
         <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO" autoMapping="true">
             <id property="menuId" column="m_id" />
+            <result property="menuCategoryId" column="" />
             <result property="createdDate" column="" />
             <collection property="menuImgs" javaType="list" ofType="com.wego.dto.menu.MenuImgDTO" autoMapping="true">
                 <id property="menuImgId" column="mi_id" />
+                <result property="storeId" column="" />
+                <result property="createdDate" column="" />
             </collection>
         </collection>
     </resultMap>
@@ -176,5 +179,30 @@
         update menu set menuNumber = #{menuNumber} where menuId = #{menuId}
     </update>
 
+
+    <insert id="menu_category_join" >
+        insert into menu_category(storeId, menuCategoryName, created_date)
+        values(#{storeId}, #{menuCategoryName}, now());
+    </insert>
+
+    <resultMap id="on_category_resultMap" type="com.wego.dto.menu.MenuCategoryDTO" autoMapping="true" >
+        <id property="menuCategoryId" column="mc_id" />
+        <collection property="menus" javaType="list" ofType="com.wego.dto.menu.MenuDTO" autoMapping="true" >
+            <id property="menuId" column="m_id" />
+            <collection property="menuImgs" javaType="list" ofType="com.wego.dto.menu.MenuImgDTO" autoMapping="true" >
+                <id property="menuImgId" column="mi_id" />
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="one_category_info" resultMap="on_category_resultMap" >
+        SELECT *, mc.menuCategoryId as mc_id, m.menuId as m_id, mi.menuImgId as mi_id
+        FROM menu_category mc
+        inner join menu m
+        on mc.menuCategoryId = m.menuCategoryId
+        left outer join menu_img mi
+        on m.menuId = mi.menuId
+        where mc.menuCategoryId = #{categoryId};
+    </select>
 
 </mapper>

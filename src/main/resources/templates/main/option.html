@@ -30,7 +30,7 @@
     <div class="con" th:each="category : ${categorys}">
         <div class="con-title">
             <input type="hidden" th:value="${category.menuOptionCategoryId}" id="categoryId">
-            <div th:text="${category.menuOptionCategoryName}">옵션2 <div class="con-subtitle">최대 1개 최소 1개</div> </div>
+            <div th:text="${category.menuOptionCategoryName}">옵션2</div>
             <button type="button" class="category-modify-btn"><i class="fa-solid fa-pencil"></i>변경</button>
         </div>
 <!--        <div class="con-used">-->
@@ -103,14 +103,14 @@
 <!--            <div class="option-category-add">-->
 <!--                <button class="add-btn">옵션 추가</button>-->
 <!--            </div>-->
-            <div class="option-header-container">
-                <button class="option-header-btn">수정</button>
-                <input class="option-header-title" value="옵션2" disabled>
-            </div>
-            <hr>
-            <div class="option-editing-body">
+<!--            <div class="option-header-container">-->
+<!--                <button class="option-header-btn">수정</button>-->
+                <input class="option-header-title" value="옵션2">
+<!--            </div>-->
+<!--            <hr>-->
+<!--            <div class="option-editing-body">-->
 
-            </div>
+<!--            </div>-->
             <div class="modify-btn-div">
                 <button type="button" class="apply-btn">변경사항 저장</button>
                 <button type="button" class="delete-btn">옵션 그룹 삭제</button>

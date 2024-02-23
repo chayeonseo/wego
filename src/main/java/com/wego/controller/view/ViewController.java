@@ -1,7 +1,7 @@
 package com.wego.controller.view;
 
 import com.wego.dto.store.StoreDTO;
-import com.wego.service.order.OrderService;
+import com.wego.service.store.order.OrderService;
 import com.wego.service.store.menu.MenuService;
 import com.wego.service.store.menu.OptionService;
 import jakarta.servlet.http.HttpSession;
@@ -23,6 +23,7 @@ public class ViewController {
     @GetMapping("/menu")
     public String menu_view(@AuthenticationPrincipal StoreDTO storeDTO, Model model) {
         model.addAttribute("categorys", menuService.get_all_menu(storeDTO));
+        System.out.println(menuService.get_all_menu(storeDTO));
 //        System.out.println(menuService.get_all_menu(storeDTO));
         return "main/menu";
     }

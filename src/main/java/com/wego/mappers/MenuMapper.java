@@ -38,6 +38,8 @@ public interface MenuMapper {
 
     void menu_number_update(MenuDTO menu);
 
+    void menu_category_join(@Param("menuCategoryName") String menuCategoryName, @Param("storeId") int storeId);
 
+    MenuCategoryDTO one_category_info(int categoryId);
 
 }

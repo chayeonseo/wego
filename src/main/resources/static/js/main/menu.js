@@ -4,9 +4,12 @@ const addCancel = document.getElementById('menu-add-cancel');
 const menuAddModal = document.getElementById('menu-add-modal');
 const [menuAddBtn, menuCategoryAddBtn] = document.querySelectorAll('.btn-div button');
 const menuAddOpt = document.getElementById('menuAddOpt');
+const menuCategoryModal = document.querySelector('.menu-category-container');
+const menuCategoryModalCancel = menuCategoryModal.querySelector('.cancel-btn');
 
 
 const productList = document.querySelectorAll('.menu-li');
+const menuCategoryList = document.querySelectorAll('.con');
 const editingModal= document.querySelector('#menu-modify-modal')
 const modifyCancel = document.querySelector('#menu-modify-cancel');
 const [editingTitleBtn, editingContentBtn] = document.querySelectorAll('.menu-editing-btn');
@@ -20,6 +23,7 @@ const addBtn = document.querySelector('.option-add-btn');
 const menuName = document.querySelector('.menu-title');
 const menuModifyPrice = document.querySelector('#menu-modify-modal .menu-con');
 const menuAddPrice = document.querySelector('#menu-add-modal .menu-con');
+
 
 
 const menuContent = document.querySelector('.editing-con');
@@ -55,7 +59,9 @@ for(let i = 0; i < menuContainers.length; i++){
             menuName.value = categorys[0]['menus'][1]['menuName'];
             menuModifyPrice.value = categorys[0]['menus'][1]['menuPrice'];
             menuContent.value = categorys[0]['menus'][1]['menuContent'];
-            menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
+            if (categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm'] != null) {
+                menuImg.setAttribute('src', 'http://' + categorys[0]['menus'][1]['menuImgs'][0]['menuImgThm']);
+            }
             for (category of categorys) {
                 modifySelectCategory.insertAdjacentHTML('beforeend', `<option value="${category['menuCategoryId']}">${category['menuCategoryName']}</option>`)
             }
@@ -354,6 +360,29 @@ menuCategoryAddBtn.onclick = () => {
             })
     }
 }
+
+
+// 메뉴 카테고리 수정 닫기
+menuCategoryModalCancel.onclick = () => {
+    menuCategoryModal.style.display = 'none';
+}
+
+// 메뉴 카테고리 수정
+menuCategoryList.forEach(category => {
+    const modifyBtn = category.querySelector('.category-modify-btn');
+    const categoryId = category.querySelector('.menu-categoryId');
+    modifyBtn.onclick = () => {
+        console.log(categoryId)
+        menuCategoryModal.style.display = 'block';
+        fetch(`menu/category/${categoryId.value}`)
+            .then(resp => {
+                console.log(resp.ok)
+                return resp.json();
+            }).then(category => {
+            console.log(category)
+        })
+    }
+})
 
 
 

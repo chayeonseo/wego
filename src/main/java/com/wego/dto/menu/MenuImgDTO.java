@@ -1,6 +1,7 @@
 package com.wego.dto.menu;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -9,6 +10,7 @@ import lombok.*;
 @ToString
 @Builder
 public class MenuImgDTO {
+    private MultipartFile file;
     private int menuImgId;
     private int storeId;
     private int menuId;

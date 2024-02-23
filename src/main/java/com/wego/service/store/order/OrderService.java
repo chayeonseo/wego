@@ -1,4 +1,4 @@
-package com.wego.service.order;
+package com.wego.service.store.order;
 
 import com.wego.dto.order.OrderDTO;
 import com.wego.dto.store.StoreDTO;
@@ -17,4 +17,6 @@ public class OrderService {
     public List<OrderDTO> store_all_order(StoreDTO storeDTO){
         return orderMapper.store_all_order(storeDTO);
     }
+
+
 }

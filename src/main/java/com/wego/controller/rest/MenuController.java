@@ -4,16 +4,20 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wego.dto.menu.MenuCategoryDTO;
 import com.wego.dto.menu.MenuDTO;
+import com.wego.dto.menu.MenuImgDTO;
 import com.wego.dto.store.StoreDTO;
 import com.wego.service.store.menu.MenuService;
 import lombok.RequiredArgsConstructor;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/menu")
 public class MenuController {
+
     private final MenuService menuService;
 
     // 하나의 모든 정보 조회
@@ -49,11 +54,16 @@ public class MenuController {
         return menuService.get_category(storeDTO.getStoreId());
     }
 
-    // TODO 메뉴 카테고리 생성 아직 진행중
+    @GetMapping("/category/{categoryId}")
+    public MenuCategoryDTO get_category_info(@AuthenticationPrincipal StoreDTO storeDTO, @PathVariable int categoryId) {
+        return menuService.one_category_info(categoryId);
+    }
+
     @GetMapping("/categoryJoin/{categoryName}")
     public void menu_category_join(@PathVariable String categoryName, @AuthenticationPrincipal StoreDTO storeDTO) {
         System.out.println(categoryName);
-//        optionService.join_option_category(categoryName, storeDTO.getStoreId());
+        menuService.menu_category_join(categoryName, storeDTO.getStoreId());
+
     }
 
 
@@ -71,8 +81,8 @@ public class MenuController {
 
     // 메뉴 insert
     @PostMapping("/join")
-    public void join_menu(@RequestBody MenuDTO menuDTO) {
-        menuService.menu_join(menuDTO);
+    public void join_menu(@RequestBody MenuDTO menuDTO, MultipartFile multipartFile) throws IOException {
+        menuService.menu_join(menuDTO, multipartFile);
     }
 
     @PatchMapping("/number")

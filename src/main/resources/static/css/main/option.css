@@ -189,7 +189,7 @@
     top: 50%;
     left: 50%;
     width: 500px;
-    height: 700px;
+    height: 150px;
     padding: 20px;
 
     background-color: white;
@@ -206,7 +206,8 @@
 }
 .option-header-title{
     font-size: 30px;
-    font-weight: bold;
+    /*font-weight: bold;*/
+    /*margin: 20px auto;*/
 }
 .option-header-opt{
     font-size: 16px;

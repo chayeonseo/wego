@@ -1,3 +1,7 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
 .main-container {
     margin: 30px auto;
     width: 700px;
@@ -403,4 +407,72 @@
 .join-option {
     padding: 5px;
     border: 1px solid black;
+}
+
+
+/*메뉴 카테고리 수정 모달창*/
+.menu-category-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.category-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 700px;
+    padding: 20px;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+    transform: translateX(-50%) translateY(-50%);
+}
+.header-container {
+    margin: 15px 0;
+}
+.category-header{
+    height: 30px;
+}
+.header-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+.header-opt{
+    font-size: 16px;
+    margin: 5px 5px 5px 31px;
+}
+.header-btn{
+    float: right;
+}
+.category-add{
+    width: 490px;
+    height: 25px;
+    margin: 10px;
+}
+.add-btn{
+    float: right;
+}
+.modify-btn-div{
+    display: flex;
+    margin: 10px;
+}
+.modify-btn{
+    width: 480px;
+    height: 40px;
+}
+.modify-title{
+    font-size: 20px;
+    width: 300px;
+    font-weight: bold;
+}
+.modify-price{
+    font-size: 18px;
+    width: 300px;
 }
