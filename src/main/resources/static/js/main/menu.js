@@ -24,25 +24,66 @@ const menuAddPrice = document.querySelector('#menu-add-modal .menu-con');
 
 const menuContent = document.querySelector('.editing-con');
 const menuImg = document.querySelector('.menu-editing-img');
-// const joinOptionList = document.querySelectorAll('.join-option-list');
 const selectMenuStatus = document.querySelector('.menu-sold-select');
 const categoryAddSelect = document.getElementById('category-add-dropdown');
 const joinOptionAddContainer = document.getElementById('join-option-add-container');
 
-
 /**************************** 메뉴 드래그 앤 드랍 *************************************/
-const menuContainers = document.getElementsByClassName('con'); // 모든 메뉴 컨테이너들 (하나의 메뉴 카테고리들)
+const menuContainerSection = document.getElementById('menu-container-section');
+const menuContainers = menuContainerSection.getElementsByClassName('con'); // 모든 메뉴 컨테이너들 (하나의 메뉴 카테고리들)
+
 for(let i = 0; i < menuContainers.length; i++){
     const menuContainer = menuContainers[i];
+    const menuContainerCaretBtn = menuContainer.querySelector('.con-caret-btn');
+    const menuContainerCaretBtnIcon = menuContainerCaretBtn.querySelector('i');
     const menuUl = menuContainer.querySelector('ul');
+
+    // 캐럿 버튼 클릭 시 메뉴 표시/비표시
+    menuContainerCaretBtn.onclick = (event) => {
+        event.stopPropagation();
+        if(menuContainer.hasAttribute('active')){
+            menuContainer.toggleAttribute('active', false); // 비표시
+            menuContainerCaretBtnIcon.className = 'fa-solid fa-caret-up'
+        }else{
+            menuContainer.toggleAttribute('active', true); //표시
+            menuContainerCaretBtnIcon.className = 'fa-solid fa-caret-down'
+        }
+    }
+
+    new Sortable(menuContainerSection, {
+        group: `menuCon-${i}`,
+        animation: 150,
+        ghostClass: 'drag-menu',
+        handle: '.con-title'
+    });
     new Sortable(menuUl, {
         group: `menu-${i}`,
         animation: 150,
         ghostClass: 'drag-menu',
         handle: '.handle', // handle's class
     });
-}
 
+    /////* 위 아래 스크롤 이동 구현
+    menuContainer.addEventListener('dragstart', function(event){
+        menuContainer.addEventListener('drag', mouse_move_event);
+    });
+
+    menuContainer.addEventListener('dragend',function(event){
+        document.removeEventListener('drag', mouse_move_event);
+    });
+
+    function mouse_move_event(event){
+        if(event.clientY <= 100){
+            console.log('move top')
+            window.scrollTo({left: event.currentTarget.clientX, top: 0, behavior: 'smooth'});
+        }
+        else if(event.clientY >= window.innerHeight - 100){
+            console.log('move bottom')
+            window.scrollTo({left: event.currentTarget.clientX, top: event.pageY, behavior: 'smooth'});
+        }
+    }
+    ///// *
+}
 
 
 /******************************************************************************/

@@ -121,33 +121,36 @@
             <input type="text" class="search-input" placeholder="검색창">
         </div>
         <br>
-        <div class="con" th:each="category:${categorys}">
-            <div class="con-title">
-                <span th:text="${category.menuCategoryName}">메뉴</span>
-                <!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
+        <section id="menu-container-section">
+            <div class="con" th:each="category:${categorys}" active>
+                <div class="con-title">
+                    <button class="con-caret-btn"><i class="fa-solid fa-caret-down"></i></button>
+                    <span th:text="${category.menuCategoryName}">메뉴</span>
+                    <!--                    <button type="button"><i class="fa-solid fa-pencil"></i>변경</button>-->
+                </div>
+                <hr>
+                <ul class="menu-ul">
+                    <!--        드랍앤 드래그 js 예정        -->
+                    <li class="menu-li" th:each="menu : ${category.menus}">
+                        <div class="con-info">
+                            <div class="con-drop">
+                                <i class="handle fa-solid fa-bars fa-2x"></i>
+                            </div>
+                            <div class="info">
+                                <input class="menuId" type="hidden" th:value="${menu.menuId}">
+                                <div class="menu-name" th:text="${menu.menuName}">닭꼬치</div>
+                                <div class="menu-content" th:text="${menu.menuContent}">비싸지만 맛있음</div>
+                                <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + '원'">1000원</div>
+                            </div>
+                        </div>
+                        <th:block th:if="${menu.menuImgs[0].menuImgThm != null}">
+                            <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
+                        </th:block>
+                        <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
+                    </li>
+                </ul>
             </div>
-            <hr>
-            <ul class="menu-ul">
-                <!--        드랍앤 드래그 js 예정        -->
-                <li class="menu-li" th:each="menu : ${category.menus}">
-                    <div class="con-info">
-                        <div class="con-drop">
-                            <i class="handle fa-solid fa-bars fa-2x"></i>
-                        </div>
-                        <div class="info">
-                            <input class="menuId" type="hidden" th:value="${menu.menuId}">
-                            <div class="menu-name" th:text="${menu.menuName}">닭꼬치</div>
-                            <div class="menu-content" th:text="${menu.menuContent}">비싸지만 맛있음</div>
-                            <div class="menu-price" th:text="${#numbers.formatInteger(menu.menuPrice, 0, 'COMMA')} + '원'">1000원</div>
-                        </div>
-                    </div>
-                    <th:block th:if="${menu.menuImgs[0].menuImgThm != null}">
-                        <img class="menu-img" th:src="'http://' + ${menu.menuImgs[0].menuImgThm}" alt="상품 사진">
-                    </th:block>
-                    <!--                        <div th:text="${menu.menuImgs[0].menuImgThm}"></div>-->
-                </li>
-            </ul>
-        </div>
+        </section>
     </div>
 </body>
 </html>

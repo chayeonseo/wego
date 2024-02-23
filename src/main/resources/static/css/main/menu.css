@@ -39,14 +39,25 @@
 }
 .con-title{
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     margin: 10px;
 }
+.con-caret-btn{
+    margin-right: 10px;
+}
+.con-caret-btn{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
 .con-title > span{
     font-weight: bold;
     font-size: 20px;
     color: #333;
 }
+
 .con-title > button[type=button]{
     background: none;
     border: none;
@@ -85,8 +96,11 @@
     padding: 0;
 }
 
-.menu-li {
+.con[active] .menu-li{
     display: flex;
+}
+.menu-li {
+    display: none;
     justify-content: space-between;
     list-style: none;
     border-bottom: 1px solid darkgray;
