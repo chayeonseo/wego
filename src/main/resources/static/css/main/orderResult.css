@@ -73,12 +73,11 @@
     height: 25px;
     margin: 0 5px;
 }
-
 .order-list-menu{
     margin: 15px;
     border: 1px solid black;
     background-color: whitesmoke;
-    height: 450px;
+    /*height: 450px;*/
 }
 .title{
     float: left;
@@ -129,8 +128,5 @@
     margin: 10px;
     border: 1px solid black;
     padding: 10px;
-
-}
-.cupon-name{
 
 }
