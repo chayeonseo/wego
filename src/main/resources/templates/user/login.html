@@ -5,34 +5,53 @@
     <title>Login</title>
     <meta name="viewport" content="initial-scale=2.3, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no" /> <!--반응형-->
     <script src="https://kit.fontawesome.com/497c77bb05.js" crossorigin="anonymous"></script> <!--임시 로고-->
-    <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    <link rel="stylesheet" th:href="@{/css/user/login.css}" href="../../static/css/user/login.css">
 </head>
 <body>
-    <div class="login-content">
+    <main>
         <div class="logo">
-            <div>
-                <i class="fa-solid fa-circle-user fa-3x"></i> <!--임시 로고-->
-            </div>
+            <img src="../../static/images/logo/main-logo.png" th:src="@{/images/logo/main-logo.png}" alt="main-logo">
         </div>
         <form class="login-form" action="/user/login" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-            <div class="login">
-                <input class="login-input" type="text" th:name="username" name="username" placeholder="아이디를 입력해주세요">
-                <input class="login-input" type="password" th:name="password" name="password" placeholder="비밀번호를 입력해주세요">
+            <section class="login">
+                <label>
+                    <input class="login-input" type="text" th:name="username" name="username" placeholder="아이디를 입력해주세요">
+                </label>
+                <label>
+                    <input class="login-input" type="password" th:name="password" name="password" placeholder="비밀번호를 입력해주세요">
+                    <i class="fa-regular fa-eye-slash"></i>
+                </label>
                 <div class="find">
-                    <a href="#"><i class="fa-solid fa-angle-left"></i><span>ID/PASS 찾기</span></a>
-                    <a href="#"><span>회원가입</span><i class="fa-solid fa-angle-right"></i></a>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-left"></i>
+                        <span>ID/PASS 찾기</span>
+                    </a>
+                    <a href="#">
+                        <span>회원가입</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
                 </div>
                 <!--    아이디와 비번이 일치하지 않을때 뜨는 div : uncorrected  -->
-                <div class="uncorrected">
-                    <span><i class="fa-solid fa-circle-exclamation" style="color: #fa7f7f;"></i>아이디와 비밀번호가 틀렸습니다.</span>
+                <div class="uncorrected" active>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>아이디 또는 비밀번호가 틀렸습니다.</span>
                 </div>
                 <input class="sub-btn" type="submit" value="로그인">
-            </div>
+            </section>
         </form>
-        <div class="bottom">
+
+        <section class="sns-login-section">
+            <h3>SNS로 간편하게 시작하기</h3>
+            <div>
+                <a href="#"><img src="../../static/images/logo/login-button/naver/btnG_아이콘원형.png" th:src="@{/images/logo/login-button/naver/btnG_아이콘원형.png}" alt="naver-login"/></a>
+                <a href="#"><img src="../../static/images/logo/login-button/google/Web/svg/light/web_light_rd_na.svg" th:src="@{/images/logo/login-button/google/Web/svg/light/web_light_rd_na.svg}" alt="google-login"/></a>
+            </div>
+        </section>
+
+        <section class="service-info-section">
             <span>로그인 시 <a href="#">서비스 이용약관</a>과 <a href="#">개인정보 처리방침</a>에 동의하게 됩니다.</span>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>

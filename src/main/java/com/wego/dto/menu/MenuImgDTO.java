@@ -1,6 +1,7 @@
 package com.wego.dto.menu;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter

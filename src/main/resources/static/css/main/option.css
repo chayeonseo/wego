@@ -1,3 +1,5 @@
+@import "../public/public.css";
+
 .main-container {
     margin: 30px auto;
     width: 700px;
@@ -27,64 +29,80 @@
     width: 160px;
     height: 40px;
 }
+
+/********************************************/
 .con {
     margin: 10px;
-    border: 1px solid #545454;
-    border-radius: 5px;
+    border: 2px solid black;
+    border-radius: 0.35rem;
 }
 
-.con > div {
-    padding: 10px;
-}
 .con-title{
     display: flex;
-    justify-content: space-between;
-    margin: 10px;
+    font-size: var(--x-large-font);
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
 }
-.con-title > div{
+
+.con-title > button{
+    width: 50px;
+    cursor: pointer;
+}
+.option-category-name{
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    padding: 2px 5px;
+    font-size: var(--x-large-font);
     font-weight: bold;
-    font-size: 20px;
-    color: #333;
 }
-.con-subtitle{
-    font-size: 14px;
-    font-weight: normal;
-    float: right;
-    margin: 5px;
+input.option-category-name{
+    text-align: left;
+    width: 200px;
+}
+.option-category-name:disabled{
+    color: black;
+    border: 1px solid white
+}
+.option-category-name{
+    border: 1px solid black;
+}
+.option-category-name:not:disabled:focus{
+    outline: 1px solid black;
+}
+.option-category-name-modify-btn{
+    cursor: pointer;
+    color: var(--modify-color);
+}
+.option-category-name-modify-btn:hover{
+    opacity: 0.8;
 }
 .con-title > button[type=button]{
     background: none;
     border: none;
-    color: deepskyblue;
     cursor: pointer;
 }
-.con-info{
-    margin: 10px;
+/******************************************/
+.option-list {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px solid var(--main-gray-color);
 }
-.title{
-    font-weight: bold;
-    margin-bottom: 10px;
+.option-list:last-child{
+    border-bottom: none;
 }
-.price{
-    margin-top: 5px;
+
+.option-list .con-drop{
+    margin-right: 15px;
 }
-.con-used{
-    margin: 10px;
-    border: 1px solid #eaeaea;
-    background-color: #eaeaea;
-    border-radius: 5px;
+.con-info .option-title{
+    margin: 10px 0 5px 0;
 }
-.used-count{
-    color: #333333;
-    margin: 5px;
-    font-weight: bold;
-    font-size: 16px;
+.con-info .option-price{
+    margin: 0 0 10px 0;
 }
-.used-name{
-    color: #565656;
-    margin: 5px;
-    font-size: 14px;
-}
+
 
 /*************************************/
 /*옵션 개별 변경 모달창*/

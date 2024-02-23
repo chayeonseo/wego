@@ -1,180 +1,122 @@
+@import "../public/public.css";
 
-body{
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+main{
+    position: relative;
+    margin: 6rem auto;
+    width: 500px;
+    height: 700px;
+    border: 1px solid var(--main-light-gray-color);
+    border-radius: 0.5rem;
+}
+
+.logo {
     text-align: center;
-    font-size: 14px;
+    margin: 20px 0;
 }
 
-@media screen and (min-width: 880px ) {
-    .login-content {
-        box-sizing: border-box;
-        align-content: center;
-        text-align: center;
-        width: 450px;
-        height: 550px;
-        border: 1px solid #eceef6;
-        margin-top: 100px;
-    }
-
-    .logo {
-        display: flex;
-        justify-content: center;
-        height: 70px;
-        margin-top: 10px;
-    }
-
-    .logo > div {
-        margin: 10px;
-    }
-
-    .logo > div > i {
-        width: 50px;
-        height: 50px;
-    }
-
-    .login-form {
-        height: 350px;
-        display: flex;
-        justify-content: center;
-        margin: 10px;
-    }
-
-    .login {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .login-input {
-        width: 350px;
-        height: 40px;
-        color: #222222;
-        border: none;
-        border-bottom: solid #939292 1px;
-    }
-
-    .sub-btn{
-        height: 50px;
-        background-color: #ff5624;
-        border: none;
-        cursor: pointer;
-        border-radius: 40px;
-        color: white;
-        font-size: 16px;
-    }
-
-    .find {
-        text-align: center;
-        margin: 5px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .find > a {
-        text-decoration: none;
-        color: #333333;
-    }
-
-    .uncorrected {
-        text-align: left;
-        color: #fa7f7f;
-    }
-
-    .bottom {
-        font-size: 12px;
-        margin-top: 40px;
-    }
-
-    .bottom > span > a {
-        color: black;
-    }
+.logo > img {
+    width: 100px;
 }
-/********************************************************************/
-/*  반응형 css  */
-@media screen and (max-width: 879px) {
-    .login-content{
-        box-sizing: border-box;
-        align-content: center;
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        margin-top: 100px;
-    }
-    .logo {
-        display: flex;
-        justify-content: center;
-        height: 70px;
-        margin-top: 10px;
-    }
+/******************************************************/
+.login-form{
+    padding: 0 30px;
+}
 
-    .logo > div {
-        margin: 20px;
-    }
+.login {
+    display: flex;
+    flex-direction: column;
+}
 
-    .logo > div > i {
-        width: 50px;
-        height: 50px;
-    }
-    .login-form {
-        height: 350px;
-        display: flex;
-        justify-content: center;
-        margin: 10px;
-    }
+.login > label{
+    display: flex;
+    margin: 8px 0;
+    align-items: center;
+    border: none;
+    border-bottom: solid var(--main-gray-color) 1px;
+}
 
-    .login {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
+.login-input {
+    flex: 1;
+    padding: 8px 5px;
+    color: #222222;
+    font-size: var(--large-font);
+    border: none;
+}
 
-    .login > input[type=text] {
-        width: 370px;
-        height: 40px;
-        color: #222222;
-        border: none;
-        border-bottom: solid #aaaaaa 1px;
-    }
+.login-input:focus{
+    outline: none;
+}
 
-    .login > input[type=button] {
-        height: 50px;
-        background-color: #ff5624;
-        border: none;
-        cursor: pointer;
-        border-radius: 40px;
-        color: white;
-        font-size: 16px;
-    }
+.login > label > i{
+    width: 20px;
+    margin: 0 10px;
+    font-size: var(--large-font);
+    cursor: pointer;
+}
 
-    .find {
-        text-align: center;
-        margin: 5px;
-        display: flex;
-        justify-content: space-between;
-    }
+.login > label > i:hover{
+    opacity: 0.8;
+}
 
-    .find > a {
-        text-decoration: none;
-        color: #333333;
-    }
+.find {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .uncorrected {
-        text-align: left;
-        color: #fa7f7f;
-    }
+.find > a {
+    text-decoration: none;
+}
+.find > a:hover{
+    opacity: 0.8;
+}
 
-    .bottom {
-        font-size: 12px;
-        margin-top: 60px;
-    }
+.uncorrected {
+    margin-bottom: 20px;
+    color: var(--main-light-color);
+}
 
-    .bottom > span > a {
-        color: black;
-    }
+.sub-btn{
+    padding: 15px 0;
+    border: none;
+    border-radius: 2.25rem;
+    color: white;
+    background-color: var(--main-color);
+    font-size: var(--large-font);
+    cursor: pointer;
+}
+
+.sub-btn:hover{
+    opacity: 0.8;
+}
+/******************************************************/
+.sns-login-section{
+    margin: 20px 0;
+    text-align: center;
+}
+.sns-login-section > h3{
+    padding: 10px 0;
+    color: var(--main-gray-color);
+    font-weight: normal;
+}
+.sns-login-section a{
+    margin: 5px 5px;
+    cursor: pointer;
+}
+.sns-login-section img{
+    width: 50px;
+}
+
+/******************************************************/
+.service-info-section {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.service-info-section a{
+    text-decoration: underline;
 }

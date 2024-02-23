@@ -24,8 +24,8 @@ public class SecurityConfig{
         // request
         security.authorizeHttpRequests(config -> {
 //            config.anyRequest().permitAll();
-            config.requestMatchers("/user/login", "/user/join").permitAll()
-                    .anyRequest().authenticated();
+            config.requestMatchers("/user/login", "/user/join").permitAll();
+            config.anyRequest().authenticated();
         });
 
         // form login

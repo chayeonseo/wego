@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    --xx-small-font: 7px;
+    --x-small-font: 10px;
+    --small-font: 13px;
+    --normal-font: 16px;
+    --large-font: 19px;
+    --x-large-font: 22px;
+    --xx-large-font: 25px;
+
+    --main-gray-color: #878787;
+    --main-light-gray-color: #b7b7b7;
+    --main-text-color: black;
+    --main-color: #FE3F22;
+    --main-light-color: #fa7f7f;
+    --main-bg-color: white;
+    --main-disabled-color: #BABABA;
+    --main-activated-color: #E25658;
+    --modify-color: #00a6ff;
+    --main-width: 600px;
+
+    font-family: 'SUITE-Regular';
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+button{
+    border: none;
+    background: unset;
+}
+
+ul{
+    list-style: none;
+}
+
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-style: normal;
+}

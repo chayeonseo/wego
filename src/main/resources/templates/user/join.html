@@ -8,56 +8,118 @@
     <link rel="stylesheet" th:href="@{/css/user/join.css}" href="../../static/css/user/join.css">
 </head>
 <body>
-    <div class="join-content">
-        <div class="tit">
-            <div>회원가입</div>
-        </div>
+    <main>
+        <h1>회원가입</h1>
         <form class="join-form" method="post">
+            <h2>회원정보 입력</h2>
+
             <div class="join">
-                <div>아이디</div>
-                <input type="text" placeholder="로그인 할 아이디를 입력하세요">
-                <div>비밀번호</div>
-                <input type="text" placeholder="비밀번호">
-                <div>비밀번호 확인</div>
-                <input type="text" placeholder="비밀번호 확인">
-                <div>전화번호</div>
-                <input type="text" placeholder="전화번호">
-                <div>이름</div>
-                <input type="text" placeholder="이름">
-                <div>매장 이름</div>
-                <input type="text" placeholder="매장이름">
-                <div>태그 선택</div> <!--radio 형식 10개-->
-                <div id="tag-radio">
-                    <input type="radio" name="태그1" value="태그1">1
-                    <input type="radio" name="2" value="2">2
-                    <input type="radio" name="3" value="3">3
-                    <input type="radio" name="3" value="3">4
-                    <input type="radio" name="3" value="3">5
-                    <input type="radio" name="3" value="3">6
-                    <input type="radio" name="3" value="3">7
-                    <input type="radio" name="3" value="3">8
-                    <input type="radio" name="3" value="3">9
-                    <input type="radio" name="3" value="3">10
+                <label for="id">아이디</label>
+                <div class="input-div" active>
+                    <input id="id" type="text" placeholder="아이디를 입력하세요">
                 </div>
-                <div>매장카테고리</div>
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <div>메뉴카테고리/미정</div>
-                <!--  input데이터가 없을때 뜨는 div : uncorrected  -->
-                <div class="uncorrected">
-                    <span><i class="fa-solid fa-circle-exclamation" style="color: #fa7f7f;"></i>데이터 없음</span>
+                <div class="uncorrected" active>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>이미 존재하는 아이디 입니다.</span>
                 </div>
-                <input type="button" value="본인인증">
-                <div>
-                    <span>본인인증이 확인되었습니다.</span>
-                </div>
-                <input type="button" value="회원가입">
             </div>
+
+            <div class="join">
+                <label for="password">비밀번호</label>
+                <div class="input-div" active>
+                    <input id="password" type="text" placeholder="비밀번호 (영어,숫자,특수문자 포함 8자 이상)">
+                    <i class="fa-regular fa-eye-slash"></i>
+                </div>
+                <div class="uncorrected" active>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>영어,숫자,특수문자 포함 8자 이상입니다.</span>
+                </div>
+            </div>
+
+            <div class="join">
+                <label for="password-check">비밀번호 확인</label>
+                <div class="input-div">
+                    <input id="password-check" type="password" placeholder="비밀번호 재작성">
+                    <i class="fa-regular fa-eye"></i>
+                </div>
+                <div class="uncorrected">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>비밀번호가 일치하지 않습니다.</span>
+                </div>
+            </div>
+
+            <div class="join">
+                <label for="tel">전화번호</label>
+                <div class="input-div">
+                    <input id="tel" type="text" placeholder="전화번호입력. 형식 정해지면 말해줘용">
+                </div>
+                <div class="uncorrected">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>올바른 전화번호 형식이 아닙니다.</span>
+                </div>
+            </div>
+
+            <div class="join">
+                <label for="store-name">매장명</label>
+                <div class="input-div">
+                    <input id="store-name" type="text" placeholder="매장이름 (형식 정해지면 말해주용)">
+                </div>
+
+                <div class="uncorrected">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>8자 이내 한글 혹은 영문으로 작성해주세요.</span>
+                </div>
+            </div>
+
+            <div class="join">
+                <label for="name">닉네임 (선택사항)</label>
+                <div class="input-div">
+                    <input id="name" type="text" placeholder="이름 (8자 이내 한글 혹은 영문)">
+                </div>
+                <div class="uncorrected">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>8자 이내 한글 혹은 영문으로 작성해주세요.</span>
+                </div>
+            </div>
+
+
+
+            <div>태그 선택</div> <!--radio 형식 10개-->
+            <div id="tag-radio">
+                <input type="radio" name="태그1" value="태그1">1
+                <input type="radio" name="2" value="2">2
+                <input type="radio" name="3" value="3">3
+                <input type="radio" name="3" value="3">4
+                <input type="radio" name="3" value="3">5
+                <input type="radio" name="3" value="3">6
+                <input type="radio" name="3" value="3">7
+                <input type="radio" name="3" value="3">8
+                <input type="radio" name="3" value="3">9
+                <input type="radio" name="3" value="3">10
+            </div>
+
+            <div>매장카테고리</div>
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <div>메뉴카테고리/미정</div>
+            <!--  input데이터가 없을때 뜨는 div : uncorrected  -->
+            <div class="uncorrected">
+                <span><i class="fa-solid fa-circle-exclamation" style="color: #fa7f7f;"></i>데이터 없음</span>
+            </div>
+            <input type="button" value="본인인증">
+            <div>
+                <span>본인인증이 확인되었습니다.</span>
+            </div>
+
+            <section class="form-btn-section">
+                <input type="submit" value="가입하기">
+                <input type="button" value="취소">
+            </section>
         </form>
 
-    </div>
+    </main>
 </body>
 </html>

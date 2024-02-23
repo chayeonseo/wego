@@ -40,7 +40,62 @@ const categoryDeleteBtn = categoryModifyModal.querySelector('.delete-btn'); // [
 let categoryId = categoryModifyModal.querySelector('#modify-categoryId'); // [카테고리 모달] 현재 모달에 띄워진 카테고리 id
 
 ///////////////////////////////////////////////////////////////////////////
+/**************************** 메뉴 드래그 앤 드랍 *************************************/
+const menuContainerSection = document.getElementById('menu-container-section');
+const menuContainers = menuContainerSection.getElementsByClassName('con'); // 모든 메뉴 컨테이너들 (하나의 메뉴 카테고리들)
 
+for(let i = 0; i < menuContainers.length; i++){
+    const menuContainer = menuContainers[i];
+    const menuContainerCaretBtn = menuContainer.querySelector('.con-caret-btn');
+    const menuContainerCaretBtnIcon = menuContainerCaretBtn.querySelector('i');
+    const menuUl = menuContainer.querySelector('ul');
+
+    // 캐럿 버튼 클릭 시 메뉴 표시/비표시
+    menuContainerCaretBtn.onclick = (event) => {
+        event.stopPropagation();
+        if(menuContainer.hasAttribute('active')){
+            menuContainer.toggleAttribute('active', false); // 비표시
+            menuContainerCaretBtnIcon.className = 'fa-solid fa-caret-up'
+        }else{
+            menuContainer.toggleAttribute('active', true); //표시
+            menuContainerCaretBtnIcon.className = 'fa-solid fa-caret-down'
+        }
+    }
+
+    new Sortable(menuContainerSection, {
+        group: `menuCon-${i}`,
+        animation: 150,
+        ghostClass: 'drag-menu',
+        handle: '.con-title'
+    });
+    new Sortable(menuUl, {
+        group: `menu-${i}`,
+        animation: 150,
+        ghostClass: 'drag-menu',
+        handle: '.handle', // handle's class
+    });
+
+    /////* 위 아래 스크롤 이동 구현
+    menuContainer.addEventListener('dragstart', function(event){
+        menuContainer.addEventListener('drag', mouse_move_event);
+    });
+
+    menuContainer.addEventListener('dragend',function(event){
+        document.removeEventListener('drag', mouse_move_event);
+    });
+
+    function mouse_move_event(event){
+        if(event.clientY <= 100){
+            console.log('move top')
+            window.scrollTo({left: event.currentTarget.clientX, top: 0, behavior: 'smooth'});
+        }
+        else if(event.clientY >= window.innerHeight - 100){
+            console.log('move bottom')
+            window.scrollTo({left: event.currentTarget.clientX, top: event.pageY, behavior: 'smooth'});
+        }
+    }
+    ///// *
+}
 
 /* Option category join*/
 categoryJoinBtn.onclick = () => {
@@ -157,7 +212,6 @@ deleteBtn.onclick = () => {
 // 수정 버튼 클릭
 editingBtn.onclick = () => {
     const editingInput = optionModifyModal.querySelectorAll('.option-editing-div input');
-    console.log(editingInput)
     editingInput.forEach(input => input.disabled = false);
 }
 
@@ -198,18 +252,18 @@ optionJoinBtn.onclick = () => {
     let data = [];
     const optionList = optionJoinModal.querySelectorAll('.option-creating-div');
 
-    console.log(optionList.length)
-    for (let option of optionList) {
-        const category = option.querySelector('.join-option-category');
-        const optionName = option.querySelector('.option-title').value;
-        const optionPrice = option.querySelector('.option-price').value;
-
-        data.push({
-            categoryId : category.options[category.selectedIndex].value,
-            menuOptionName : optionName,
-            menuOptionPrice : optionPrice
-        });
-    }
+    // console.log(optionList.length)
+    // for (let option of optionList) {
+    //     const category = option.querySelector('.join-option-category');
+    //     const optionName = option.querySelector('.option-title').value;
+    //     const optionPrice = option.querySelector('.option-price').value;
+    //
+    //     data.push({
+    //         categoryId : category.options[category.selectedIndex].value,
+    //         menuOptionName : optionName,
+    //         menuOptionPrice : optionPrice
+    //     });
+    // }
 
     console.log(data)
 
@@ -245,35 +299,35 @@ categoryModifyCancel.onclick = () => {
 }
 
 categoryList.forEach(category => {
-    const categoryModifyBtn = category.querySelector('.category-modify-btn');
+    const categoryModifyBtn = category.querySelector('.option-category-name-modify-btn');
 
     // 변경 버튼 클릭 시
     categoryModifyBtn.onclick = () => {
-
         categoryModifyModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
-
-        categoryId = category.querySelector('#categoryId').value;
-
-        fetch(`/option/category/${categoryId}`)
-            .then(resp => resp.json())
-            .then(category => {
-                categoryTitle.value = category['menuOptionCategoryName'];
-
-                optionContainer.innerHTML = '';
-                for (let option of category['menuOptions']) {
-                    optionContainer.insertAdjacentHTML('beforeend', 
-                        `<div class="option-editing">
-                    <div class="option-editing-div">
-                        <input type="hidden" value="${option['optionId']}">
-                        <div class="option-modify-title">${option['menuOptionName']}</div>
-                        <div class="option-modify-price">${option['menuOptionPrice'] + '원'}</div>
-                    </div>
-                </div>
-                <hr>`)
-                }
-            })
     }
+    //
+    //     categoryId = category.querySelector('#categoryId').value;
+    //
+    //     fetch(`/option/category/${categoryId}`)
+    //         .then(resp => resp.json())
+    //         .then(category => {
+    //             categoryTitle.value = category['menuOptionCategoryName'];
+    //
+    //             optionContainer.innerHTML = '';
+    //             for (let option of category['menuOptions']) {
+    //                 optionContainer.insertAdjacentHTML('beforeend',
+    //                     `<div class="option-editing">
+    //                 <div class="option-editing-div">
+    //                     <input type="hidden" value="${option['optionId']}">
+    //                     <div class="option-modify-title">${option['menuOptionName']}</div>
+    //                     <div class="option-modify-price">${option['menuOptionPrice'] + '원'}</div>
+    //                 </div>
+    //             </div>
+    //             <hr>`)
+    //             }
+    //         })
+    // }
 })
 
 

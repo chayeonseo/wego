@@ -1,159 +1,111 @@
+@import "../public/public.css";
 
-body{
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+main {
+    width: 700px;
+    margin: 80px auto;
 }
 
-/*@media screen and (min-width: 880px ) {*/
-    .join-content {
-        box-sizing: border-box;
-        align-content: center;
-        width: 450px;
-        height: 100%;
-        border: 1px solid #eceef6;
-        margin-top: 100px;
-    }
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    .tit{
-        text-align: left;
-    }
-    .tit > div{
-        margin: 10px;
-        font-weight: bold;
-        font-size: 20px;
-    }
-
-    .join-form {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        margin: 10px;
-    }
-
-    .join {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
+h2{
+    margin-bottom: 10px;
+}
 
 
-    .join > input[type=text] {
-        width: 350px;
-        height: 40px;
-        color: #222222;
-        border: 1px solid black;
-        border-radius: 5px;
+.join-form {
+    border: 2px solid var(--main-light-gray-color);
+    border-radius: 0.35rem;
+    padding: 30px 40px;
+}
 
-    }
+.join {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
 
-    .join > input[type=button]{
-        height: 50px;
-        background-color: #ff5624;
-        border: none;
-        cursor: pointer;
-        border-radius: 40px;
-        color: white;
-        font-size: 16px;
-    }
+.join > label{
+    font-size: var(--normal-font);
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 0 2px;
+}
 
-    .join > div{
-        text-align: left;
-    }
+.join > .input-div {
+    border: 2px solid black;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: var(--normal-font);
+}
 
+.join > .input-div {
+    display: flex;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+    align-items: center;
+}
 
-    .uncorrected {
-        text-align: left;
-        color: #fa7f7f;
-    }
+.join > .input-div[active]{
+    box-sizing: border-box;
+    border: 2px solid white;
+    outline: 2px solid var(--main-color);
+}
 
+.input-div > input {
+    flex: 1;
+    font-size: var(--large-font);
+    border: none;
+}
 
-/*}*/
-/********************************************************************/
-/*  반응형 css  */
-/*@media screen and (max-width: 879px) {*/
-/*    .login-content{*/
-/*        box-sizing: border-box;*/
-/*        align-content: center;*/
-/*        text-align: center;*/
-/*        width: 100%;*/
-/*        height: 100%;*/
-/*        margin-top: 100px;*/
-/*    }*/
-/*    .logo {*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        height: 70px;*/
-/*        margin-top: 10px;*/
-/*    }*/
+.input-div > input:focus{
+    outline: none;
+}
 
-/*    .logo > div {*/
-/*        margin: 20px;*/
-/*    }*/
+.input-div > i{
+    font-size: var(--x-large-font);
+    cursor: pointer;
+    margin-left: 15px;
+}
 
-/*    .logo > div > i {*/
-/*        width: 50px;*/
-/*        height: 50px;*/
-/*    }*/
-/*    .login-form {*/
-/*        height: 350px;*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        margin: 10px;*/
-/*    }*/
+.uncorrected {
+    display: none;
+    padding: 2px 10px;
+    color: var(--main-color);
+}
+.uncorrected[active]{
+    display: block;
+}
 
-/*    .login {*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        justify-content: center;*/
-/*        gap: 20px;*/
-/*    }*/
+/***************************************/
+.form-btn-section{
+    display: flex;
+    flex-direction: column;
+}
 
-/*    .login > input[type=text] {*/
-/*        width: 370px;*/
-/*        height: 40px;*/
-/*        color: #222222;*/
-/*        border: none;*/
-/*        border-bottom: solid #aaaaaa 1px;*/
-/*    }*/
+.form-btn-section input{
+    margin: 5px 0;
+    padding: 15px 0;
+    border: none;
+    border-radius: 0.7rem;
+    font-size: var(--x-large-font);
+    cursor: pointer;
+}
 
-/*    .login > input[type=button] {*/
-/*        height: 50px;*/
-/*        background-color: #ff5624;*/
-/*        border: none;*/
-/*        cursor: pointer;*/
-/*        border-radius: 40px;*/
-/*        color: white;*/
-/*        font-size: 16px;*/
-/*    }*/
+.form-btn-section input:hover{
+    opacity: 0.9;
+}
 
-/*    .find {*/
-/*        text-align: center;*/
-/*        margin: 5px;*/
-/*        display: flex;*/
-/*        justify-content: space-between;*/
-/*    }*/
+.form-btn-section input[type=submit]{
+    background-color: var(--main-color);
+    color: white;
+}
 
-/*    .find > a {*/
-/*        text-decoration: none;*/
-/*        color: #333333;*/
-/*    }*/
-
-/*    .uncorrected {*/
-/*        text-align: left;*/
-/*        color: #fa7f7f;*/
-/*    }*/
-
-/*    .bottom {*/
-/*        font-size: 12px;*/
-/*        margin-top: 60px;*/
-/*    }*/
-
-/*    .bottom > span > a {*/
-/*        color: black;*/
-/*    }*/
-/*}*/
+.form-btn-section input[type=button]{
+    background-color: var(--main-gray-color);
+    color: white;
+}

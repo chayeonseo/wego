@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/main/menu.css}" href="../../static/css/main/menu.css">
+    <link rel="stylesheet" th:href="@{/css/public/sideBar.css}" href="../../static/css/public/sideBar.css">
+    <link rel="stylesheet" th:href="@{/css/public/header.css}" href="../../static/css/public/header.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#" th:href="@{/}" id="logoImage">
+                <img id="logo" src="../../static/images/logo/main-logo.png" th:src="@{/images/logo/main-logo.png}" alt="main-logo">
+            </a>
+        </div>
+
+        <div class="header-list">
+            <div class="profile" id="loginStatus" th:text="${#authentication.principal.mbId}">로그인명</div>
+            <button onclick="location.href='/user/logout'">logout</button>
+            <button class="menu-toggle-button" onclick="toggleNav()">메뉴</button>
+        </div>
+    </header>
+
+
+    <section style="display: flex">
+        <nav class="sideNav">
+            <ul class="sideBar">
+                <li class="menu-group">
+                    <a href="/home"><i class="fa-solid fa-house"></i><span>홈</span></a>
+                </li>
+
+                <li class="menu-group">
+                    <i class="fa-solid fa-store"></i><span>가게관리</span>
+                    <ul class="sideBar-list">
+                        <li><a href="#">기본정보</a></li>
+                        <li><a href="#">운영정보</a></li>
+                        <li><a href="#">주문정보</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#"><i class="fa-solid fa-person"></i>고객관리</a></li>
+                <li><a href="#"><i class="fa-solid fa-pause"></i>영업임시중지</a></li>
+
+                <li class="menu-group">
+                    <i class="fas fa-star"></i><span>메뉴 관리</span>
+                    <ul class="sideBar-list">
+                        <li><a href="/menu">메뉴 관리</a></li>
+                        <li><a href="/option">옵션 관리</a></li>
+                        <li><a href="#">메뉴 ㅇㅇ</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-group">
+                    <i class="fas fa-star"></i><span>테이블 관리</span>
+                    <ul class="sideBar-list">
+                        <li><a href="#">등록</a></li>
+                        <li><a href="#">이동</a></li>
+                        <li><a href="#">사용중</a></li>
+                        <li><a href="#">내보내기</a></li>
+                    </ul>
+                </li>
+
+                <!--        <li><a href="#"><i class="fa-solid fa-percent"></i>메뉴 할인 관리</a></li>-->
+                <!--        <li><a href="#"><i class="fas fa-star"></i>혜택관리</a></li>-->
+                <!--        <li><a href="#"><i class="fas fa-star"></i>쿠폰내역</a></li>-->
+                <!--        <li><a href="#"><i class="fas fa-star"></i>리뷰관리</a></li>-->
+                <!--        <li><a href="#"><i class="fa-solid fa-check"></i>공지.한마디</a></li>-->
+                <!--        <li><a href="#"><i class="fa-solid fa-list-check"></i>주문내역</a></li>-->
+            </ul>
+        </nav>
+        <main layout:fragment="main"></main>
+        <th:block th:replace="~{public/progressSpinner :: spinner}"></th:block>
+    </section>
+</body>
+</html>
+
+<script>
+
+</script>
