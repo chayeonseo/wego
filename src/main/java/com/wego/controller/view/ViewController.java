@@ -20,10 +20,10 @@ public class ViewController {
     private final OptionService optionService;
     private final OrderService orderService;
 
-    @GetMapping("/test")
-    public String test() {
-        return "index";
-    }
+//    @GetMapping("/test")
+//    public String test() {
+//        return "index";
+//    }
 
 
     @GetMapping("/menu")
