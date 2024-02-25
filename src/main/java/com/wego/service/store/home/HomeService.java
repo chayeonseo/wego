@@ -1,7 +1,7 @@
 package com.wego.service.store.home;
 
 import com.wego.dto.store.StoreDTO;
-import com.wego.mappers.StoreMapper;
+import com.wego.mappers.HomeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class HomeService {
     
     ///////////////////////////////////////////// 의존성
-    private final StoreMapper storeMapper;
+    private final HomeMapper homeMapper;
 
     ///////////////////////////////////////////// 서비스 처리
     // 지난주 주간 매출 (일자별)
@@ -27,7 +27,7 @@ public class HomeService {
         String mon = thisWeekDays[0];
         String sun = thisWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_price(mon, sun, storeDTO.getStoreId());
+        List<Map<String, String>> results = homeMapper.get_week_total_price(mon, sun, storeDTO.getStoreId());
 
         return result_priceMap(results);
     }
@@ -38,7 +38,7 @@ public class HomeService {
         String mon = thisWeekDays[0];
         String sun = thisWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_price(mon, sun, storeDTO.getStoreId());
+        List<Map<String, String>> results = homeMapper.get_week_total_price(mon, sun, storeDTO.getStoreId());
 
         return result_priceMap(results);
     }
@@ -51,7 +51,7 @@ public class HomeService {
         String mon = lastWeekDays[0];
         String sun = lastWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_count(mon, sun, storeDTO.getStoreId());
+        List<Map<String, String>> results = homeMapper.get_week_total_count(mon, sun, storeDTO.getStoreId());
 
         return result_orderMap(results);
     }
@@ -61,7 +61,7 @@ public class HomeService {
         String mon = thisWeekDays[0];
         String sun = thisWeekDays[1];
 
-        List<Map<String, String>> results = storeMapper.get_week_total_count(mon, sun, storeDTO.getStoreId());
+        List<Map<String, String>> results = homeMapper.get_week_total_count(mon, sun, storeDTO.getStoreId());
 
         return result_orderMap(results);
     }
@@ -70,7 +70,7 @@ public class HomeService {
 
     // order history
     public Map<String, String> get_order_status(StoreDTO storeDTO) {
-        List<Map<String, Integer>> results = storeMapper.get_order_status(storeDTO);
+        List<Map<String, Integer>> results = homeMapper.get_order_status(storeDTO);
 
         return result_orderCountMap(results);
     }

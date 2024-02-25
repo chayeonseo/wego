@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 @ToString
 @Builder
 public class MenuImgDTO {
-    private MultipartFile file;
     private int menuImgId;
     private int storeId;
     private int menuId;
@@ -22,5 +21,6 @@ public class MenuImgDTO {
     private String menuImgOriginal;
     private String menuImgThm;
     private String modifiedDate;
+    private MultipartFile file;
 
 }

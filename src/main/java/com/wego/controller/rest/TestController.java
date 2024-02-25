@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 @Controller
 public class TestController {
@@ -23,7 +24,7 @@ public class TestController {
             System.out.println("upload file name: " + img.getOriginalFilename());
             System.out.println("upload file name: " + img.getSize());
 
-            File saveFile = new File(UP_LOAD_PATH, img.getOriginalFilename());
+            File saveFile = new File(UP_LOAD_PATH, Objects.requireNonNull(img.getOriginalFilename()));
             File filePath = new File(String.valueOf(saveFile));
 
             try {

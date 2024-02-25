@@ -3,20 +3,15 @@ package com.wego.service.store.menu;
 import com.wego.dto.menu.MenuCategoryDTO;
 import com.wego.dto.menu.MenuDTO;
 import com.wego.dto.menu.MenuImgDTO;
-import com.wego.dto.menu.MenuOptionCategoryDTO;
 import com.wego.dto.store.StoreDTO;
 import com.wego.mappers.MenuMapper;
-import com.wego.mappers.StoreMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnails;
-import org.apache.catalina.Store;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -69,25 +64,25 @@ public class MenuService {
     }
 
     @Transactional
-    public void menu_join(MenuDTO menuDTO, MultipartFile multipartFile) throws IOException {
+    public void menu_join(MenuDTO menuDTO) {
         for (MenuImgDTO img : menuDTO.getMenuImgs()) {
-            String originalFileName = img.getFile().getOriginalFilename();
-            String ThumbnailFileName = originalFileName + "";
+            File saveFile = new File(UP_LOAD_PATH, img.getFile().getOriginalFilename());
+            File thSaveFile = new File(UP_LOAD_PATH, "/th_" + img.getFile().getOriginalFilename());
+
+            try {
+                img.getFile().transferTo(saveFile);
+                Thumbnails.of(saveFile)
+                        .size(WIDTH, HEIGHT)
+                        .toFile(thSaveFile);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
 
 
 
         }
 //        210.123.135.183/uploadTest/대구 중구 동성로1길 46-4/thm/진진/닭다리살 소금구이(2~3)/1703250897055.jpg
-        String uploadFileName = multipartFile.getOriginalFilename();
 
-        File saveFile = new File(UP_LOAD_PATH, uploadFileName);
-
-
-//        BufferedImage bf_img = ImageIO.read(saveFile);
-
-        Thumbnails.of(saveFile)
-                .size(WIDTH, HEIGHT)
-                .toFile(saveFile);
 
 
         menuMapper.menu_join(menuDTO);

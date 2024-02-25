@@ -1,7 +1,7 @@
 package com.wego.service.security;
 
 import com.wego.dto.store.StoreDTO;
-import com.wego.mappers.StoreMapper;
+import com.wego.mappers.HomeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,12 +16,12 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final StoreMapper storeMapper;
+    private final HomeMapper homeMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.warn("loadUserByUsername run");
-        StoreDTO storeDTO = storeMapper.get_all_store(username);
+        StoreDTO storeDTO = homeMapper.get_all_store(username);
 //        System.out.println(storeDTO);
 
         if (Objects.isNull(storeDTO)) {

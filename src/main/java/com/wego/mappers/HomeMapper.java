@@ -3,8 +3,6 @@ package com.wego.mappers;
 
 import com.wego.dto.review.ReviewDTO;
 import com.wego.dto.store.StoreDTO;
-import org.apache.catalina.Store;
-import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -13,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface StoreMapper {
+public interface HomeMapper {
 
     StoreDTO get_all_store(String id);
 

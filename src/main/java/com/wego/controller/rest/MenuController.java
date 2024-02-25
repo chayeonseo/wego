@@ -81,8 +81,8 @@ public class MenuController {
 
     // 메뉴 insert
     @PostMapping("/join")
-    public void join_menu(@RequestBody MenuDTO menuDTO, MultipartFile multipartFile) throws IOException {
-        menuService.menu_join(menuDTO, multipartFile);
+    public void join_menu(@RequestBody MenuDTO menuDTO) {
+        menuService.menu_join(menuDTO);
     }
 
     @PatchMapping("/number")

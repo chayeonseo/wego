@@ -1,9 +1,9 @@
 package com.wego;
 
+import com.wego.mappers.HomeMapper;
 import com.wego.mappers.MenuMapper;
 import com.wego.mappers.OptionMapper;
 import com.wego.mappers.OrderMapper;
-import com.wego.mappers.StoreMapper;
 import com.wego.service.store.home.HomeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 class WegoApplicationTests {
 
     @Autowired
-    StoreMapper storeMapper;
+    HomeMapper storeMapper;
 
     @Autowired
     HomeService homeService;
