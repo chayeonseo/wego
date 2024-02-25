@@ -20,12 +20,12 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain configure(HttpSecurity security) throws Exception {
         // csrf
-        security.csrf(config -> {config.disable();});
+        security.csrf(config -> {});
         // request
         security.authorizeHttpRequests(config -> {
-            config.anyRequest().permitAll();
-//            config.requestMatchers("/user/login", "/user/join", "/test").permitAll()
-//                    .anyRequest().authenticated();
+//            config.anyRequest().permitAll();
+            config.requestMatchers("/user/login", "/user/join").permitAll()
+                    .anyRequest().authenticated();
         });
 
         // form login
